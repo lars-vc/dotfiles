@@ -34,7 +34,7 @@ sudo pip install ueberzug
 sudo apt install libjpeg8-dev zlib1g-dev libxtst-dev ffmpegthumbnailer -y
 
 # None-dev stuff
-sudo snap install discord
+# sudo snap install discord
 
 # UPDATE
 sudo apt update
