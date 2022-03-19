@@ -16,10 +16,13 @@ sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --verbose https://github.co
 
 ### NeoVim
 
+#### Plugins
 run `nvim` and do:
 ```sh
 :PlugInstall!
 ```
+#### Font
+[DejaVuSansMono Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DejaVuSansMono/Regular/complete), Any Nerd Font should probably work.
 
 ## Syncing Dotfiles
 
