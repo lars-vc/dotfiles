@@ -183,6 +183,5 @@ inside neovim.
 * [agenda](https://github.com/dhruvasagar/vim-dotoo)
 * [org-mode](https://github.com/vimoutliner/vimoutliner)
 * [dashboard](https://github.com/glepnir/dashboard-nvim)
-* [vim surround](https://github.com/tpope/vim-surround)
 * vimrc without plugins for servers / or a plugin that allows this config to run on servers (https://serverfault.com/questions/33423/how-to-bring-vimrc-around-when-i-ssh) (https://github.com/jpalardy/vim-slime)
-
+* [ranger vim](https://www.reddit.com/r/neovim/comments/f3b62j/i_wrote_a_plugin_to_make_ranger_to_be_a_file/)
