@@ -11,13 +11,13 @@ sudo apt install python-is-python3 -y
 # gcc and more
 sudo apt install build-essential -y
 # snap
-sudo apt install snapd
+sudo apt install snapd -y
 # rust
-sudo apt install cargo
+sudo apt install cargo -y
 # fd
 sudo apt install fd-find -y
 # fzf
-sudo apt install fzf
+sudo apt install fzf -y
 
 # NeoVim
 sudo add-apt-repository ppa:neovim-ppa/stable -y
