@@ -24,6 +24,18 @@ run `nvim` and do:
 #### Font
 [DejaVuSansMono Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DejaVuSansMono/Regular/complete), Any Nerd Font should probably work.
 
+## Changing Dotfiles
+
+To change dotfiles and keep chezmoi up-to-date use either:
+```sh
+chezmoi edit .whatever_dotfile
+```
+or
+```sh
+nvim .whatever_dotfile
+chezmoi add .whatever_dotfile
+```
+
 ## Syncing Dotfiles
 
 To sync dotfiles with the remote run:
