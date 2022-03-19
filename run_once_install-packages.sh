@@ -12,8 +12,12 @@ sudo apt install python-is-python3 -y
 sudo apt install build-essential -y
 # snap
 sudo apt install snapd
+# rust
+sudo apt install cargo
 # fd
 sudo apt install fd-find -y
+# fzf
+sudo apt install fzf
 
 # NeoVim
 sudo add-apt-repository ppa:neovim-ppa/stable -y
