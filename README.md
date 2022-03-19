@@ -24,6 +24,7 @@ curl https://raw.githubusercontent.com/lars-vc/dotfiles/root/first_install.sh | 
 To change dotfiles and keep chezmoi up-to-date use either:
 ```sh
 chezmoi edit .whatever_dotfile
+chezmoi apply -v
 ```
 or
 ```sh
