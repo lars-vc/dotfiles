@@ -23,14 +23,14 @@ sudo npm install -g yarn
 sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
-sudo pip3 install ropevim
-sudo pip3 install pynvim
+pip3 install ropevim
+pip3 install pynvim
 
 # Ranger
 sudo apt install ranger -y
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 # ueberzug won't work on wsl due to there not being a GUI (so ignore the errors, maybe I can add a check here or something)
-sudo pip3 install ueberzug
+pip3 install ueberzug
 sudo apt install libjpeg62-turbo-dev zlib1g-dev libxtst-dev ffmpegthumbnailer -y
 
 # None-dev stuff
