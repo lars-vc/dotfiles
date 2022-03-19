@@ -18,7 +18,7 @@ curl https://raw.githubusercontent.com/lars-vc/dotfiles/root/first_install.sh | 
 
 #### Plugins
 run `nvim` and do:
-```sh
+```viml
 :PlugInstall!
 ```
 #### Font
