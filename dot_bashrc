@@ -118,6 +118,7 @@ fi
 
 
 ####### ADDED BY ME ########
+export EDITOR=nvim
 # Powerline configuration
 if [ -f $HOME/.local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh ]; then
     $HOME/.local/bin/powerline-daemon -q
