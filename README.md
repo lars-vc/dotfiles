@@ -7,20 +7,10 @@ sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --verbose https://github.co
 ```
 
 ## Contained Dotfiles
-* [NeoVim]()
+* [NeoVim](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/nvim)
 * [Ranger]()
-* [Gitconfig]()
-* [Bashrc]() I want to swap to zsh though
-
-## Dependencies
-
-Auto-install all dependencies by running:
-```sh
-chezmoi cd
-sudo chmod +x install.sh
-./install.sh
-exit
-```
+* [Gitconfig](https://github.com/lars-vc/dotfiles/blob/root/dot_gitconfig)
+* [Bashrc](https://github.com/lars-vc/dotfiles/blob/root/dot_bashrc) I want to swap to zsh though
 
 ## Application specific configuration
 
