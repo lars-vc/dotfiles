@@ -3,8 +3,7 @@
 ## Init
 Install chezmoi and setup all dotfiles:
 ```sh
-sh -c "$(curl -fsLS chezmoi.io/get)"
-chezmoi init --apply --verbose https://github.com/lars-vc/dotfiles.git
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --verbose https://github.com/lars-vc/dotfiles.git
 ```
 
 ## Contained Dotfiles
@@ -30,4 +29,11 @@ exit
 run `nvim` and do:
 ```sh
 :PlugInstall!
+```
+
+## Syncing Dotfiles
+
+To sync dotfiles with the remote run:
+```sh
+chezmoi update
 ```
