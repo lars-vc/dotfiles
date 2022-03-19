@@ -16,11 +16,6 @@ curl https://raw.githubusercontent.com/lars-vc/dotfiles/root/first_install.sh | 
 
 ### NeoVim
 
-#### Plugins
-run `nvim` and do:
-```viml
-:PlugInstall!
-```
 #### Font
 [DejaVuSansMono Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DejaVuSansMono/Regular/complete), Any Nerd Font should probably work.
 
