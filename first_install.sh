@@ -5,6 +5,7 @@ sudo apt update
 sudo apt install git-all
 sudo apt install gh
 gh auth login
-sudo apt install snapd
-sudo snap install chezmoi --classic
+cd /
+sudo sh -c "$(curl -fsLS chezmoi.io/get)"
+cd ~
 chezmoi init --apply https://github.com/lars-vc/dotfiles
