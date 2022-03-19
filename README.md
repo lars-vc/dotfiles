@@ -3,7 +3,7 @@
 ## Init
 Install chezmoi and setup all dotfiles:
 ```sh
-sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --verbose https://github.com/lars-vc/dotfiles.git
+curl https://raw.githubusercontent.com/lars-vc/dotfiles/root/first_install.sh | /bin/bash
 ```
 
 ## Contained Dotfiles
