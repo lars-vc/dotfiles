@@ -17,6 +17,7 @@ sudo apt install fd-find -y
 
 # NeoVim
 sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt install neovim
 # NeoVim dependencies
 sudo apt install npm python3 python3-pip exuberant-ctags ripgrep wdutch sqlite3 libsqlite3-dev -y
 sudo npm install -g yarn
