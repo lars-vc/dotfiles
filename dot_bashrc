@@ -139,7 +139,6 @@ alias extract='dtrx -n'
 alias rang='ranger'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias gitcfg='/usr/bin/git --git-dir=$HOME/.dotrepo/ --work-tree=$HOME'
 
 # path stuff
 export PATH=$PATH:~/scripts

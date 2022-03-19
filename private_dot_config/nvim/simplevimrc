@@ -1,0 +1,75 @@
+" A simple vimrc without plugins (for servers or vms)
+"===========================================================
+"---------------------------Basic---------------------------
+"===========================================================
+syntax on               " enables syntax highlighting
+set termguicolors       " better colors
+set tabstop=4           " number of spaces in a <Tab>
+set shiftwidth=4        " 
+set softtabstop=4       " 
+set expandtab           " 
+set smartindent         " enable autoindents
+set number              " adds line numbers
+set relativenumber      " relative numbers in sidebar
+set numberwidth=4       " columns used for the line number
+set incsearch           " highlighting matched strings while searching
+set nohlsearch          " no remaining highlights on search
+set noea                " splitting windows
+set hidden              " navigate buffers without losing unsaved work
+set scrolloff=8         " start scrolling when 8 lines from top or bottom
+set undofile            " save undo history
+set mouse=a             " enable mouse support
+set ignorecase          " case insensitive search unless capital letters are used
+set smartcase           " 
+set nrformats+=alpha    " increment letters
+set timeoutlen=555      " for whichkey to show up quicker
+"===========================================================
+"--------------------------Keymaps--------------------------
+"===========================================================
+inoremap jk <Esc>
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+" navigating plugins
+inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
+" moving in insert mode
+inoremap <A-h> <Left>
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
+inoremap <A-l> <Right>
+" moving around windows
+nnoremap <A-H> <C-w>h
+nnoremap <A-J> <C-w>j
+nnoremap <A-K> <C-w>k
+nnoremap <A-L> <C-w>l
+" searching centers the line
+nnoremap n nzzzv
+nnoremap N Nzzzv
+" undo breakpoints
+inoremap . .<C-g>u
+inoremap , ,<C-g>u
+" moving text
+nnoremap <A-k> :m .-2<CR>
+nnoremap <A-j> :m .+1<CR>
+vnoremap <A-j> :m '>+1<CR>gv
+vnoremap <A-k> :m '<-2<CR>gv
+nnoremap <A-l> >>
+nnoremap <A-h> <<
+vnoremap <A-h> :<<CR>gv
+vnoremap <A-l> :><CR>gv
+" moving around in command mode
+cnoremap <A-h> <Left>
+cnoremap <A-j> <Down>
+cnoremap <A-k> <Up>
+cnoremap <A-l> <Right>
+
+" --leader mappings--
+nnoremap <leader>no :Lex<CR><C-w>70<
+" closing stuff
+nnoremap <leader>xt :wa<cr>:tabclose<cr>
+nnoremap <leader>xx :wa<cr>:qa<cr>
+nnoremap <leader>xq :qa!<cr>
+" creating and moving the splits
+nnoremap <leader>sv :vsplit<CR>
+nnoremap <leader>ss :split<CR>
+nnoremap <leader>sx <C-w>x

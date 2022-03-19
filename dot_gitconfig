@@ -1,0 +1,24 @@
+[user]
+	name = Lars Van Cauter
+	email = larsvancauter@gmail.com
+[alias]
+	coma = !git add . && git commit -m
+	ss = status
+	fet = fetch
+	psh = push
+	pll = pull
+	br = branch
+	co = checkout
+	gud = commit -m
+	stabbed = !git commit -a -m 'fixed merge-conflict' && git push
+	ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://github.ugent.be"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[pull]
+	rebase = false
+[init]
+	defaultBranch = root
