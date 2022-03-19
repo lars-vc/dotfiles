@@ -1,7 +1,7 @@
 #!/bin/bash
 # UPDATE
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 
 # General
 # Snap
@@ -35,4 +35,4 @@ sudo apt install libjpeg62-turbo-dev zlib1g-dev libxtst-dev ffmpegthumbnailer -y
 
 # UPDATE
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
