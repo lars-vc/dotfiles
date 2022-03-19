@@ -10,6 +10,8 @@ sudo apt install dtrx -y
 sudo apt install python-is-python3 -y
 # gcc and more
 sudo apt install build-essential -y
+# snap
+sudo apt install snapd
 # fd
 sudo apt install fd-find -y
 
