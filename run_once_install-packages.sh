@@ -4,8 +4,6 @@ sudo apt update
 sudo apt upgrade -y
 
 # General
-# Snap
-sudo apt install snapd -y
 # extracting stuff
 sudo apt install dtrx -y
 # python is python3
