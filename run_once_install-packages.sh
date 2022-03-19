@@ -14,10 +14,13 @@ sudo apt install build-essential -y
 sudo apt install snapd -y
 # rust
 sudo apt install cargo -y
+cargo install cargo-edit
 # fd
 sudo apt install fd-find -y
 # fzf
 sudo apt install fzf -y
+# random stuff
+sudo apt install pkg-config
 
 # NeoVim
 sudo add-apt-repository ppa:neovim-ppa/stable -y
