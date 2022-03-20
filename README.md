@@ -7,10 +7,10 @@ curl https://raw.githubusercontent.com/lars-vc/dotfiles/root/first_install.sh | 
 ```
 
 ## Contained Dotfiles
-* [NeoVim](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/nvim)
-* [Ranger]()
-* [Gitconfig](https://github.com/lars-vc/dotfiles/blob/root/dot_gitconfig)
-* [Bashrc](https://github.com/lars-vc/dotfiles/blob/root/dot_bashrc) I want to swap to zsh though
+* [NeoVim](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/nvim), the magnum opus editor
+* [Ranger](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/ranger), the best file manager
+* [Gitconfig](https://github.com/lars-vc/dotfiles/blob/root/dot_gitconfig), git.exe
+* [Bashrc](https://github.com/lars-vc/dotfiles/blob/root/dot_bashrc), I wanna use zsh
 
 ## Application specific configuration
 
