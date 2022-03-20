@@ -336,7 +336,6 @@ xnoremap <leader>rr :SnipRun<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
 
 "//////////////////////////Harpoon\\\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap <leader><leader> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <leader>j :lua require("harpoon.ui").nav_next()<CR>
 nnoremap <leader>k :lua require("harpoon.ui").nav_prev()<CR>
 nnoremap , <nop>
