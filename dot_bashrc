@@ -143,5 +143,6 @@ alias ...='cd ../..'
 
 # path stuff
 export PATH=$PATH:~/scripts
-
-. "$HOME/.cargo/env"
+if [ -d "/path/dir/" ]; then
+    . "$HOME/.cargo/env"
+fi
