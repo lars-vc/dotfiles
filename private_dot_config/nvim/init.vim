@@ -157,6 +157,8 @@ Plug 'rafamadriz/friendly-snippets'
 " --IndentGuides--
 " Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
+" --Ranger--
+" Plug 'kevinhwang91/rnvimr'
 call plug#end()
 " load lua files
 lua require('lars-vc')
