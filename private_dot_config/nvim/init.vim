@@ -30,6 +30,7 @@ set smartcase           "
 set nrformats+=alpha    " increment letters
 set timeoutlen=555      " for whichkey to show up quicker
 set spelllang=en,nl     " spelling for certain files
+set fcs=eob:\           " hide tildes ~ at end of file
 "===========================================================
 "--------------------------Keymaps--------------------------
 "===========================================================
@@ -80,6 +81,11 @@ cnoremap <A-h> <Left>
 cnoremap <A-j> <Down>
 cnoremap <A-k> <Up>
 cnoremap <A-l> <Right>
+" creating files
+nnoremap <leader>ot :!touch <C-R>=getcwd()<CR>/
+nnoremap <leader>od :!mkdir -p <C-R>=getcwd()<CR>/
+nnoremap <leader>om :!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/
+nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
 "===========================================================
 "--------------------------Plugins--------------------------
 "===========================================================
@@ -270,6 +276,7 @@ let g:vimspector_terminal_maxwidth = 75
 let g:vimspector_terminal_minwidth = 20
 " Debug launch window setup (hacky but works)
 nmap <leader>dd :call vimspector#Launch()<CR>:NERDTreeClose<CR>2<C-w>j:q<CR>
+nmap <leader>dD :call vimspector#Launch()<CR>
 nmap <leader>dx :call vimspector#Reset()<CR>
 nnoremap <leader>dX :call vimspector#ClearBreakpoints()<CR>
 nnoremap <S-k> :call vimspector#StepOut()<CR>

@@ -56,6 +56,7 @@ whichkey.register ({
         d = {
             name = "+vimspector",
             d = "launch debugger",
+            D = "launch debugger plain",
             b = "breakpoint menu",
             h = "toggle breakpoint",
             e = "toggle cond breakpoint",
@@ -141,6 +142,13 @@ whichkey.register ({
             r = "run line",
             x = "kill sniprun",
             c = "clear sniprun"
+        },
+        o = {
+            name = "+createfiles",
+            t = "touch",
+            d = "mkdir",
+            m = "move",
+            r = "remove"
         }
     },
     [","] = {
