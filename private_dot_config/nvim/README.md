@@ -139,40 +139,39 @@ inside neovim.
 
 ## All plugins
 
-* [Material theme](https://github.com/marko-cerovac/material.nvim/)
-* [Telescope](https://github.com/nvim-telescope/telescope.nvim/)
+* [Material theme](https://github.com/marko-cerovac/material.nvim/) a smooth dark theme
+* [Telescope](https://github.com/nvim-telescope/telescope.nvim/) the best fuzzy finder and much more
     * [Plenary](https://github.com/nvim-lua/plenary.nvim/)
     * [fzf extension](https://github.com/nvim-telescope/telescope-fzf-native.nvim')
     * [Icons in Telescope](https://github.com/kyazdani42/nvim-web-devicons/)
-* [Airline status bar](https://github.com/vim-airline/vim-airline/)
+* [Airline status bar](https://github.com/vim-airline/vim-airline/) a really sleek status bar
     * [Airline themes](https://github.com/vim-airline/vim-airline-themes/)
-* [Fugitive git wrapper](https://github.com/tpope/vim-fugitive/)
-* [Conquer of Completion](https://github.com/neoclide/coc.nvim)
-* [NERDtree](https://github.com/preservim/nerdtree/)
+* [Fugitive git wrapper](https://github.com/tpope/vim-fugitive/) OMG this gitwrapper is so amazing
+* [Conquer of Completion](https://github.com/neoclide/coc.nvim) lsp.exe
+* [NERDtree](https://github.com/preservim/nerdtree/) soy dev file tree
     * [Colour in NERDtree](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/)
     * [Icons in NERDtree](https://github.com/ryanoasis/vim-devicons/)
     * [Close all NERDtree buffers at once](https://github/jistr/vim-nerdtree-tabs/)
-* [Smooth scrolling](https://github.com/psliwka/vim-smoothie/)
-* [Floating Terminal](https://github.com/voldikss/vim-floaterm/)
-* [Bracket matching](https://github.com/jiangmiao/auto-pairs/)
-* [Tree sitter](https://github.com/nvim-treesitter/nvim-treesitter)
-* [Easier commenting](https://github.com/tpope/vim-commentary/)
-* [Git gutter](https://github.com/airblade/vim-gitgutter/)
-* [Wakatime](https://github.com/wakatime/vim-wakatime/)
-* [Debugging](https://github.com/puremourning/vimspector/)
-* [Moving around files with light speed](https://github.com/ggandor/lightspeed.nvim/)
+* [Smooth scrolling](https://github.com/psliwka/vim-smoothie/) scroll smoothly, just like that
+* [Floating Terminal](https://github.com/voldikss/vim-floaterm/) a terminal... that floats
+* [Bracket matching](https://github.com/jiangmiao/auto-pairs/) brackets pairing, what did you expect
+* [Tree sitter](https://github.com/nvim-treesitter/nvim-treesitter) some advanced stuff to syntax highlight and stuff (no clue how it works tbh)
+* [Easier commenting](https://github.com/tpope/vim-commentary/) gcc => //
+* [Wakatime](https://github.com/wakatime/vim-wakatime/) see how much time you waste on configuring your `.config/nvim/`
+* [Debugging](https://github.com/puremourning/vimspector/) you can debug in vim??!
+* [Moving around files with light speed](https://github.com/ggandor/lightspeed.nvim/) zooooooooooooooooom
     * [Repeating actions](https://github.com/tpope/vim-repeat/)
-* [Visual clipboard](https://github/AckslD/nvim-neoclip.lua/)
+* [Visual clipboard](https://github/AckslD/nvim-neoclip.lua/) clippy and snippy
     * [Persisting clipboard](https://github/tami5/sqlite.lua/)
-* [Vim practise](https://github/ThePrimeagen/vim-be-good/)
-* [Tag bar](https://github/preservim/tagbar/)
-* [Which key](https://github/folke/which-key.nvim/)
-* [Tabular](https://github/godlygeek/tabular/)
-* [Markdown additions](https://github/preservim/vim-markdown/)
+* [Tag bar](https://github/preservim/tagbar/) quick file overview
+* [Which key](https://github/folke/which-key.nvim/) amazing key documentation
+* [Tabular](https://github/godlygeek/tabular/) aligning text has never been easier
+* [Markdown additions](https://github/preservim/vim-markdown/) markdown is nice now
     * [Markdown preview](https://github/iamcco/markdown-preview.nvim/)
-* [Sniprun](https://github.com/michaelb/sniprun)
-* [Harpoon](https://github.com/ThePrimeagen/harpoon)
-* [Snippets](https://github.com/rafamadriz/friendly-snippets)
+* [Harpoon](https://github.com/ThePrimeagen/harpoon) zooooooooooooooooom but for files
+* [Snippets](https://github.com/rafamadriz/friendly-snippets) `for<Tab>` == easy for loop
+* [Indent indicators](lukas-reineke/indent-blankline.nvim) see the indent-level
+* [Multicursor](mg979/vim-visual-multi) magic stuff
 
 ## Minor annoyances to fix
 * Floaterm cutting off output

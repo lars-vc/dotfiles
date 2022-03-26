@@ -20,7 +20,7 @@ sudo apt install fd-find -y
 # fzf
 sudo apt install fzf -y
 # random stuff
-sudo apt install pkg-config
+sudo apt install pkg-config htop tmux -y
 
 # NeoVim
 sudo add-apt-repository ppa:neovim-ppa/stable -y

@@ -31,6 +31,7 @@ set nrformats+=alpha    " increment letters
 set timeoutlen=555      " for whichkey to show up quicker
 set spelllang=en,nl     " spelling for certain files
 set fcs=eob:\           " hide tildes ~ at end of file
+set textwidth=0         " no autowrapping at end of line
 "===========================================================
 "--------------------------Keymaps--------------------------
 "===========================================================
@@ -155,7 +156,7 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 " --Sniprun--
-Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+" Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 " --Harpoon--
 Plug 'ThePrimeagen/harpoon'
 " --Snippets--
@@ -165,6 +166,8 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " --Ranger--
 " Plug 'kevinhwang91/rnvimr'
+" --Multicursor--
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 " load lua files
 lua require('lars-vc')
@@ -253,7 +256,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fc <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fn <cmd>Telescope neoclip plus<cr><Esc>
-nnoremap <leader>fi <cmd>Telescope find_files cwd=~/.config/nvim<cr>
+nnoremap <leader>fi <cmd>Telescope find_files cwd=~/.config/nvim prompt_title=VimRC<cr>
 nnoremap <leader>fp <cmd>Telescope planets<cr><esc>
 " help related
 nnoremap <leader>fhh <cmd>Telescope help_tags<cr>
@@ -300,8 +303,9 @@ xmap <leader>di <Plug>VimspectorBalloonEval
 nnoremap <leader>gg :Git 
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>go :Git pull<CR>
 nnoremap <leader>gc :Git commit -a -m ""<Left>
-" for merge conflicts
+" for merge conflicts, to start comparing go into status and press dv on a file
 nnoremap <leader>gh :diffget //2<CR>
 nnoremap <leader>gl :diffget //3<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\____________////////////////////////

@@ -74,6 +74,7 @@ whichkey.register ({
             s = "status",
             g = "git cmd",
             p = "push",
+            o = "pull",
             h = "merge-conflict pick left",
             l = "merge-conflict pick right",
             b = "see branches",
@@ -137,12 +138,12 @@ whichkey.register ({
             s = "open horizontal split",
             x = "swap splits"
         },
-        r = {
-            name = "+sniprun",
-            r = "run line",
-            x = "kill sniprun",
-            c = "clear sniprun"
-        },
+        -- r = {
+        --     name = "+sniprun",
+        --     r = "run line",
+        --     x = "kill sniprun",
+        --     c = "clear sniprun"
+        -- },
         o = {
             name = "+createfiles",
             t = "touch",
