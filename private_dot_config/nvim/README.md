@@ -151,7 +151,7 @@ inside neovim.
 * [NERDtree](https://github.com/preservim/nerdtree/) soy dev file tree
     * [Colour in NERDtree](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/)
     * [Icons in NERDtree](https://github.com/ryanoasis/vim-devicons/)
-    * [Close all NERDtree buffers at once](https://github/jistr/vim-nerdtree-tabs/)
+    * [Close all NERDtree buffers at once](https://github.com/jistr/vim-nerdtree-tabs/)
 * [Smooth scrolling](https://github.com/psliwka/vim-smoothie/) scroll smoothly, just like that
 * [Floating Terminal](https://github.com/voldikss/vim-floaterm/) a terminal... that floats
 * [Bracket matching](https://github.com/jiangmiao/auto-pairs/) brackets pairing, what did you expect
@@ -161,13 +161,13 @@ inside neovim.
 * [Debugging](https://github.com/puremourning/vimspector/) you can debug in vim??!
 * [Moving around files with light speed](https://github.com/ggandor/lightspeed.nvim/) zooooooooooooooooom
     * [Repeating actions](https://github.com/tpope/vim-repeat/)
-* [Visual clipboard](https://github/AckslD/nvim-neoclip.lua/) clippy and snippy
-    * [Persisting clipboard](https://github/tami5/sqlite.lua/)
-* [Tag bar](https://github/preservim/tagbar/) quick file overview
-* [Which key](https://github/folke/which-key.nvim/) amazing key documentation
-* [Tabular](https://github/godlygeek/tabular/) aligning text has never been easier
-* [Markdown additions](https://github/preservim/vim-markdown/) markdown is nice now
-    * [Markdown preview](https://github/iamcco/markdown-preview.nvim/)
+* [Visual clipboard](https://github.com/AckslD/nvim-neoclip.lua/) clippy and snippy
+    * [Persisting clipboard](https://github.com/tami5/sqlite.lua/)
+* [Tag bar](https://github.com/preservim/tagbar/) quick file overview
+* [Which key](https://github.com/folke/which-key.nvim/) amazing key documentation
+* [Tabular](https://github.com/godlygeek/tabular/) aligning text has never been easier
+* [Markdown additions](https://github.com/preservim/vim-markdown/) markdown is nice now
+    * [Markdown preview](https://github.com/iamcco/markdown-preview.nvim/)
 * [Harpoon](https://github.com/ThePrimeagen/harpoon) zooooooooooooooooom but for files
 * [Snippets](https://github.com/rafamadriz/friendly-snippets) `for<Tab>` == easy for loop
 * [Indent indicators](lukas-reineke/indent-blankline.nvim) see the indent-level
