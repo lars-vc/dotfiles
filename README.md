@@ -11,6 +11,7 @@ curl https://raw.githubusercontent.com/lars-vc/dotfiles/root/first_install.sh | 
 * [Ranger](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/ranger), the best file manager
 * [Gitconfig](https://github.com/lars-vc/dotfiles/blob/root/dot_gitconfig), git.exe
 * [Bashrc](https://github.com/lars-vc/dotfiles/blob/root/dot_bashrc), I wanna use zsh
+* [Tmux](https://github.com/lars-vc/dotfiles/blob/root/dot_tmux.conf), A terminal multiplexer
 
 ## Application specific configuration
 
