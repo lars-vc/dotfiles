@@ -1,3 +1,4 @@
+require('lars-vc/impatient')
 require('lars-vc/telescope')
 require('lars-vc/whichkey')
 require('lars-vc/web-devicons')

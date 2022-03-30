@@ -99,6 +99,9 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 " Vim-plug
 call plug#begin('~/.config/nvim/plugged')
+" --Optimisation--
+Plug 'lewis6991/impatient.nvim'
+Plug 'nathom/filetype.nvim'
 " --Theme--
 Plug 'marko-cerovac/material.nvim'
 " --Telescope--
@@ -118,7 +121,7 @@ Plug 'preservim/nerdtree'
 " --Better scrolling--
 Plug 'psliwka/vim-smoothie'
 " --Terminal--
-Plug 'voldikss/vim-floaterm'
+" Plug 'voldikss/vim-floaterm'
 " --Auto pairs--
 Plug 'jiangmiao/auto-pairs'
 " Plug 'LunarWatcher/auto-pairs'
@@ -190,9 +193,9 @@ set noshowmode
 "\\\\\\\\\\\\\\\\\\\\\\\\\\______//////////////////////////
 
 "/////////////////////////NERDtree\\\\\\\\\\\\\\\\\\\\\\\\\\
-autocmd VimEnter * NERDTree | wincmd p
-autocmd VimEnter * if argc() == 1 | execute 'NERDTree' | wincmd p | endif
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+" autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * if argc() == 1 | execute 'NERDTree' | wincmd p | endif
+" autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 nnoremap <leader>nt  :NERDTreeMirrorToggle<CR>
 nnoremap <leader>nc  :NERDTreeClose<CR>
 nnoremap <leader>no  :NERDTreeMirrorOpen<CR>
@@ -205,10 +208,10 @@ nnoremap <leader>nao :NERDTreeTabsOpen<CR>
 
 "/////////////////////////Floaterm\\\\\\\\\\\\\\\\\\\\\\\\\\
 " Save all tabs when opening terminal
-nnoremap   <silent>   ²       :wa<CR>:FloatermToggle<CR>
-tnoremap   <silent>   ²       <C-\><C-n>:FloatermToggle<CR>
-let g:floaterm_height=0.95
-let g:floaterm_width=0.8
+" nnoremap   <silent>   ²       :wa<CR>:FloatermToggle<CR>
+" tnoremap   <silent>   ²       <C-\><C-n>:FloatermToggle<CR>
+" let g:floaterm_height=0.95
+" let g:floaterm_width=0.8
 "\\\\\\\\\\\\\\\\\\\\\\\\\_______//////////////////////////
 
 "///////////////////////////COC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
