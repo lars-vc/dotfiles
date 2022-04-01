@@ -12,8 +12,9 @@ sudo apt install python-is-python3 -y
 sudo apt install build-essential -y
 # snap
 sudo apt install snapd -y
-# rust
-sudo apt install cargo -y
+# rust (not certain if this works)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
 cargo install cargo-edit
 # fd
 sudo apt install fd-find -y

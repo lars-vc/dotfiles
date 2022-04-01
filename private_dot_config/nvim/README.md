@@ -172,6 +172,8 @@ inside neovim.
 * [Snippets](https://github.com/rafamadriz/friendly-snippets) `for<Tab>` == easy for loop
 * [Indent indicators](lukas-reineke/indent-blankline.nvim) see the indent-level
 * [Multicursor](mg979/vim-visual-multi) magic stuff
+* impatient.nvim speeds up start time
+* filetypes.nvim speeds up start time too
 
 ## Minor annoyances to fix
 * Floaterm cutting off output
