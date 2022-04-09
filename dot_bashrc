@@ -141,9 +141,13 @@ alias rr='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; c
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias pls='sudo !!'
+# cd - => -
+alias -- -='cd -'
 
 # ranger
 # if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
+
 
 # path stuff
 export PATH=$PATH:~/scripts
