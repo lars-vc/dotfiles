@@ -12,6 +12,8 @@
 	gud = commit -m
 	stabbed = !git commit -a -m 'fixed merge-conflict' && git push
 	ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    pshu = push -u origin HEAD
+    pushu = push -u origin HEAD
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
