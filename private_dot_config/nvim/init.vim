@@ -87,6 +87,8 @@ nnoremap <leader>ot :!touch <C-R>=getcwd()<CR>/
 nnoremap <leader>od :!mkdir -p <C-R>=getcwd()<CR>/
 nnoremap <leader>om :!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/
 nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
+" easy spell correct
+inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 "===========================================================
 "--------------------------Plugins--------------------------
 "===========================================================
@@ -125,7 +127,9 @@ Plug 'psliwka/vim-smoothie'
 " --Auto pairs--
 Plug 'jiangmiao/auto-pairs'
 " Plug 'LunarWatcher/auto-pairs'
-Plug 'tpope/vim-surround'
+Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-ts-autotag'
+" Plug 'tpope/vim-surround'
 " --Treeshitter--
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " --Commenting (gcc)--
@@ -171,6 +175,10 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 " Plug 'kevinhwang91/rnvimr'
 " --Multicursor--
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" --Discord presence--
+" Plug 'andweeb/presence.nvim'
+" --colorize hexcodes--
+Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
 " load lua files
 lua require('lars-vc')
