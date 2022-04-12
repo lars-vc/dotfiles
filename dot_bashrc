@@ -141,7 +141,7 @@ alias rr='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; c
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias pls='sudo !!'
+alias pls='sudo $(history -p !!)'
 # cd - => -
 alias -- -='cd -'
 
