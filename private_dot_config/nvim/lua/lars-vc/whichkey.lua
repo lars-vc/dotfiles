@@ -147,6 +147,7 @@ whichkey.register ({
         o = {
             name = "+createfiles",
             t = "touch",
+            e = "touch and edit",
             d = "mkdir",
             m = "move",
             r = "remove"
