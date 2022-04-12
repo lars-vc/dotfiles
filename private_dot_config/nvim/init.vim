@@ -84,6 +84,7 @@ cnoremap <A-k> <Up>
 cnoremap <A-l> <Right>
 " creating files
 nnoremap <leader>ot :!touch <C-R>=getcwd()<CR>/
+nnoremap <leader>oe :edit <C-R>=getcwd()<CR>/
 nnoremap <leader>od :!mkdir -p <C-R>=getcwd()<CR>/
 nnoremap <leader>om :!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/
 nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
@@ -125,11 +126,11 @@ Plug 'psliwka/vim-smoothie'
 " --Terminal--
 " Plug 'voldikss/vim-floaterm'
 " --Auto pairs--
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 " Plug 'LunarWatcher/auto-pairs'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
-" Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " --Treeshitter--
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " --Commenting (gcc)--
@@ -384,7 +385,7 @@ let g:tagbar_map_showproto = "m"
 
 "//////////////////////////Other\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 " Autopair
-let g:AutoPairsCenterLine = 0
+" let g:AutoPairsCenterLine = 0
 " Gitgutter
 " :au VimEnter * :GitGutterSignsDisable
 " Nerd tree icons
