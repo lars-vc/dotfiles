@@ -38,10 +38,10 @@ set textwidth=0         " no autowrapping at end of line
 inoremap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-" navigating plugins
-inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
-inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : "\<Tab>"
+
+" moving around in autocomplete window
+inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-J>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-K>"
 " moving in insert mode
 inoremap <A-h> <Left>
 inoremap <A-j> <Down>
@@ -88,8 +88,8 @@ nnoremap <leader>oe :edit <C-R>=getcwd()<CR>/
 nnoremap <leader>od :!mkdir -p <C-R>=getcwd()<CR>/
 nnoremap <leader>om :!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/
 nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
-" easy spell correct
-inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
+" easy spell correct (used by snipppets)
+inoremap <C-z> <C-g>u<Esc>[s1z=`]a<C-g>u
 "===========================================================
 "--------------------------Plugins--------------------------
 "===========================================================
@@ -128,6 +128,7 @@ Plug 'psliwka/vim-smoothie'
 " --Auto pairs--
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'LunarWatcher/auto-pairs'
+"
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'tpope/vim-surround'
@@ -175,11 +176,12 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 " --Ranger--
 " Plug 'kevinhwang91/rnvimr'
 " --Multicursor--
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " --Discord presence--
 " Plug 'andweeb/presence.nvim'
 " --colorize hexcodes--
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'kdheepak/lazygit.nvim'
 call plug#end()
 " load lua files
 lua require('lars-vc')
@@ -215,18 +217,28 @@ nnoremap <leader>nao :NERDTreeTabsOpen<CR>
 " autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 "\\\\\\\\\\\\\\\\\\\\\\\\\_______//////////////////////////
 
-"/////////////////////////Floaterm\\\\\\\\\\\\\\\\\\\\\\\\\\
-" Save all tabs when opening terminal
-" nnoremap   <silent>   ²       :wa<CR>:FloatermToggle<CR>
-" tnoremap   <silent>   ²       <C-\><C-n>:FloatermToggle<CR>
-" let g:floaterm_height=0.95
-" let g:floaterm_width=0.8
-"\\\\\\\\\\\\\\\\\\\\\\\\\_______//////////////////////////
-
 "///////////////////////////COC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 set cmdheight=2
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
+" use tab to autocomplete and jump to snippets
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" use c-l and c-h to move to snippet placeholders
+imap <C-h> <nop>
+imap <C-l> <nop>
+let g:coc_snippet_prev = '<C-h>'
+let g:coc_snippet_next = '<C-l>'
+
 " Symbol renaming.
 nmap <leader>cn <Plug>(coc-rename)
 " Autoformatting with coc
@@ -249,6 +261,7 @@ function! s:show_documentation()
 endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <C-space> coc#refresh()
+" inoremap <silent><expr> <C-space> pumvisible() ? <Plug>(coc-float-hide) : coc#refresh()
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
 xmap <leader>ca  <Plug>(coc-codeaction-selected)
@@ -259,7 +272,14 @@ nmap <leader>cf  <Plug>(coc-fix-current)
 " Run the Code Lens action on the current line.
 nmap <leader>cl  <Plug>(coc-codelens-action)
 " Extensions
-let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets"]
+let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets", "coc-marketplace"]
+" disabling sources per filetype
+au FileType python let b:coc_disabled_sources=["around", "buffer"]
+au FileType c let b:coc_disabled_sources=["around", "buffer"]
+au FileType cpp let b:coc_disabled_sources=["around", "buffer"]
+au FileType javascript let b:coc_disabled_sources=["around", "buffer"]
+au FileType typescript let b:coc_disabled_sources=["around", "buffer"]
+au FileType rust let b:coc_disabled_sources=["around", "buffer"]
 "\\\\\\\\\\\\\\\\\\\\\\\\\\\___/////////////////////////////
 
 "/////////////////////////Telescope\\\\\\\\\\\\\\\\\\\\\\\\\
