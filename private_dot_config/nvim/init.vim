@@ -104,7 +104,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 " --Optimisation--
 Plug 'lewis6991/impatient.nvim'
-Plug 'nathom/filetype.nvim'
+" Plug 'nathom/filetype.nvim'
 " --Theme--
 Plug 'marko-cerovac/material.nvim'
 " --Telescope--
