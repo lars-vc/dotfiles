@@ -335,7 +335,8 @@ xmap <leader>di <Plug>VimspectorBalloonEval
 nnoremap <leader>gg :Git 
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gp :Git push<CR>
-nnoremap <leader>go :Git pull<CR>
+nnoremap <leader>gP :Git pull<CR>
+nnoremap <leader>gO :Git -c push.default=current push<CR>
 nnoremap <leader>gc :Git commit -a -m ""<Left>
 " for merge conflicts, to start comparing go into status and press dv on a file
 nnoremap <leader>gh :diffget //2<CR>
@@ -379,8 +380,6 @@ xnoremap <leader>rr :SnipRun<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
 
 "//////////////////////////Harpoon\\\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap <leader>j :lua require("harpoon.ui").nav_next()<CR>
-nnoremap <leader>k :lua require("harpoon.ui").nav_prev()<CR>
 nnoremap , <nop>
 nnoremap ,, :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap ,a :lua require("harpoon.mark").add_file()<CR>
