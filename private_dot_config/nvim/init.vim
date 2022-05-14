@@ -181,7 +181,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 " Plug 'andweeb/presence.nvim'
 " --colorize hexcodes--
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'kdheepak/lazygit.nvim'
+" Plug 'kdheepak/lazygit.nvim'
 call plug#end()
 " load lua files
 lua require('lars-vc')
