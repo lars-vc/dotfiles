@@ -146,6 +146,7 @@ alias pls='sudo $(history -p !!)'
 alias -- -='cd -'
 alias nv='nvim'
 alias lg='lazygit'
+alias nvg='nvim +Git +only'
 # ranger
 # if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 
