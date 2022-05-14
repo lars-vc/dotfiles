@@ -335,8 +335,8 @@ xmap <leader>di <Plug>VimspectorBalloonEval
 nnoremap <leader>gg :Git 
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gp :Git push<CR>
-nnoremap <leader>gP :Git pull<CR>
-nnoremap <leader>gO :Git -c push.default=current push<CR>
+nnoremap <leader>go :Git pull<CR>
+nnoremap <leader>gP :Git -c push.default=current push<CR>
 nnoremap <leader>gc :Git commit -a -m ""<Left>
 " for merge conflicts, to start comparing go into status and press dv on a file
 nnoremap <leader>gh :diffget //2<CR>
