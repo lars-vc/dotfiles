@@ -14,9 +14,9 @@ if
 # sudo apt install git-all -y
 # sudo apt install gh -y
 # sudo apt upgrade -y
-pkgmupd
-pkgm git-all
-pkgm gh
+$pkgmupd
+$pkgm git-all
+$pkgm gh
 gh auth login
 cd /
 sudo sh -c "$(curl -fsLS chezmoi.io/get)"
