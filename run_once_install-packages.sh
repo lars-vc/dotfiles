@@ -9,7 +9,7 @@ else echo "Package manager not found.">&2; exit 1; fi
 # UPDATE
 # sudo apt update
 # sudo apt upgrade -y
-$pkgmupd
+eval $pkgmupd
 
 # General
 # extracting stuff
@@ -66,4 +66,4 @@ $pkgm libjpeg62-turbo-dev zlib1g-dev libxtst-dev ffmpegthumbnailer
 # UPDATE
 # sudo apt update
 # sudo apt upgrade -y
-$pkgmupd
+eval $pkgmupd

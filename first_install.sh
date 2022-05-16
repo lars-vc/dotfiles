@@ -14,7 +14,7 @@ fi
 # sudo apt install git-all -y
 # sudo apt install gh -y
 # sudo apt upgrade -y
-$pkgmupd
+eval $pkgmupd
 $pkgm git-all
 $pkgm gh
 gh auth login
