@@ -136,12 +136,10 @@ whichkey.register ({
             s = "open horizontal split",
             x = "swap splits"
         },
-        -- r = {
-        --     name = "+sniprun",
-        --     r = "run line",
-        --     x = "kill sniprun",
-        --     c = "clear sniprun"
-        -- },
+        r = {
+             name = "+ranger",
+             r = "Open ranger",
+        },
         o = {
             name = "+createfiles",
             t = "touch",

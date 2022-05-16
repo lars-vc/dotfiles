@@ -174,7 +174,7 @@ Plug 'rafamadriz/friendly-snippets'
 " Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " --Ranger--
-" Plug 'kevinhwang91/rnvimr'
+Plug 'kevinhwang91/rnvimr'
 " --Multicursor--
 " Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " --Discord presence--
@@ -374,13 +374,6 @@ autocmd FileType markdown setlocal dictionary+=/usr/share/dict/words
 autocmd FileType markdown setlocal dictionary+=/usr/share/dict/dutch
 "\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
 
-"//////////////////////////Sniprun\\\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap <leader>rr :SnipRun<CR>
-nnoremap <leader>rx :SnipReset<CR>
-nnoremap <leader>rc :SnipClose<CR>
-xnoremap <leader>rr :SnipRun<CR>
-"\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
-
 "//////////////////////////Harpoon\\\\\\\\\\\\\\\\\\\\\\\\\\
 nnoremap , <nop>
 nnoremap ,, :lua require("harpoon.ui").toggle_quick_menu()<CR>
@@ -405,8 +398,6 @@ let g:tagbar_map_showproto = "m"
 "\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
 
 "//////////////////////////Other\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-" Autopair
-" let g:AutoPairsCenterLine = 0
 " Gitgutter
 " :au VimEnter * :GitGutterSignsDisable
 " Nerd tree icons
@@ -415,4 +406,7 @@ set conceallevel=3
 au FileType perl set filetype=prolog
 " highlight yanked region
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
+" Ranger
+let g:rnvimr_enable_picker = 1 " Make Ranger to be hidden after picking a file
+nnoremap <leader>rr :RnvimrToggle<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_____////////////////////////////
