@@ -38,7 +38,7 @@ $pkgm pkg-config htop tmux sysstat tree xclip
 # NeoVim
 if [ -x "$(which apt)" ]; then
     sudo add-apt-repository ppa:neovim-ppa/stable -y
-if
+fi
 # sudo apt install neovim -y
 $pkgm neovim
 # NeoVim dependencies
