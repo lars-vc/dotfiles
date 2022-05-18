@@ -406,6 +406,8 @@ set conceallevel=3
 au FileType perl set filetype=prolog
 " highlight yanked region
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
+" cursor color
+highlight Cursor guifg=black guibg=white
 " Ranger
 let g:rnvimr_enable_picker = 1 " Make Ranger to be hidden after picking a file
 nnoremap <leader>rr :RnvimrToggle<CR>
