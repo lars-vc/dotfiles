@@ -153,12 +153,11 @@ whichkey.register ({
         f = "harpoon item 1",
         d = "harpoon item 2",
         s = "harpoon item 3",
-        q = "harpoon item 4",
-        j = "harpoon item 4",
-        k = "harpoon item 5",
-        l = "harpoon item 6",
-        m = "harpoon item 7",
-        a = "add file to harpoon"
+        a = "harpoon item 4",
+        j = "harpoon item 5",
+        k = "harpoon item 6",
+        l = "harpoon item 7",
+        q = "add file to harpoon"
     }
 }, {mode = "n"})
 

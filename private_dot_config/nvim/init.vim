@@ -375,17 +375,18 @@ autocmd FileType markdown setlocal dictionary+=/usr/share/dict/dutch
 "\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
 
 "//////////////////////////Harpoon\\\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap , <nop>
-nnoremap ,, :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap ,a :lua require("harpoon.mark").add_file()<CR>
-nnoremap ,f :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap ,d :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap ,s :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap ,q :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap ,j :lua require("harpoon.ui").nav_file(5)<CR>
-nnoremap ,k :lua require("harpoon.ui").nav_file(6)<CR>
-nnoremap ,l :lua require("harpoon.ui").nav_file(7)<CR>
-nnoremap ,m :lua require("harpoon.ui").nav_file(8)<CR>
+nnoremap , m
+nnoremap m <NOP>
+" nnoremap , <nop>
+nnoremap mm :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap mq :lua require("harpoon.mark").add_file()<CR>
+nnoremap mf :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap md :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap ms :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap ma :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap mj :lua require("harpoon.ui").nav_file(5)<CR>
+nnoremap mk :lua require("harpoon.ui").nav_file(6)<CR>
+nnoremap ml :lua require("harpoon.ui").nav_file(7)<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
 
 "//////////////////////////TagBar\\\\\\\\\\\\\\\\\\\\\\\\\\\
