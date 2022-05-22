@@ -33,7 +33,7 @@ $pkgm fd-find
 $pkgm fzf
 # random stuff
 # sudo apt install pkg-config htop tmux sysstat tree xclip -y
-$pkgm pkg-config htop tmux sysstat tree xclip
+$pkgm pkg-config htop tmux sysstat xclip exa bat
 
 # NeoVim
 if [ -x "$(which apt)" ]; then

@@ -4,7 +4,7 @@ autopairs.setup({
     enable_check_bracket_line = true,
     ignored_next_char = "[%w]", -- will ignore alphanumeric and `.` symbol
     fast_wrap = {
-      map = '<M-m>',
-      keys = 'jklmfdsqazertyuiop',
+      map = '<M-;>',
+      keys = 'jklfdsaqwertyuiop',
     }
 })
