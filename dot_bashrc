@@ -87,10 +87,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -147,12 +143,12 @@ alias -- -='cd -'
 alias nv='nvim'
 alias lg='lazygit'
 alias nvg='nvim +Git +only'
-alias ls='exa'
-alias tree='exa --tree'
+alias ls='exa --icons'
+alias la='exa -a --icons'
+alias ll='exa -alF'
+alias tree='exa --tree --icons'
 alias cat='bat -pp'
 alias less='bat'
-# ranger
-# if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 
 
 # path stuff

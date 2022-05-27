@@ -7,33 +7,29 @@ elif [ -x "$(which pacman)" ];  then pkgm="sudo pacman -Sy "     ; pkgmupd="sudo
 else echo "Package manager not found.">&2; exit 1; fi
 
 # UPDATE
-# sudo apt update
-# sudo apt upgrade -y
 eval $pkgmupd
 
 # General
 # extracting stuff
-# sudo apt install dtrx -y
 $pkgm dtrx
 # gcc and more
-# sudo apt install build-essential -y
 $pkgm build-essential
 # snap
-# sudo apt install snapd -y
 $pkgm snapd
 # rust (not certain if this works)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 cargo install cargo-edit
 # fd
-# sudo apt install fd-find -y
 $pkgm fd-find
 # fzf
-# sudo apt install fzf -y
 $pkgm fzf
 # random stuff
-# sudo apt install pkg-config htop tmux sysstat tree xclip -y
 $pkgm pkg-config htop tmux sysstat xclip exa bat
+
+# Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s $(which zsh)
 
 # NeoVim
 if [ -x "$(which apt)" ]; then
@@ -42,7 +38,6 @@ fi
 # sudo apt install neovim -y
 $pkgm neovim
 # NeoVim dependencies
-# sudo apt install npm python3 python3-pip exuberant-ctags ripgrep wdutch sqlite3 libsqlite3-dev python-is-python3 -y
 $pkgm npm python3 python3-pip exuberant-ctags ripgrep wdutch sqlite3 libsqlite3-dev python-is-python3
 sudo npm install -g yarn
 sudo npm cache clean -f
@@ -50,20 +45,18 @@ sudo npm install -g n
 sudo n stable
 pip3 install ropevim
 pip3 install pynvim
+pip3 install thefuck
 
 # Ranger
-# sudo apt install ranger -y
 $pkgm ranger
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 # ueberzug won't work on wsl due to there not being a GUI (so ignore the errors, maybe I can add a check here or something)
 pip3 install ueberzug
-# sudo apt install libjpeg62-turbo-dev zlib1g-dev libxtst-dev ffmpegthumbnailer -y
+# ueberzug dependencies
 $pkgm libjpeg62-turbo-dev zlib1g-dev libxtst-dev ffmpegthumbnailer
 
 # None-dev stuff
 # sudo snap install discord
 
 # UPDATE
-# sudo apt update
-# sudo apt upgrade -y
 eval $pkgmupd
