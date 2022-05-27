@@ -28,7 +28,11 @@ $pkgm fzf
 $pkgm pkg-config htop tmux sysstat xclip exa bat
 
 # Zsh
+# install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# auto complete
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# set zsh as default
 chsh -s $(which zsh)
 
 # NeoVim
