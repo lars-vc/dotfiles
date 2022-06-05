@@ -24,3 +24,8 @@
 	rebase = false
 [init]
 	defaultBranch = root
+[safe]
+	directory = /mnt/data/Ugent/selab2/OSOC-1
+	directory = /mnt/data/Ugent/compbio/compproject
+	directory = /mnt/data/Ugent/logprog/project
+	directory = /mnt/data/Ugent/selab2/OSOC-3
