@@ -45,21 +45,9 @@ if [ -x "$(which apt)" ]; then
 else
     $pkgm tmux
 fi
-# Zsh
-# install zsh
-$pkgm zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# auto complete
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# syntax highlight
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# zsh theme powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-# notify zsh plugin
-git clone https://github.com/MichaelAquilina/zsh-auto-notify.git $ZSH_CUSTOM/plugins/auto-notify
+
+# Zsh dependencies
 $pkgm libnotify-bin
-# set zsh as default
-chsh -s $(which zsh)
 
 # NeoVim
 if [ -x "$(which apt)" ]; then

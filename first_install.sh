@@ -11,10 +11,7 @@ if [ -x "$(which apt)" ]; then
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
     sudo apt install software-properties-common -y
 fi
-# sudo apt update
-# sudo apt install git-all -y
-# sudo apt install gh -y
-# sudo apt upgrade -y
+
 eval $pkgmupd
 $pkgm git-all
 $pkgm gh
@@ -22,4 +19,20 @@ gh auth login
 cd /
 sudo sh -c "$(curl -fsLS chezmoi.io/get)"
 cd ~
+
+# install zsh
+$pkgm zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# auto complete
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# syntax highlight
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# zsh theme powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+# notify zsh plugin
+git clone https://github.com/MichaelAquilina/zsh-auto-notify.git $ZSH_CUSTOM/plugins/auto-notify
+# set zsh as default
+chsh -s $(which zsh)
+
+# chezmoi setup
 chezmoi init --apply https://github.com/lars-vc/dotfiles
