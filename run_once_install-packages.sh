@@ -25,11 +25,25 @@ $pkgm fd-find
 # fzf
 $pkgm fzf
 # random stuff
-$pkgm pkg-config htop tmux sysstat xclip exa bat
+$pkgm pkg-config htop sysstat xclip exa bat
 
 if [ -x "$(which apt)" ]; then 
+    # fix fd and bat
     ln -s $(which fdfind) ~/.local/bin/fd
     ln -s /usr/bin/batcat ~/.local/bin/bat
+    # install latest tmux
+    sudo apt install -y automake bison build-essential pkg-config libevent-dev libncurses5-dev
+    rm -fr /tmp/tmux
+    git clone https://github.com/tmux/tmux.git /tmp/tmux
+    cd /tmp/tmux
+    git checkout master
+    sh autogen.sh
+    ./configure && make
+    sudo make install
+    cd -
+    rm -fr /tmp/tmux
+else
+    $pkgm tmux
 fi
 # Zsh
 # install zsh
@@ -42,6 +56,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 # notify zsh plugin
 git clone https://github.com/MichaelAquilina/zsh-auto-notify.git $ZSH_CUSTOM/plugins/auto-notify
+$pkgm libnotify-bin
 # set zsh as default
 chsh -s $(which zsh)
 
