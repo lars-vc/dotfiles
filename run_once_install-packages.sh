@@ -27,6 +27,10 @@ $pkgm fzf
 # random stuff
 $pkgm pkg-config htop tmux sysstat xclip exa bat
 
+if [ -x "$(which apt)" ]; then 
+    ln -s $(which fdfind) ~/.local/bin/fd
+    ln -s /usr/bin/batcat ~/.local/bin/bat
+fi
 # Zsh
 # install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
