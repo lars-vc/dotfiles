@@ -17,7 +17,7 @@ $pkgm build-essential
 # snap
 $pkgm snapd
 # rust (not certain if this works)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 rustup update
 cargo install cargo-edit
 # fd
@@ -47,6 +47,7 @@ else
 fi
 # Zsh
 # install zsh
+$pkgm zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # auto complete
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
