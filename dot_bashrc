@@ -156,3 +156,5 @@ export PATH=$PATH:~/scripts
 if [ -d "/path/dir/" ]; then
     . "$HOME/.cargo/env"
 fi
+
+eval "$(thefuck --alias)"

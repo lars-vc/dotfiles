@@ -72,10 +72,11 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git 
-    zsh-autosuggestions 
     thefuck
     rust
     tmux
+    zsh-autosuggestions 
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -119,3 +120,15 @@ alias tree='exa --tree --icons'
 alias cat='bat -pp'
 alias less='bat'
 alias tx='tmux'
+
+if [[ -x "/home/larsvc/scripts/r2d2/target/release/r2d2" ]]
+then 
+    r2d2 bd tmrw
+    r2d2 bd today
+fi
+
+# path stuff
+export PATH=$PATH:~/scripts
+if [ -d "/path/dir/" ]; then
+    . "$HOME/.cargo/env"
+fi
