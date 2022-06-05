@@ -13,7 +13,7 @@ if [ -x "$(which apt)" ]; then
 fi
 
 eval $pkgmupd
-$pkgm git-all
+$pkgm git
 $pkgm gh
 gh auth login
 cd /
