@@ -16,10 +16,10 @@ $pkgm dtrx
 $pkgm build-essential
 # snap
 $pkgm snapd
-# rust (not certain if this works)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-rustup update
-cargo install cargo-edit
+# rust
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+# rustup update
+# cargo install cargo-edit
 # fd
 $pkgm fd-find
 # fzf
