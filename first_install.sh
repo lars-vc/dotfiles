@@ -32,7 +32,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # notify zsh plugin
 git clone https://github.com/MichaelAquilina/zsh-auto-notify.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/auto-notify
 # set zsh as default
-sudo chsh -s $(which zsh)
+# sudo chsh -s $(which zsh)
 
 # chezmoi setup
 chezmoi init --apply https://github.com/lars-vc/dotfiles
