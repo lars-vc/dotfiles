@@ -1,0 +1,119 @@
+configuration {
+  display-drun: " :";
+  display-window: " :";
+  display-calc: " :";
+  drun-display-format: "{icon} {name}";
+  // I dont have this font on my system but it still looks nice tho
+  // font: "JetBrainsMono Nerd Font Medium 10, Symbols Nerd Font";
+  // font: "DejaVuSans 10, DejaVuSansMono Nerd Font Mono 10";
+  // font: "JetBrainsMono Nerd Font Medium 10";
+  // font: "dsf Nerd Font Medium 10";
+  // font: "Noto Sans Nerd Font Bold 10";
+  font: "Noto Sans Nerd Font SemiBold 10";
+  // font: "Cantarell SemiBold 10";
+  modi: "window,run,drun,calc";
+  show-icons: true;
+
+  kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+  kb-row-down: "Down,Control+j";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  terminal: "gnome-terminal";
+  kb-remove-to-eol: "Control+Shift+e";
+  kb-mode-complete: "Control+Shift+l";
+  kb-mode-next: "Shift+Right,Control+Tab,Control+l";
+  kb-mode-previous: "Shift+Left,Control+Shift+Tab,Control+h";
+  kb-remove-char-back: "BackSpace";
+}
+
+@theme "/dev/null"
+
+* {
+  bg: #11121DAF;
+  bg-alt: #444b6a;
+  bg-alt-trans: #444b6aAF;
+
+  fg: #FFFFFF;
+  // fg-alt: #787c99;
+  fg-alt: #787f9b;
+
+  round: 4px;
+  roundel: 12px;
+
+  background: transparent;
+  background-color: @bg;
+  
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  width: 40%;
+  border-radius: @round;
+  background: @bg;
+}
+
+element {
+  padding: 8 0;
+  border-radius: @roundel;
+  background-color: transparent;
+  text-color: @fg-alt;
+}
+
+element selected {
+  border-radius: @roundel;
+  // background-color: @bg;
+  background-color: @bg-alt-trans;
+  text-color: @fg;
+}
+
+element-text {
+  // background-color: inherit;
+  background-color: transparent;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element-icon {
+  // background-color: inherit;
+  padding: 0 5;
+  background-color: transparent;
+  size: 30;
+}
+
+entry {
+  background-color: @bg-alt;
+  padding: 12;
+  text-color: @fg;
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+listview {
+  padding: 8 12;
+  background-color: transparent;
+  columns: 1;
+  lines: 8;
+}
+
+textbox {
+  padding: 12;
+  text-color: @fg;
+}
+
+mainbox {
+  background-color: transparent;
+  // children: [inputbar, listview];
+}
+
+prompt {
+  background-color: @bg-alt;
+  enabled: true;
+  padding: 12 0 0 12;
+  text-color: @fg;
+}
+
+/* vim: ft=sass

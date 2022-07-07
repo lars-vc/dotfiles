@@ -218,7 +218,7 @@ nnoremap <leader>nao :NERDTreeTabsOpen<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\\\_______//////////////////////////
 
 "///////////////////////////COC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-set cmdheight=2
+set cmdheight=1
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " use tab to autocomplete and jump to snippets
