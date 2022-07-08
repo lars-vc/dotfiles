@@ -452,4 +452,12 @@
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
 #
+# we hide the notification but run a command to make the discord window urgent in i3
+[discord]
+    appname = discord
+    skip_display = yes
+    script = /home/larsvc/.config/dunst/alertdiscord.sh
+    # script = wmctrl -r "Discord" -b add,demands_attention
+
+
 # vim: ft=cfg
