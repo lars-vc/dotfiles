@@ -25,7 +25,8 @@ set $mod Mod4
 exec systemctl --user stop pipewire.socket
 # setup second monitor
 exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
-
+# start notification server
+exec dunst &
 # move a workspace to other monitor
 bindsym $mod+p move workspace to output right
 
@@ -279,20 +280,25 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-#assign [class="firefox"] $ws2
+# something this assignment can be weird, try out all names in the class output of `xprop`
 # assign discord to workspace 5
 assign [class="discord"] $ws5
+# assign deezer to workspace 5
+assign [class="Deezer"] $ws9
+for_window [title="__scratchpad__"] move to scratchpad 
+
 # startup applications
 exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
-exec --no-startup-id i3-msg 'workspace $ws9; exec firefox -new-window https://www.deezer.com/nl/playlist/7860845302'
 exec --no-startup-id i3-msg 'workspace $ws1; exec gnome-terminal -- bash -c "tmux new -A"'
+exec --no-startup-id deezer-desktop
 exec --no-startup-id i3-msg 'workspace $ws10'
-# exec --no-startup-id i3-msg 'workspace $ws1; exec gnome-terminal -- bash -c "tmux; exec"'
+exec --no-startup-id gnome-terminal --title=__scratchpad__
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # replaced with mode menu
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
