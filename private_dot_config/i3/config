@@ -27,6 +27,8 @@ exec systemctl --user stop pipewire.socket
 exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
 # start notification server
 exec dunst &
+# refresh time based wallpaper 
+exec dwall -s firewatch
 # move a workspace to other monitor
 bindsym $mod+p move workspace to output right
 
