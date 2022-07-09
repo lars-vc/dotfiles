@@ -61,8 +61,8 @@ exec_always --no-startup-id numlockx on
 # screenshot gui to anotate image
 bindsym  $mod+Shift+s exec flameshot gui 
 
-# background
-exec_always feh --bg-scale ~/Pictures/wallpaper.png
+# background (now using dwall)
+# exec_always feh --bg-scale ~/Pictures/wallpaper.png
 
 bindsym $mod+Tab exec rofi -show window
 
