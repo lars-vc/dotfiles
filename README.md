@@ -10,10 +10,10 @@ curl https://raw.githubusercontent.com/lars-vc/dotfiles/root/first_install.sh | 
 * [NeoVim](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/nvim), the magnum opus editor
 * [Ranger](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/ranger), the best file manager
 * [Gitconfig](https://github.com/lars-vc/dotfiles/blob/root/dot_gitconfig), git.exe
-* [Bashrc](https://github.com/lars-vc/dotfiles/blob/root/dot_bashrc), I wanna use zsh
+* [Bashrc](https://github.com/lars-vc/dotfiles/blob/root/dot_bashrc), whereis zsh
 * [Zshrc](https://github.com/lars-vc/dotfiles/blob/root/dot_zshrc), zsh >>>>> bash
     * [Powerlevel10k](https://github.com/lars-vc/dotfiles/blob/root/dot_p10k.zsh), the powerful zsh theme
-* [Tmux](https://github.com/lars-vc/dotfiles/blob/root/dot_tmux.conf), A terminal multiplexer
+* [Tmux](https://github.com/lars-vc/dotfiles/blob/root/dot_tmux.conf), the wickedest terminal multiplexer
 * [i3](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/i3), the fastest windowmanager
 * [Polybar](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/polybar), the prettiest statusbar
 * [Picom](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/picom), the only maintained compositor
