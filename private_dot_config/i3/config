@@ -21,6 +21,7 @@ font pango:DejaVuSansMono Nerd Font Mono Bold 10
 #-=========================OWN========================-
 # superkey
 set $mod Mod4
+set $terminal gnome-terminal
 # shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
 # I now disabled pipewire in systemctl (didnt work)
 exec systemctl --user stop pipewire.socket
@@ -71,12 +72,6 @@ bindsym $mod+Tab exec rofi -show window
 # lockscreen
 set $Locker playerctl pause && ~/.config/i3/i3scripts/lock.sh && sleep 1
 bindsym $mod+Shift+x exec $Locker
-
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
@@ -135,11 +130,152 @@ bindsym $mod+Shift+f exec firefox
 # hide borders on workspaces with 1 window
 hide_edge_borders smart
 
-# window titles
-for_window [all] title_window_icon on
-# for_window [all] border pixel 1
-for_window [all] border normal 0
+# window titles regular i3
+# for_window [all] title_window_icon on
+# for_window [all] border normal 0
 
+# i3gaps config
+gaps inner 10
+gaps vertical 0
+gaps horizontal 3
+for_window [class=".*"] border pixel 2
+
+# color palette
+set $bg-color 	         #09b0e8
+set $inactive-bg-color   #2f343f
+set $transp-bg-color     #ff2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $transp-bg-color    $transp-bg-color   $transp-bg-color     #00ff00
+client.focused_inactive $transp-bg-color    $transp-bg-color   $transp-bg-color     #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+# dynamically set the gaps
+set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
+set $mode_gaps_outer Outer Gaps: j|k|0 (local), Shift j|k|0 (global)
+set $mode_gaps_inner Inner Gaps: j|k|0 (local), Shift j|k|0 (global)
+set $mode_gaps_horiz Horizontal Gaps: j|k|0 (local), Shift j|k|0 (global)
+set $mode_gaps_verti Vertical Gaps: j|k|0 (local), Shift j|k|0 (global)
+set $mode_gaps_top Top Gaps: j|k|0 (local), Shift j|k|0 (global)
+set $mode_gaps_right Right Gaps: j|k|0 (local), Shift j|k|0 (global)
+set $mode_gaps_bottom Bottom Gaps: j|k|0 (local), Shift j|k|0 (global)
+set $mode_gaps_left Left Gaps: j|k|0 (local), Shift j|k|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym h      mode "$mode_gaps_horiz"
+        bindsym v      mode "$mode_gaps_verti"
+        bindsym t      mode "$mode_gaps_top"
+        bindsym r      mode "$mode_gaps_right"
+        bindsym b      mode "$mode_gaps_bottom"
+        bindsym l      mode "$mode_gaps_left"
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym j  gaps outer current plus 5
+        bindsym k  gaps outer current minus 5
+        bindsym 0  gaps outer current set 0
+
+        bindsym Shift+j  gaps outer all plus 5
+        bindsym Shift+k  gaps outer all minus 5
+        bindsym Shift+0  gaps outer all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym j  gaps inner current plus 5
+        bindsym k  gaps inner current minus 5
+        bindsym 0  gaps inner current set 0
+
+        bindsym Shift+j  gaps inner all plus 5
+        bindsym Shift+k  gaps inner all minus 5
+        bindsym Shift+0  gaps inner all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_horiz" {
+        bindsym j  gaps horizontal current plus 5
+        bindsym k  gaps horizontal current minus 5
+        bindsym 0  gaps horizontal current set 0
+
+        bindsym Shift+j  gaps horizontal all plus 5
+        bindsym Shift+k  gaps horizontal all minus 5
+        bindsym Shift+0  gaps horizontal all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_verti" {
+        bindsym j  gaps vertical current plus 5
+        bindsym k  gaps vertical current minus 5
+        bindsym 0  gaps vertical current set 0
+
+        bindsym Shift+j  gaps vertical all plus 5
+        bindsym Shift+k  gaps vertical all minus 5
+        bindsym Shift+0  gaps vertical all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_top" {
+        bindsym j  gaps top current plus 5
+        bindsym k  gaps top current minus 5
+        bindsym 0  gaps top current set 0
+
+        bindsym Shift+j  gaps top all plus 5
+        bindsym Shift+k  gaps top all minus 5
+        bindsym Shift+0  gaps top all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_right" {
+        bindsym j  gaps right current plus 5
+        bindsym k  gaps right current minus 5
+        bindsym 0  gaps right current set 0
+
+        bindsym Shift+j  gaps right all plus 5
+        bindsym Shift+k  gaps right all minus 5
+        bindsym Shift+0  gaps right all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_bottom" {
+        bindsym j  gaps bottom current plus 5
+        bindsym k  gaps bottom current minus 5
+        bindsym 0  gaps bottom current set 0
+
+        bindsym Shift+j  gaps bottom all plus 5
+        bindsym Shift+k  gaps bottom all minus 5
+        bindsym Shift+0  gaps bottom all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_left" {
+        bindsym j  gaps left current plus 5
+        bindsym k  gaps left current minus 5
+        bindsym 0  gaps left current set 0
+
+        bindsym Shift+j  gaps left all plus 5
+        bindsym Shift+k  gaps left all minus 5
+        bindsym Shift+0  gaps left all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
 #-=========================OWN========================-
 
 
@@ -178,9 +314,8 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+Return exec ~/.config/i3/i3scripts/newterm.sh
-
 # kill focused window
 bindsym $mod+Shift+q kill
 # bindsym $mod+q kill
