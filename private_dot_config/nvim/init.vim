@@ -305,6 +305,7 @@ nnoremap <leader>gfb <cmd>Telescope git_bcommits<cr><esc>
 nnoremap <leader>gb <cmd>Telescope git_branches<cr>
 autocmd User FugitiveIndex nmap <buffer> <A-j> )
 autocmd User FugitiveIndex nmap <buffer> <A-k> (
+autocmd User FugitiveIndex nmap <buffer> <Tab> =
 "\\\\\\\\\\\\\\\\\\\\\\\\\_________/////////////////////////
 
 "////////////////////////Vimspector\\\\\\\\\\\\\\\\\\\\\\\\\
