@@ -149,7 +149,9 @@ export PATH=$PATH:~/scripts
 if [ -d "/path/dir/" ]; then
     . "$HOME/.cargo/env"
 fi
-
+# save the current directory in a file
+# this is useful to open new terminals in the current working dir
+precmd() { pwd > ~/.current_dir }
 
 # syntax highlighting mod
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=155

@@ -22,6 +22,7 @@ font pango:DejaVuSansMono Nerd Font Mono Bold 10
 # superkey
 set $mod Mod4
 # shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
+# I now disabled pipewire in systemctl (didnt work)
 exec systemctl --user stop pipewire.socket
 # setup second monitor
 exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
@@ -37,6 +38,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # music
 bindsym $mod+o exec --no-startup-id playerctl play-pause
+bindsym $mod+Shift+o exec --no-startup-id playerctl shuffle Toggle
 bindsym $mod+i exec --no-startup-id playerctl next
 bindsym $mod+Shift+i exec --no-startup-id playerctl previous
 
@@ -67,7 +69,7 @@ bindsym  $mod+Shift+s exec flameshot gui
 bindsym $mod+Tab exec rofi -show window
 
 # lockscreen
-set $Locker ~/.config/i3/i3scripts/lock.sh && sleep 1
+set $Locker playerctl pause && ~/.config/i3/i3scripts/lock.sh && sleep 1
 bindsym $mod+Shift+x exec $Locker
 
 set $bg-color 	         #2f343f
@@ -177,6 +179,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec ~/.config/i3/i3scripts/newterm.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
