@@ -70,7 +70,7 @@ bindsym  $mod+Shift+s exec flameshot gui
 bindsym $mod+Tab exec rofi -show window
 
 # lockscreen
-set $Locker playerctl pause && ~/.config/i3/i3scripts/lock.sh && sleep 1
+set $Locker ~/.config/i3/i3scripts/lock.sh && sleep 1
 bindsym $mod+Shift+x exec $Locker
 
 # window colors
@@ -107,7 +107,6 @@ bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Menu for login out, shutdown, etc
-
 set $mode_system (l)ock, (L)ogout, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
@@ -123,9 +122,15 @@ mode "$mode_system" {
 }
 bindsym $mod+Shift+e mode "$mode_system"
 
+# open quick calculator
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 
+# open firefox
 bindsym $mod+Shift+f exec firefox
+
+# open network manager
+# bindsym $mod+w exec $terminal -e "nmtui"
+bindsym $mod+w exec ~/.config/i3/i3scripts/rofi-nm
 
 # hide borders on workspaces with 1 window
 hide_edge_borders smart
@@ -143,17 +148,18 @@ for_window [class=".*"] border pixel 2
 # color palette
 set $bg-color 	         #09b0e8
 set $inactive-bg-color   #2f343f
-set $transp-bg-color     #ff2f343f
+# set $transp-bg-color     #ff2f343f
+set $transp-bg-color     #ff2f3400
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 # window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $transp-bg-color    $transp-bg-color   $transp-bg-color     #00ff00
-client.focused_inactive $transp-bg-color    $transp-bg-color   $transp-bg-color     #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+#                       border              background         text                 indicator(split direction)
+client.focused          $bg-color           $bg-color          $text-color          $transp-bg-color
+client.unfocused        $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
+client.focused_inactive $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $transp-bg-color
 
 # dynamically set the gaps
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
@@ -292,7 +298,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/scripts/lock.sh --nofor
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 #set $refresh_i3status killall -SIGUSR1 i3status
@@ -363,7 +369,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -446,7 +452,7 @@ bindsym $mod+Shift+r restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "Resize" {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -470,4 +476,4 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "Resize"
