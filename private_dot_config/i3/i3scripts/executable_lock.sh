@@ -2,13 +2,16 @@
 
 BLANK='#00000000'
 CLEAR='#ffffff22'
-# DEFAULT='#ff00ffcc'
-DEFAULT='#8957E5'
-TEXT='#8957E5'
-# TEXT='#ee00eeee'
+DEFAULT='#09b0e8'
+TEXT='#09b0e8'
+VERIFYING='#09b0e8'
 WRONG='#880000bb'
-VERIFYING='#8957E5'
-# VERIFYING='#bb00bbbb'
+# DEFAULT='#8957E5'
+# TEXT='#8957E5'
+# VERIFYING='#8957E5'
+
+# pause music
+playerctl pause
 
 i3lock \
 --insidever-color=$CLEAR     \
@@ -38,3 +41,4 @@ i3lock \
 --noinput-text="No input"   \
 --wrong-text="Wrong!"   \
 --verif-text="Verifying..."   \
+--ignore-empty-password \
