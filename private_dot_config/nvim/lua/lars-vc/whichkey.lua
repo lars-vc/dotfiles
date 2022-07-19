@@ -147,7 +147,8 @@ whichkey.register ({
             d = "mkdir",
             m = "move",
             r = "remove"
-        }
+        },
+        w = ":x"
     },
     [","] = {
         f = "harpoon item 1",

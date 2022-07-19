@@ -88,8 +88,9 @@ nnoremap <leader>oe :edit <C-R>=getcwd()<CR>/
 nnoremap <leader>od :!mkdir -p <C-R>=getcwd()<CR>/
 nnoremap <leader>om :!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/
 nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
-" easy spell correct (used by snipppets)
+" easy spell correct 
 inoremap <C-z> <C-g>u<Esc>[s1z=`]a<C-g>u
+nnoremap <leader>w :x<CR>
 "===========================================================
 "--------------------------Plugins--------------------------
 "===========================================================
