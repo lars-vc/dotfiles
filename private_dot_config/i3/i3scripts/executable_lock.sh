@@ -13,7 +13,7 @@ WRONG='#880000bb'
 # pause music
 playerctl pause
 
-i3lock \
+~/.config/i3/i3scripts/i3lock \
 --insidever-color=$CLEAR     \
 --ringver-color=$VERIFYING   \
 \
