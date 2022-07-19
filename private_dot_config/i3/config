@@ -42,6 +42,9 @@ bindsym $mod+o exec --no-startup-id playerctl play-pause
 bindsym $mod+Shift+o exec --no-startup-id playerctl shuffle Toggle
 bindsym $mod+i exec --no-startup-id playerctl next
 bindsym $mod+Shift+i exec --no-startup-id playerctl previous
+bindsym $mod+Control+o exec --no-startup-id playerctl loop None
+bindsym $mod+Control+i exec --no-startup-id playerctl loop Track
+bindsym $mod+Control+Shift+i exec --no-startup-id playerctl loop Playlist
 
 # bluethooth icon and settings
 exec --no-startup-id /usr/lib/blueberry/blueberry-tray.py
@@ -156,7 +159,7 @@ set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator(split direction)
-client.focused          $bg-color           $bg-color          $text-color          $transp-bg-color
+client.focused          $bg-color           $bg-color          $text-color          $bg-color
 client.unfocused        $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
 client.focused_inactive $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $transp-bg-color
@@ -452,6 +455,8 @@ bindsym $mod+Shift+r restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
+set $resizeamounthorz 9
+set $resizeamountvert 18
 mode "Resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -459,16 +464,14 @@ mode "Resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+        # bindsym $left       resize shrink width $resizeamount px or $resizeamount ppt
+        # bindsym $down       resize grow height $resizeamount px or $resizeamount ppt
+        # bindsym $up         resize shrink height $resizeamount px or $resizeamount ppt
+        # bindsym $right      resize grow width $resizeamount px or $resizeamount ppt
+        bindsym $left       resize shrink width $resizeamounthorz px
+        bindsym $down       resize grow height $resizeamountvert px
+        bindsym $up         resize shrink height $resizeamountvert px
+        bindsym $right      resize grow width $resizeamounthorz px
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
