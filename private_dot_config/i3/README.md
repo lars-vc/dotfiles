@@ -1,6 +1,8 @@
 # i3 configfiles
 i3 is a minimal windowmanager that is very keybind orientated.
-
+[](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/i3/screenshot.png)
+[](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/i3/screenshot2.png)
+[](https://github.com/lars-vc/dotfiles/tree/root/private_dot_config/i3/screenshot3.png)
 ## Dependencies
 
 ### i3lock
