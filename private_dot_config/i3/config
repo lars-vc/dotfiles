@@ -22,15 +22,19 @@ font pango:DejaVuSansMono Nerd Font Mono Bold 10
 # superkey
 set $mod Mod4
 set $terminal gnome-terminal
+
 # shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
 # I now disabled pipewire in systemctl (didnt work)
 exec systemctl --user stop pipewire.socket
 # setup second monitor
 exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
-# start notification server
+# start notification daemon
 exec dunst &
 # refresh time based wallpaper 
 exec dwall -s firewatch
+# auto suspend after 15min of inactivity
+exec xautolock -time 15 -locker "systemctl suspend" &
+
 # move a workspace to other monitor
 bindsym $mod+p move workspace to output right
 
@@ -61,9 +65,6 @@ exec_always --no-startup-id numlockx on
 # exec --no-startup-id /usr/libexec/tracker-extract
 # exec --no-startup-id /usr/libexec/tracker-miner-rss
 
-# screenshot app
-# exec --no-startup-id flameshot
-
 # screenshot gui to anotate image
 bindsym  $mod+Shift+s exec flameshot gui 
 
@@ -76,32 +77,6 @@ bindsym $mod+Tab exec rofi -show window
 set $Locker ~/.config/i3/i3scripts/lock.sh && sleep 1
 bindsym $mod+Shift+x exec $Locker
 
-# window colors
-#                       border              background         text                 indicator
-# client.focused          $bg-color           $bg-color          $text-color          #00ff00
-# client.unfocused        $iancative-bg-color $inactive-bg-color $inactive-text-color #00ff00
-# client.focused_inactive $iancative-bg-color $inactive-bg-color $inactive-text-color #00ff00
-# client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
-#bar {
-#    #font pango:DejaVu Sans Mono, FontAwesome 10
-#    #position top
-#
-#    #status_command i3status-rs $HOME/.config/i3/status.toml
-#
-#    status_command i3blocks 
-#    #-c ~/.config/i3blocks/config
-#    separator_symbol ""
-#    colors {
-#        separator #666666
-#        statusline #dddddd
-#        focused_workspace #0088CC #0088CC #ffffff
-#        active_workspace #333333 #333333 #ffffff
-#        inactive_workspace $inactive-bg-color $inactive-bg-color #888888
-# 		background $bg-color
-#	    separator #757575
-#    }
-#}
-
 # launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -110,14 +85,13 @@ bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Menu for login out, shutdown, etc
-set $mode_system (l)ock, (L)ogout, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown
+set $mode_system (l)ock, (L)ogout, (s)uspend, (S)hutdown, (R)eboot
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym l       exec --no-startup-id $Locker, mode "default"
     bindsym Shift+l exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym s       exec --no-startup-id systemctl suspend, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym Shift+r exec --no-startup-id systemctl reboot, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -297,7 +271,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/scripts/lock.sh --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -442,7 +416,7 @@ for_window [title="__scratchpad__"] move to scratchpad
 exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws1; exec gnome-terminal -- bash -c "tmux new -A"'
 exec --no-startup-id i3-msg 'workspace $ws10'
-exec --no-startup-id deezer-desktop
+exec deezer-desktop
 exec --no-startup-id gnome-terminal --title=__scratchpad__
 
 # reload the configuration file
