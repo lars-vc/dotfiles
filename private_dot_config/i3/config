@@ -49,6 +49,8 @@ bindsym $mod+Shift+i exec --no-startup-id playerctl previous
 bindsym $mod+Control+o exec --no-startup-id playerctl loop None
 bindsym $mod+Control+i exec --no-startup-id playerctl loop Track
 bindsym $mod+Control+Shift+i exec --no-startup-id playerctl loop Playlist
+bindsym $mod+u exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+Shift+u exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 
 # bluethooth icon and settings
 exec --no-startup-id /usr/lib/blueberry/blueberry-tray.py
@@ -104,6 +106,9 @@ bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 
 # open firefox
 bindsym $mod+Shift+f exec firefox
+
+# open system monitor
+bindsym $mod+m exec $term -e ~/.config/i3/i3scripts/sysmon.sh
 
 # open network manager
 # bindsym $mod+w exec $terminal -e "nmtui"
@@ -281,8 +286,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker
 #set $refresh_i3status killall -SIGUSR1 i3status
 
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
