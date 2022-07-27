@@ -9,8 +9,9 @@ APIKEY=`cat $HOME/.owm-key`
 # COUNTRY_CODE='BE'
 tss=`curl -s ifconfig.me`  # == ip%
 IP=${tss::-1}              # == ip
-CITY_NAME=$(curl -s https://ipinfo.io/$IP | jq -r ".city")
-COUNTRY_CODE=$(curl -s https://ipinfo.io/$IP | jq -r ".country")
+IPCURL=$(curl -s https://ipinfo.io/$IP)
+CITY_NAME=$(echo $IPCURL | jq -r ".city")
+COUNTRY_CODE=$(echo $IPCURL | jq -r ".country")
 # Desired output language
 LANG="en"
 # UNITS can be "metric", "imperial" or "kelvin". Set KNOTS to "yes" if you

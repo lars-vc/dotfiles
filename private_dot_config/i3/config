@@ -21,7 +21,8 @@ font pango:DejaVuSansMono Nerd Font Mono Bold 10
 #-=========================OWN========================-
 # superkey
 set $mod Mod4
-set $terminal gnome-terminal
+# set $terminal gnome-terminal
+set $terminal alacritty
 
 # shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
 # I now disabled pipewire in systemctl (didnt work)
@@ -51,6 +52,11 @@ bindsym $mod+Control+i exec --no-startup-id playerctl loop Track
 bindsym $mod+Control+Shift+i exec --no-startup-id playerctl loop Playlist
 bindsym $mod+u exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym $mod+Shift+u exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym $mod+Control+u exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+Control+Shift+u exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# list all keybinds
+bindsym $mod+Control+k exec --no-startup-id ~/.config/i3/i3scripts/keybinds.sh
 
 # bluethooth icon and settings
 exec --no-startup-id /usr/lib/blueberry/blueberry-tray.py
