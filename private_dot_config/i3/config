@@ -74,7 +74,7 @@ exec_always --no-startup-id numlockx on
 # exec --no-startup-id /usr/libexec/tracker-miner-rss
 
 # screenshot gui to anotate image
-bindsym  $mod+Shift+s exec flameshot gui 
+bindsym $mod+Shift+s exec flameshot gui 
 
 # background (now using dwall)
 # exec_always feh --bg-scale ~/Pictures/wallpaper.png
