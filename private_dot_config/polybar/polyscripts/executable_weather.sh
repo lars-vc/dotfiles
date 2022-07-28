@@ -27,7 +27,8 @@ UNITS="metric"
 
 # Color Settings ______________________________________________________________
 
-COLOR_CLOUD="#606060"
+# COLOR_CLOUD="#606060"
+COLOR_CLOUD="#5690ba"
 COLOR_THUNDER="#d3b987"
 COLOR_LIGHT_RAIN="#73cef4"
 COLOR_HEAVY_RAIN="#b3deef"
@@ -38,10 +39,12 @@ COLOR_SUN="#ffc24b"
 COLOR_MOON="#FFFFFF"
 COLOR_ERR="#f43753"
 COLOR_WIND="#73cef4"
-COLOR_COLD="#b3deef"
-COLOR_HOT="#f43753"
-# COLOR_NORMAL_TEMP="#FFFFFF"
+COLOR_VERY_COLD="#b3deef"
+COLOR_COLD="#b3c1ef"
 COLOR_NORMAL_TEMP=""
+COLOR_HOT="#f46637"
+COLOR_VERY_HOT="#f43753"
+# COLOR_NORMAL_TEMP="#FFFFFF"
 
 # Leave "" if you want the default polybar color
 COLOR_TEXT=""
@@ -83,10 +86,16 @@ DISPLAY_WIND_UNIT="yes"
 # Thermometer settings ________________________________________________________
 
 # When the thermometer icon turns red
-HOT_TEMP=25
+VERY_HOT_TEMP=26
+
+# When the thermometer icon turns slightly red
+HOT_TEMP=23
+
+# When the thermometer icon turns slightly blue
+COLD_TEMP=16
 
 # When the thermometer icon turns blue
-COLD_TEMP=0
+VERY_COLD_TEMP=0
 
 # Other settings ______________________________________________________________
 
@@ -286,15 +295,24 @@ function setIcons {
     
     TEMP=`echo "$TEMP" | cut -d "." -f 1`
     
-    if [ "$TEMP" -le $COLD_TEMP ]; then
+    if [ "$TEMP" -le $VERY_COLD_TEMP ]; then
+        # VERY COLD
+        TEMP="%{F$COLOR_VERY_COLD}$COLOR_TEXT_BEGIN$TEMP%{F-}$TEMP_ICON$COLOR_TEXT_END"
+    elif [ "$TEMP" -gt $VERY_COLD_TEMP ] && [ "$TEMP" -le $COLD_TEMP ]; then
+        # COLD
         # TEMP="%{F$COLOR_COLD}%{T$TEMP_FONT_CODE}%{T-}%{F-} $COLOR_TEXT_BEGIN$TEMP$TEMP_ICON$COLOR_TEXT_END"
         TEMP="%{F$COLOR_COLD}$COLOR_TEXT_BEGIN$TEMP%{F-}$TEMP_ICON$COLOR_TEXT_END"
-    elif [ `echo "$TEMP >= $HOT_TEMP" | bc` -eq 1 ]; then
+    elif [ "$TEMP" -gt $COLD_TEMP ] && [ "$TEMP" -le $HOT_TEMP ]; then
+        # NORMAL
         # TEMP="%{F$COLOR_HOT}%{T$TEMP_FONT_CODE}%{T-}%{F-} $COLOR_TEXT_BEGIN$TEMP$TEMP_ICON$COLOR_TEXT_END"
+        TEMP="%{F$COLOR_NORMAL_TEMP}$COLOR_TEXT_BEGIN$TEMP%{F-}$TEMP_ICON$COLOR_TEXT_END"
+    elif [ "$TEMP" -gt $HOT_TEMP ] && [ "$TEMP" -le $VERY_HOT_TEMP ]; then
+        # HOT
         TEMP="%{F$COLOR_HOT}$COLOR_TEXT_BEGIN$TEMP%{F-}$TEMP_ICON$COLOR_TEXT_END"
     else
+        # VERY HOT
         # TEMP="%{F$COLOR_NORMAL_TEMP}%{T$TEMP_FONT_CODE}%{T-}%{F-} $COLOR_TEXT_BEGIN$TEMP$TEMP_ICON$COLOR_TEXT_END"
-        TEMP="%{F$COLOR_NORMAL_TEMP}$COLOR_TEXT_BEGIN$TEMP%{F-}$TEMP_ICON$COLOR_TEXT_END"
+        TEMP="%{F$COLOR_VERY_HOT}$COLOR_TEXT_BEGIN$TEMP%{F-}$TEMP_ICON$COLOR_TEXT_END"
     fi
 }
 
