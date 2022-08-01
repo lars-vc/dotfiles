@@ -43,8 +43,8 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 
 " moving around in autocomplete window
-inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-J>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-K>"
+inoremap <expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-J>"
+inoremap <expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-K>"
 " moving in insert mode
 inoremap <A-h> <Left>
 inoremap <A-j> <Down>
@@ -186,6 +186,8 @@ Plug 'kevinhwang91/rnvimr'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Personal wiki
 Plug 'vimwiki/vimwiki'
+" Zen mode
+Plug 'junegunn/goyo.vim'
 call plug#end()
 " load lua files
 lua require('lars-vc')
@@ -229,14 +231,15 @@ set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " use tab to autocomplete and jump to snippets
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+    \ coc#pum#visible() ? coc#_select_confirm() :
+    \ coc#expandableOrJumpable() ?
+    \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " use c-l and c-h to move to snippet placeholders
@@ -249,8 +252,8 @@ let g:coc_snippet_next = '<C-l>'
 nmap <leader>cn <Plug>(coc-rename)
 " Autoformatting with coc
 let g:python3_host_prog="/usr/bin/python3"
-au BufWrite * :call CocAction('format')
-noremap <C-A-l> :call CocAction('format')<CR>
+au BufWrite * :silent! call CocAction('format')
+noremap <C-A-l> :silent! call CocAction('format')<CR>
 " au BufWrite * :CocCommand editor.action.formatDocument<CR>
 " noremap <C-A-l> :CocCommand editor.action.formatDocument<CR>
 " GoTo code navigation.
