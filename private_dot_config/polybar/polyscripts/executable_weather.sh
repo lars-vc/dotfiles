@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Check if internet is down
+curl -s www.google.com > /dev/null
+CODE=$?
+if [ ! $CODE -eq 0 ]; then
+    echo "%{F#f43753}%{F-} No internet"
+    exit 0
+fi
 # SETTINGS vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
 # API settings ________________________________________________________________
@@ -7,9 +14,7 @@
 APIKEY=`cat $HOME/.owm-key`
 # CITY_NAME='Dendermonde'
 # COUNTRY_CODE='BE'
-tss=`curl -s ifconfig.me`  # == ip%
-IP=${tss::-1}              # == ip
-IPCURL=$(curl -s https://ipinfo.io/$IP)
+IPCURL=$(curl -s https://ipinfo.io/)
 CITY_NAME=$(echo $IPCURL | jq -r ".city")
 COUNTRY_CODE=$(echo $IPCURL | jq -r ".country")
 # Desired output language
