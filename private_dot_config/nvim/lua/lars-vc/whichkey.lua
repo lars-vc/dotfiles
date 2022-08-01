@@ -86,7 +86,6 @@ whichkey.register ({
             }
         },
         z = "quick spellfix",
-        t = "tabular cmd",
         m = {
             name = "+markdown",
             h = "header decrease",
@@ -103,6 +102,11 @@ whichkey.register ({
                 o = "open preview",
                 c = "close preview",
                 t = "toggle preview"
+            },
+            a = {
+                name = "+tablemode",
+                m = "toggle table mode",
+                t = "tableize"
             }
         },
         n = {
@@ -138,7 +142,7 @@ whichkey.register ({
         },
         r = {
              name = "+ranger",
-             r = "Open ranger",
+             r = "Open ranger"
         },
         o = {
             name = "+createfiles",
@@ -148,7 +152,10 @@ whichkey.register ({
             m = "move",
             r = "remove"
         },
-        w = ":x"
+        w = {
+            name = "+vimwiki",
+            w = "open index.wiki"
+        }
     },
     [","] = {
         f = "harpoon item 1",

@@ -1,9 +1,9 @@
 " lars-vc's config file
-"    ___  __  ________  ________   ___    ___    _   ________ 
+"    ___  __  ________  ________   ___    ___    _   ________
 "  ╱╱   ╲╱  ╲╱    __  ╲╱   ___  ╲ ╱   ╲  ╱   ╲  ╱_╱ ╱        ╲
 " ╱╱        ╱    __╱  ╱      ╱  ╱ ╲    ╲╱    ╱___  ╱         ╱
-"╱         ╱     ____╱   ___╱  ╱   ╲        ╱╱   ╱╱   ╱  ╱  ╱ 
-"╲__╱╲____╱╲________╱╲________╱     ╲______╱╱___╱ ╲__╱__╱__╱  
+"╱         ╱     ____╱   ___╱  ╱   ╲        ╱╱   ╱╱   ╱  ╱  ╱
+"╲__╱╲____╱╲________╱╲________╱     ╲______╱╱___╱ ╲__╱__╱__╱
 
 "===========================================================
 "---------------------------Basic---------------------------
@@ -11,9 +11,9 @@
 syntax on               " enables syntax highlighting
 set termguicolors       " better colors
 set tabstop=4           " number of spaces in a <Tab>
-set shiftwidth=4        " 
-set softtabstop=4       " 
-set expandtab           " 
+set shiftwidth=4        "
+set softtabstop=4       "
+set expandtab           "
 set smartindent         " enable autoindents
 set number              " adds line numbers
 set relativenumber      " relative numbers in sidebar
@@ -91,9 +91,9 @@ nnoremap <leader>oe :edit <C-R>=getcwd()<CR>/
 nnoremap <leader>od :!mkdir -p <C-R>=getcwd()<CR>/
 nnoremap <leader>om :!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/
 nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
-" easy spell correct 
+" easy spell correct
 inoremap <C-z> <C-g>u<Esc>[s1z=`]a<C-g>u
-nnoremap <leader>w :x<CR>
+nnoremap <BS> <C-^>
 "===========================================================
 "--------------------------Plugins--------------------------
 "===========================================================
@@ -121,6 +121,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " --Vim-Fugitive--
 Plug 'tpope/vim-fugitive'
+" Plug 'kdheepak/lazygit.nvim'
 " --COC--
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " --Nerd tree--
@@ -168,8 +169,7 @@ Plug 'godlygeek/tabular'
 " --Markdown
 Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
-" --Sniprun--
-" Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+Plug 'dhruvasagar/vim-table-mode'
 " --Harpoon--
 Plug 'ThePrimeagen/harpoon'
 " --Snippets--
@@ -181,19 +181,21 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'kevinhwang91/rnvimr'
 " --Multicursor--
 " Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-" --Discord presence--
-" Plug 'andweeb/presence.nvim'
 " --colorize hexcodes--
-Plug 'norcalli/nvim-colorizer.lua'
-" Plug 'kdheepak/lazygit.nvim'
+" Plug 'norcalli/nvim-colorizer.lua'
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" Personal wiki
+Plug 'vimwiki/vimwiki'
 call plug#end()
 " load lua files
 lua require('lars-vc')
 "===========================================================
-"--------------------------Colours--------------------------
+"--------------------------Colors---------------------------
 "===========================================================
 colorscheme material
 let g:material_style = 'oceanic'
+highlight CursorLine guibg=#2e3d45 " set color of cursorline
+highlight Cursor guifg=black guibg=white " set color of cursor
 "===========================================================
 "-----------------------Plugin Setups-----------------------
 "===========================================================
@@ -249,6 +251,8 @@ nmap <leader>cn <Plug>(coc-rename)
 let g:python3_host_prog="/usr/bin/python3"
 au BufWrite * :call CocAction('format')
 noremap <C-A-l> :call CocAction('format')<CR>
+" au BufWrite * :CocCommand editor.action.formatDocument<CR>
+" noremap <C-A-l> :CocCommand editor.action.formatDocument<CR>
 " GoTo code navigation.
 nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>cy <Plug>(coc-type-definition)
@@ -277,6 +281,7 @@ nmap <leader>cf  <Plug>(coc-fix-current)
 nmap <leader>cl  <Plug>(coc-codelens-action)
 " Extensions
 let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets", "coc-marketplace"]
+" let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets", "coc-marketplace", "coc-prettier"]
 " disabling sources per filetype
 au FileType python let b:coc_disabled_sources=["around", "buffer"]
 au FileType c let b:coc_disabled_sources=["around", "buffer"]
@@ -365,8 +370,9 @@ nnoremap <leader>mt  :TableFormat<CR>
 nnoremap <leader>mii :InsertToc<CR>
 nnoremap <leader>min :InsertNToc<CR>
 nnoremap <leader>mic :InsertToc
+" Table mode
+let g:table_mode_map_prefix = '<Leader>ma'
 " Tabular
-nnoremap <leader>t :Tabular /
 xnoremap <leader>t :Tabular /
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_new_list_item_indent = 0
@@ -412,9 +418,8 @@ set conceallevel=3
 au FileType perl set filetype=prolog
 " highlight yanked region
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
-" cursor color
-highlight Cursor guifg=black guibg=white
 " Ranger
 let g:rnvimr_enable_picker = 1 " Make Ranger to be hidden after picking a file
 nnoremap <leader>rr :RnvimrToggle<CR>
+let g:Hexokinase_highlighters = ['virtual']
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_____////////////////////////////
