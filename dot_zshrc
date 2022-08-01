@@ -142,6 +142,7 @@ alias tree='exa --tree --icons'
 alias cat='bat -pp'
 alias less='bat'
 alias tx='tmux'
+alias wiki='nvim +VimwikiIndex'
 
 
 # path stuff

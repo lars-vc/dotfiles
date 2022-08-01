@@ -21,7 +21,6 @@ font pango:DejaVuSansMono Nerd Font Mono Bold 10
 #-=========================OWN========================-
 # superkey
 set $mod Mod4
-# set $terminal gnome-terminal
 set $terminal alacritty
 
 # shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
@@ -57,6 +56,9 @@ bindsym $mod+Control+Shift+u exec --no-startup-id pactl set-source-mute @DEFAULT
 
 # list all keybinds
 bindsym $mod+Control+k exec --no-startup-id ~/.config/i3/i3scripts/keybinds.sh
+
+# vimwiki
+bindsym $mod+v exec $terminal -e nvim +VimwikiIndex
 
 # bluethooth icon and settings
 exec --no-startup-id /usr/lib/blueberry/blueberry-tray.py
@@ -308,7 +310,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec $terminal
+bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+Shift+Return exec ~/.config/i3/i3scripts/newterm.sh
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -425,10 +427,10 @@ for_window [title="__scratchpad__"] move to scratchpad
 
 # startup applications
 exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
-exec --no-startup-id i3-msg 'workspace $ws1; exec gnome-terminal -- bash -c "tmux new -A"'
+exec --no-startup-id i3-msg 'workspace $ws1; exec $terminal -e "tmux new -A"'
 exec --no-startup-id i3-msg 'workspace $ws10'
 exec deezer-desktop
-exec --no-startup-id gnome-terminal --title=__scratchpad__
+exec --no-startup-id $terminal --title=__scratchpad__
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
