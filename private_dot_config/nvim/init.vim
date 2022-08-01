@@ -26,12 +26,15 @@ set scrolloff=8         " start scrolling when 8 lines from top or bottom
 set undofile            " save undo history
 set mouse=a             " enable mouse support
 set ignorecase          " case insensitive search unless capital letters are used
-set smartcase           " 
+set smartcase           "
 set nrformats+=alpha    " increment letters
 set timeoutlen=555      " for whichkey to show up quicker
 set spelllang=en,nl     " spelling for certain files
 set fcs=eob:\           " hide tildes ~ at end of file
 set textwidth=0         " no autowrapping at end of line
+set cursorline          " line highlighting the current line
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
 "===========================================================
 "--------------------------Keymaps--------------------------
 "===========================================================
