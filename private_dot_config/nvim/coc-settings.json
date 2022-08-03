@@ -16,5 +16,6 @@
                 "prolog"
             ]
         }
-    }
+    },
+    "suggest.noselect": true
 }

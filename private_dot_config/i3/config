@@ -119,8 +119,8 @@ bindsym $mod+Shift+f exec firefox
 bindsym $mod+m exec $term -e ~/.config/i3/i3scripts/sysmon.sh
 
 # open network manager
-# bindsym $mod+w exec $terminal -e "nmtui"
-bindsym $mod+w exec ~/.config/i3/i3scripts/rofi-nm
+bindsym $mod+w exec $terminal -e "nmtui"
+# bindsym $mod+w exec ~/.config/i3/i3scripts/rofi-nm
 
 # hide borders on workspaces with 1 window
 hide_edge_borders smart
@@ -427,7 +427,7 @@ for_window [title="__scratchpad__"] move to scratchpad
 
 # startup applications
 exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
-exec --no-startup-id i3-msg 'workspace $ws1; exec $terminal -e "tmux new -A"'
+exec --no-startup-id i3-msg 'workspace $ws1; exec $terminal -e tmux new -A'
 exec --no-startup-id i3-msg 'workspace $ws10'
 exec deezer-desktop
 exec --no-startup-id $terminal --title=__scratchpad__

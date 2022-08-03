@@ -188,6 +188,8 @@ Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'vimwiki/vimwiki'
 " Zen mode
 Plug 'junegunn/goyo.vim'
+" Notifications in nvim
+Plug 'rcarriga/nvim-notify'
 call plug#end()
 " load lua files
 lua require('lars-vc')
@@ -292,6 +294,8 @@ au FileType cpp let b:coc_disabled_sources=["around", "buffer"]
 au FileType javascript let b:coc_disabled_sources=["around", "buffer"]
 au FileType typescript let b:coc_disabled_sources=["around", "buffer"]
 au FileType rust let b:coc_disabled_sources=["around", "buffer"]
+" Colors for the floating menu
+highlight CocFloating guibg=#1f292e
 "\\\\\\\\\\\\\\\\\\\\\\\\\\\___/////////////////////////////
 
 "/////////////////////////Telescope\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -423,6 +427,7 @@ au FileType perl set filetype=prolog
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
 " Ranger
 let g:rnvimr_enable_picker = 1 " Make Ranger to be hidden after picking a file
+let g:rnvimr_urc_path = '$XDG_CONFIG_HOME/ranger'
 nnoremap <leader>rr :RnvimrToggle<CR>
 let g:Hexokinase_highlighters = ['virtual']
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_____////////////////////////////
