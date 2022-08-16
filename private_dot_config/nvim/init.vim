@@ -116,24 +116,23 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make' }
 Plug 'kyazdani42/nvim-web-devicons'
-" --Airline--
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" --Statusline--
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
 " --Vim-Fugitive--
 Plug 'tpope/vim-fugitive'
 " Plug 'kdheepak/lazygit.nvim'
 " --COC--
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " --Nerd tree--
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
+" --Tree icons--
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'ryanoasis/vim-devicons'
 " --Better scrolling--
 Plug 'psliwka/vim-smoothie'
-" --Terminal--
-" Plug 'voldikss/vim-floaterm'
 " --Auto pairs--
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'LunarWatcher/auto-pairs'
-"
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'tpope/vim-surround'
@@ -147,26 +146,19 @@ Plug 'tpope/vim-commentary'
 Plug 'wakatime/vim-wakatime'
 " --Debugger--
 Plug 'puremourning/vimspector'
-" --Tree icons--
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
 " --Lightspeed--
 Plug 'ggandor/lightspeed.nvim'
 Plug 'tpope/vim-repeat'
 " --Neoclip--
 Plug 'AckslD/nvim-neoclip.lua'
 Plug 'tami5/sqlite.lua'
-" --Sessions--
-Plug 'jistr/vim-nerdtree-tabs'
-" --Practise--
-Plug 'ThePrimeagen/vim-be-good'
 " --TagBar--
 Plug 'preservim/tagbar'
 " --WhichKey--
 Plug 'folke/which-key.nvim'
 " --Aligning text--
 Plug 'godlygeek/tabular'
-" --Markdown
+" --Markdown--
 Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 Plug 'dhruvasagar/vim-table-mode'
@@ -175,21 +167,21 @@ Plug 'ThePrimeagen/harpoon'
 " --Snippets--
 Plug 'rafamadriz/friendly-snippets'
 " --IndentGuides--
-" Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " --Ranger--
 Plug 'kevinhwang91/rnvimr'
 " --Multicursor--
 " Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " --colorize hexcodes--
-" Plug 'norcalli/nvim-colorizer.lua'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-" Personal wiki
+" --Personal wiki--
 Plug 'vimwiki/vimwiki'
-" Zen mode
-Plug 'junegunn/goyo.vim'
-" Notifications in nvim
+" --Notifications--
 Plug 'rcarriga/nvim-notify'
+" --Colorpicker--
+Plug 'ziontee113/color-picker.nvim'
+" --GrammerChecker (using languageTool)--
+Plug 'rhysd/vim-grammarous'
 call plug#end()
 " load lua files
 lua require('lars-vc')
@@ -200,15 +192,17 @@ colorscheme material
 let g:material_style = 'oceanic'
 highlight CursorLine guibg=#2e3d45 " set color of cursorline
 highlight Cursor guifg=black guibg=white " set color of cursor
+highlight FloatBorder guibg=None
+highlight ColorPickerBackground guibg=#1f292e
 "===========================================================
 "-----------------------Plugin Setups-----------------------
 "===========================================================
 "//////////////////////////Airline\\\\\\\\\\\\\\\\\\\\\\\\\\
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline_theme='deus'
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#show_splits = 0
+" let g:airline_theme='deus'
+" let g:airline#extensions#hunks#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 set updatetime=100
 set noshowmode
 "\\\\\\\\\\\\\\\\\\\\\\\\\\______//////////////////////////
@@ -285,17 +279,17 @@ nmap <leader>cf  <Plug>(coc-fix-current)
 " Run the Code Lens action on the current line.
 nmap <leader>cl  <Plug>(coc-codelens-action)
 " Extensions
-let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets", "coc-marketplace"]
-" let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets", "coc-marketplace", "coc-prettier"]
-" disabling sources per filetype
-au FileType python let b:coc_disabled_sources=["around", "buffer"]
-au FileType c let b:coc_disabled_sources=["around", "buffer"]
-au FileType cpp let b:coc_disabled_sources=["around", "buffer"]
+let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets", "coc-marketplace", "coc-prettier"]
+" Disabling sources per filetype (just use lsp based completions)
+au FileType python     let b:coc_disabled_sources=["around", "buffer"]
+au FileType c          let b:coc_disabled_sources=["around", "buffer"]
+au FileType cpp        let b:coc_disabled_sources=["around", "buffer"]
 au FileType javascript let b:coc_disabled_sources=["around", "buffer"]
 au FileType typescript let b:coc_disabled_sources=["around", "buffer"]
-au FileType rust let b:coc_disabled_sources=["around", "buffer"]
+au FileType rust       let b:coc_disabled_sources=["around", "buffer"]
 " Colors for the floating menu
 highlight CocFloating guibg=#1f292e
+highlight CocErrFloat guibg=#1f292e
 "\\\\\\\\\\\\\\\\\\\\\\\\\\\___/////////////////////////////
 
 "/////////////////////////Telescope\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -357,7 +351,7 @@ nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>go :Git pull<CR>
 nnoremap <leader>gP :Git push --set-upstream origin HEAD<CR>
 nnoremap <leader>gc :Git commit -a -m ""<Left>
-" for merge conflicts, to start comparing go into status and press dv on a file
+" for merge conflicts (pick left or right), to start comparing go into status and press dv on a file
 nnoremap <leader>gh :diffget //2<CR>
 nnoremap <leader>gl :diffget //3<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\____________////////////////////////
@@ -366,9 +360,7 @@ nnoremap <leader>gl :diffget //3<CR>
 " need to be in the markdown buffer for these to work
 nnoremap <leader>mpo :MarkdownPreview<CR>
 nnoremap <leader>mpc :MarkdownPreviewStop<CR>
-nnoremap <leader>mpt :MarkdownPreviewToggle<CR>
-" take first spellingfix
-nnoremap <leader>z 1z=
+nnoremap <leader>mpp :MarkdownPreviewToggle<CR>
 nnoremap <leader>mh  :HeaderDecrease<CR>
 nnoremap <leader>ml  :HeaderIncrease<CR>
 xnoremap <leader>mh  :HeaderDecrease<CR>
@@ -387,6 +379,7 @@ let g:vim_markdown_edit_url_in = 'tab'
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_strikethrough = 1
+" Turn on spelling only for that buffer
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal dictionary+=/usr/share/dict/words
 autocmd FileType markdown setlocal dictionary+=/usr/share/dict/dutch
@@ -415,6 +408,20 @@ let g:tagbar_map_nexttag = '<C-j>'
 let g:tagbar_map_prevtag = '<C-k>'
 let g:tagbar_map_showproto = "m"
 "\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
+
+"//////////////////////////VimWiki\\\\\\\\\\\\\\\\\\\\\\\\\\\
+" Dont convert every markdown file to a vimwiki format
+let g:vimwiki_global_ext = 0
+" Turn on spelling only for that buffer
+autocmd FileType vimwiki setlocal spell
+"\\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
+"
+"//////////////////////////Grammar\\\\\\\\\\\\\\\\\\\\\\\\\\\
+nnoremap <leader>zg :GrammarousCheck<CR>
+nnoremap <leader>zr :GrammarousReset<CR>
+" take first spellingfix
+nnoremap <leader>zz 1z=
+"\\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
 
 "//////////////////////////Other\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 " Gitgutter

@@ -5,5 +5,5 @@ if [[ ! -z "$INDEX" ]] && [[ $INDEX -ge 0 ]]; then
     I=$(echo $INDEX+1 | bc)
     # match index with actual none cleaned list and then clean it a bit for i3
     RUN=$(cat ~/.config/i3/config | grep '^bindsym' | grep -v '^\s*#' | sed 's/bindsym / /' | sed "${I}q;d" | sed 's/^\s*//' | cut -d' ' -f 2- | sed 's/;/ \&\& i3/g')
-    i3 $RUN
+    i3 "$RUN"
 fi

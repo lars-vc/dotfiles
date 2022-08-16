@@ -21,19 +21,23 @@ telescope.setup {
                 ["<C-j>"] = "move_selection_next",
                 ["<C-k>"] = "move_selection_previous"
             }
-        }
+        },
+        prompt_prefix = " ",
+        selection_caret = "  ",
+        entry_prefix = "  ",
     },
     extensions = {
         neoclip = {
-          on_complete = {
-                function(picker)
-                  local mode = vim.fn.mode()
-                  local keys = mode ~= "n" and "<ESC>" or ""
-                  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys .. [[^v$<C-g>]], true, false, true), "n", true)
-                  -- should you have more callbacks, just pop the first one
-                  table.remove(picker._completion_callbacks, 1)
-                end,
-            },
+          -- on_complete = {
+          --       function(picker)
+          --         local mode = vim.fn.mode()
+          --         local keys = mode ~= "n" and "<ESC>" or ""
+          --         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys .. [[^v$<C-g>]], true, false, true), "n", true)
+          --         -- should you have more callbacks, just pop the first one
+          --         table.remove(picker._completion_callbacks, 1)
+          --       end,
+          --   },
+            initial_mode = "normal"
         },
     }
 }

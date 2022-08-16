@@ -16,7 +16,11 @@ whichkey.setup {
         ["<leader>"] = "SPC",
         ["<cr>"] = "RET",
         ["<tab>"] = "TAB",
+    },
+    window = {
+        border = "double"
     }
+
 }
 whichkey.register ({
     ["<leader>"] = {
@@ -85,7 +89,12 @@ whichkey.register ({
                 b = "list open buffer commits",
             }
         },
-        z = "quick spellfix",
+        z = {
+            name = "+spellgram",
+            z = "quick spellfix",
+            g = "GrammerousCheck",
+            r = "GrammerousReset"
+        },
         m = {
             name = "+markdown",
             h = "header decrease",
@@ -101,25 +110,12 @@ whichkey.register ({
                 name = "+preview",
                 o = "open preview",
                 c = "close preview",
-                t = "toggle preview"
+                p = "toggle preview"
             },
             a = {
                 name = "+tablemode",
                 m = "toggle table mode",
                 t = "tableize"
-            }
-        },
-        n = {
-            name = "+nerdtree",
-            o = "open mirror tree",
-            c = "close tree",
-            t = "toggle mirror tree",
-            f = "locate file in tree",
-            a = {
-                name = "+alltabs",
-                o = "open all trees",
-                c = "close all trees",
-                t = "toggle all trees"
             }
         },
         x = {

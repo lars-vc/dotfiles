@@ -12,10 +12,10 @@
                 "--",
                 "stdio"
             ],
-            "filetypes": [
-                "prolog"
-            ]
+            "filetypes": ["prolog"]
         }
     },
-    "suggest.noselect": true
+    "suggest.noselect": true,
+    "prettier.tabWidth": 4,
+    "prettier.bracketSameLine": true
 }

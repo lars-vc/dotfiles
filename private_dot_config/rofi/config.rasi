@@ -4,13 +4,15 @@ configuration {
   display-calc: " :";
   drun-display-format: "{icon} {name}";
   font: "Noto Sans Nerd Font SemiBold 10";
+  // calc is an external modus and requires installing
   modi: "window,run,drun,calc";
   show-icons: true;
 
+  // setup more vim-like keybindings
   kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
   kb-row-down: "Down,Control+j";
   kb-accept-entry: "Control+m,Return,KP_Enter";
-  terminal: "gnome-terminal";
+  terminal: "alacritty";
   kb-remove-to-eol: "Control+Shift+e";
   kb-mode-complete: "Control+Shift+l";
   kb-mode-next: "Shift+Right,Control+Tab,Control+l";
@@ -18,18 +20,28 @@ configuration {
   kb-remove-char-back: "BackSpace";
 }
 
+// needed to allow for custom theme
 @theme "/dev/null"
 
 * {
+  // color = #HEXVAL[6]TRANSPVAL[2]
+
+  // color of background
   bg: #11121DAF;
+  // color of topbar
   bg-alt: #444b6a;
+  // color of selector
   bg-alt-trans: #444b6aAF;
 
+  // color of selected-item text
   fg: #FFFFFF;
   // fg-alt: #787c99;
+  // color of not-selected-item text
   fg-alt: #787f9b;
 
+  // other rounding
   round: 4px;
+  // selector rounding
   roundel: 12px;
 
   background: transparent;

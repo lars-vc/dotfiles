@@ -7,95 +7,94 @@
 #
 # To get a config file with the same key positions, but for your current
 # layout, use the i3-config-wizard
-#
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# font pango:monospace 9
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVuSansMono Nerd Font Mono Bold 10
-# font pango:JetBrainsMono Nerd Font Medium 9
 
-#-=========================OWN========================-
+#############################################################
+#                          VARS                      #
+#############################################################
 # superkey
 set $mod Mod4
 set $terminal alacritty
 
-# shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
-# I now disabled pipewire in systemctl (didnt work)
-exec systemctl --user stop pipewire.socket
-# setup second monitor
-exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
-# start notification daemon
-exec dunst &
-# refresh time based wallpaper 
-exec dwall -s firewatch
-# auto suspend after 15min of inactivity
-exec xautolock -time 15 -locker "systemctl suspend" &
+set $Locker ~/.config/i3/i3scripts/lock.sh && sleep 1
+set $scratchpad_settings resize set 1000 600, move position center, border pixel 0
+set $mode_system (l)ock, (L)ogout, (s)uspend, (S)hutdown, (R)eboot
+set $resizeamounthorz 9
+set $resizeamountvert 18
 
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up k
+set $down j
+set $left h
+set $right l
+#-------COLORS--------#
+set $bg-color 	         #09b0e8
+set $inactive-bg-color   #2f343f
+set $transp-bg-color     #ff2f3400
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+#############################################################
+#                          BINDINGS                      #
+#############################################################
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # move a workspace to other monitor
 bindsym $mod+p move workspace to output right
-
-# menu
+# ----------ROFI------------
+#runmenu
 bindsym $mod+d exec --no-startup-id rofi -show drun
-
+bindsym $mod+Tab exec rofi -show window
+# open quick calculator
+bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
+# bindsym $mod+w exec ~/.config/i3/i3scripts/rofi-nm
+# --------------------------
 # music
 bindsym $mod+o exec --no-startup-id playerctl play-pause
 bindsym $mod+Shift+o exec --no-startup-id playerctl shuffle Toggle
 bindsym $mod+i exec --no-startup-id playerctl next
 bindsym $mod+Shift+i exec --no-startup-id playerctl previous
-bindsym $mod+Control+o exec --no-startup-id playerctl loop None
-bindsym $mod+Control+i exec --no-startup-id playerctl loop Track
-bindsym $mod+Control+Shift+i exec --no-startup-id playerctl loop Playlist
 bindsym $mod+u exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym $mod+Shift+u exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym $mod+Control+u exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Control+Shift+u exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# list all keybinds
-bindsym $mod+Control+k exec --no-startup-id ~/.config/i3/i3scripts/keybinds.sh
-
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 # vimwiki
 bindsym $mod+v exec $terminal -e nvim +VimwikiIndex
-
-# bluethooth icon and settings
-exec --no-startup-id /usr/lib/blueberry/blueberry-tray.py
-exec --no-startup-id /usr/lib/blueberry/blueberry-obex-agent.py
-
-exec --no-startup-id picom --experimental-backends -b
-#exec --no-startup-id volumeicon &
-
-# numlock
-exec_always --no-startup-id numlockx on
-
-# file previews
-# exec --no-startup-id /usr/libexec/tracker-miner-fs
-# exec --no-startup-id /usr/libexec/tracker-extract
-# exec --no-startup-id /usr/libexec/tracker-miner-rss
-
 # screenshot gui to anotate image
 bindsym $mod+Shift+s exec flameshot gui 
-
-# background (now using dwall)
-# exec_always feh --bg-scale ~/Pictures/wallpaper.png
-
-bindsym $mod+Tab exec rofi -show window
-
 # lockscreen
-set $Locker ~/.config/i3/i3scripts/lock.sh && sleep 1
 bindsym $mod+Shift+x exec $Locker
-
-# launch polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+# open firefox
+bindsym $mod+Shift+f exec firefox
+# open system monitor
+bindsym $mod+m exec $terminal -e ~/.config/i3/i3scripts/sysmon.sh
+# open network manager
+bindsym $mod+w exec $terminal -e nmtui
 
 # Menu for login out, shutdown, etc
-set $mode_system (l)ock, (L)ogout, (s)uspend, (S)hutdown, (R)eboot
 mode "$mode_system" {
     bindsym l       exec --no-startup-id $Locker, mode "default"
     bindsym Shift+l exec --no-startup-id i3-msg exit, mode "default"
@@ -108,204 +107,6 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode "$mode_system"
-
-# open quick calculator
-bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
-
-# open firefox
-bindsym $mod+Shift+f exec firefox
-
-# open system monitor
-bindsym $mod+m exec $term -e ~/.config/i3/i3scripts/sysmon.sh
-
-# open network manager
-bindsym $mod+w exec $terminal -e "nmtui"
-# bindsym $mod+w exec ~/.config/i3/i3scripts/rofi-nm
-
-# hide borders on workspaces with 1 window
-hide_edge_borders smart
-
-# window titles regular i3
-# for_window [all] title_window_icon on
-# for_window [all] border normal 0
-
-# i3gaps config
-gaps inner 10
-gaps vertical 0
-gaps horizontal 3
-for_window [class=".*"] border pixel 2
-
-# color palette
-set $bg-color 	         #09b0e8
-set $inactive-bg-color   #2f343f
-# set $transp-bg-color     #ff2f343f
-set $transp-bg-color     #ff2f3400
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-
-# window colors
-#                       border              background         text                 indicator(split direction)
-client.focused          $bg-color           $bg-color          $text-color          $bg-color
-client.unfocused        $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
-client.focused_inactive $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $transp-bg-color
-
-# dynamically set the gaps
-set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
-set $mode_gaps_outer Outer Gaps: j|k|0 (local), Shift j|k|0 (global)
-set $mode_gaps_inner Inner Gaps: j|k|0 (local), Shift j|k|0 (global)
-set $mode_gaps_horiz Horizontal Gaps: j|k|0 (local), Shift j|k|0 (global)
-set $mode_gaps_verti Vertical Gaps: j|k|0 (local), Shift j|k|0 (global)
-set $mode_gaps_top Top Gaps: j|k|0 (local), Shift j|k|0 (global)
-set $mode_gaps_right Right Gaps: j|k|0 (local), Shift j|k|0 (global)
-set $mode_gaps_bottom Bottom Gaps: j|k|0 (local), Shift j|k|0 (global)
-set $mode_gaps_left Left Gaps: j|k|0 (local), Shift j|k|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym h      mode "$mode_gaps_horiz"
-        bindsym v      mode "$mode_gaps_verti"
-        bindsym t      mode "$mode_gaps_top"
-        bindsym r      mode "$mode_gaps_right"
-        bindsym b      mode "$mode_gaps_bottom"
-        bindsym l      mode "$mode_gaps_left"
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_outer" {
-        bindsym j  gaps outer current plus 5
-        bindsym k  gaps outer current minus 5
-        bindsym 0  gaps outer current set 0
-
-        bindsym Shift+j  gaps outer all plus 5
-        bindsym Shift+k  gaps outer all minus 5
-        bindsym Shift+0  gaps outer all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym j  gaps inner current plus 5
-        bindsym k  gaps inner current minus 5
-        bindsym 0  gaps inner current set 0
-
-        bindsym Shift+j  gaps inner all plus 5
-        bindsym Shift+k  gaps inner all minus 5
-        bindsym Shift+0  gaps inner all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_horiz" {
-        bindsym j  gaps horizontal current plus 5
-        bindsym k  gaps horizontal current minus 5
-        bindsym 0  gaps horizontal current set 0
-
-        bindsym Shift+j  gaps horizontal all plus 5
-        bindsym Shift+k  gaps horizontal all minus 5
-        bindsym Shift+0  gaps horizontal all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_verti" {
-        bindsym j  gaps vertical current plus 5
-        bindsym k  gaps vertical current minus 5
-        bindsym 0  gaps vertical current set 0
-
-        bindsym Shift+j  gaps vertical all plus 5
-        bindsym Shift+k  gaps vertical all minus 5
-        bindsym Shift+0  gaps vertical all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_top" {
-        bindsym j  gaps top current plus 5
-        bindsym k  gaps top current minus 5
-        bindsym 0  gaps top current set 0
-
-        bindsym Shift+j  gaps top all plus 5
-        bindsym Shift+k  gaps top all minus 5
-        bindsym Shift+0  gaps top all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_right" {
-        bindsym j  gaps right current plus 5
-        bindsym k  gaps right current minus 5
-        bindsym 0  gaps right current set 0
-
-        bindsym Shift+j  gaps right all plus 5
-        bindsym Shift+k  gaps right all minus 5
-        bindsym Shift+0  gaps right all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_bottom" {
-        bindsym j  gaps bottom current plus 5
-        bindsym k  gaps bottom current minus 5
-        bindsym 0  gaps bottom current set 0
-
-        bindsym Shift+j  gaps bottom all plus 5
-        bindsym Shift+k  gaps bottom all minus 5
-        bindsym Shift+0  gaps bottom all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_left" {
-        bindsym j  gaps left current plus 5
-        bindsym k  gaps left current minus 5
-        bindsym 0  gaps left current set 0
-
-        bindsym Shift+j  gaps left all plus 5
-        bindsym Shift+k  gaps left all minus 5
-        bindsym Shift+0  gaps left all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-#-=========================OWN========================-
-
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex-autostart --autostart --environment i3
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
-
-# Use pactl to adjust volume in PulseAudio.
-#set $refresh_i3status killall -SIGUSR1 i3status
-
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# use these keys for focus, movement, and resize directions when reaching for
-# the arrows is not convenient
-set $up k
-set $down j
-set $left h
-set $right l
-
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -314,15 +115,6 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+Shift+Return exec ~/.config/i3/i3scripts/newterm.sh
 # kill focused window
 bindsym $mod+Shift+q kill
-# bindsym $mod+q kill
-
-# start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
-# A more modern dmenu replacement is rofi:
-# bindsym $mod+d exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+$left focus left
@@ -364,35 +156,18 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
 # focus the parent container
-bindsym $mod+a focus parent
-
+bindsym $mod+Control+a focus parent
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Control+d focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5 ﭮ"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9 ﱘ"
-set $ws10 "10"
+# Show terminal scratchpad window
+bindsym $mod+minus [title="__scratchpad__"] scratchpad show, $scratchpad_settings
+bindsym $mod+Control+o [class="Deezer"] scratchpad show, $scratchpad_settings
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -418,52 +193,109 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# something this assignment can be weird, try out all names in the class output of `xprop`
-# assign discord to workspace 5
-assign [class="discord"] $ws5
-# assign deezer to workspace 5
-assign [class="Deezer"] $ws9
-for_window [title="__scratchpad__"] move to scratchpad 
-
-# startup applications
-exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
-exec --no-startup-id i3-msg 'workspace $ws1; exec $terminal -e tmux new -A'
-exec --no-startup-id i3-msg 'workspace $ws10'
-exec deezer-desktop
-exec --no-startup-id $terminal --title=__scratchpad__
+# resize window (you can also use the mouse for that)
+mode "Resize" {
+        bindsym $left       resize shrink width $resizeamounthorz px
+        bindsym $down       resize grow height $resizeamountvert px
+        bindsym $up         resize shrink height $resizeamountvert px
+        bindsym $right      resize grow width $resizeamounthorz px
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "Resize"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# replaced with mode menu
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# list all keybinds
+bindsym $mod+Control+k exec --no-startup-id ~/.config/i3/i3scripts/keybinds.sh
 
-# resize window (you can also use the mouse for that)
-set $resizeamounthorz 9
-set $resizeamountvert 18
-mode "Resize" {
-        # These bindings trigger as soon as you enter the resize mode
+#############################################################
+#                          assginments                      #
+#############################################################
+# something this assignment can be weird, try out all names in the class output of `xprop`
+# assign discord to workspace 5
+assign [class="discord"] $ws5
+# assign deezer to workspace 5
+for_window [class="scratchpad"] move to scratchpad
+for_window [class="Blueberry.py"] floating enable, border pixel 0
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        # bindsym $left       resize shrink width $resizeamount px or $resizeamount ppt
-        # bindsym $down       resize grow height $resizeamount px or $resizeamount ppt
-        # bindsym $up         resize shrink height $resizeamount px or $resizeamount ppt
-        # bindsym $right      resize grow width $resizeamount px or $resizeamount ppt
-        bindsym $left       resize shrink width $resizeamounthorz px
-        bindsym $down       resize grow height $resizeamountvert px
-        bindsym $up         resize shrink height $resizeamountvert px
-        bindsym $right      resize grow width $resizeamounthorz px
+#############################################################
+#                          EXECS                      #
+#############################################################
+# shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
+exec systemctl --user stop pipewire.socket
+# setup second monitor
+exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
+# start notification daemon
+exec dunst &
+# refresh time based wallpaper 
+exec dwall -s firewatch
+# auto suspend after 15min of inactivity
+exec xautolock -time 30 -locker "systemctl suspend" &
+# bluethooth icon and settings
+exec --no-startup-id /usr/lib/blueberry/blueberry-tray.py
+exec --no-startup-id /usr/lib/blueberry/blueberry-obex-agent.py
+# compositor
+exec --no-startup-id picom --experimental-backends -b
+# numlock
+exec_always --no-startup-id numlockx on
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
+# file previews
+# exec --no-startup-id /usr/libexec/tracker-miner-fs
+# exec --no-startup-id /usr/libexec/tracker-extract
+# exec --no-startup-id /usr/libexec/tracker-miner-rss
 
-bindsym $mod+r mode "Resize"
+# background (now using dwall)
+# exec_always feh --bg-scale ~/Pictures/wallpaper.png
+
+# launch polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex-autostart --autostart --environment i3
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker
+
+# startup applications
+exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
+exec --no-startup-id i3-msg 'workspace $ws1; exec $terminal -e tmux new -A'
+exec --no-startup-id i3-msg 'workspace $ws10'
+exec deezer-desktop
+exec --no-startup-id $terminal --class=scratchpad
+
+#############################################################
+#                          OTHERS                      #
+#############################################################
+# hide borders on workspaces with 1 window
+hide_edge_borders smart
+
+# i3gaps config
+gaps inner 10
+gaps vertical 0
+gaps horizontal 3
+for_window [class=".*"] border pixel 2
+
+# window colors
+#                       border              background         text                 indicator(split direction)
+client.focused          $bg-color           $bg-color          $text-color          $bg-color
+client.unfocused        $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
+client.focused_inactive $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $transp-bg-color
+
+
+
+
+
+
+

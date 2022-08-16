@@ -147,6 +147,7 @@ alias wiki='nvim +VimwikiIndex'
 
 # path stuff
 export PATH=$PATH:~/scripts
+export PATH=$PATH:~/.local/bin
 if [ -d "/path/dir/" ]; then
     . "$HOME/.cargo/env"
 fi
