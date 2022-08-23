@@ -292,10 +292,3 @@ client.focused          $bg-color           $bg-color          $text-color      
 client.unfocused        $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
 client.focused_inactive $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $transp-bg-color
-
-
-
-
-
-
-

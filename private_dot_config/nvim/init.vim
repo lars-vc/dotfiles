@@ -151,7 +151,7 @@ Plug 'ggandor/lightspeed.nvim'
 Plug 'tpope/vim-repeat'
 " --Neoclip--
 Plug 'AckslD/nvim-neoclip.lua'
-Plug 'tami5/sqlite.lua'
+" Plug 'tami5/sqlite.lua'
 " --TagBar--
 Plug 'preservim/tagbar'
 " --WhichKey--
@@ -192,34 +192,44 @@ colorscheme material
 let g:material_style = 'oceanic'
 highlight CursorLine guibg=#2e3d45 " set color of cursorline
 highlight Cursor guifg=black guibg=white " set color of cursor
-highlight FloatBorder guibg=None
-highlight ColorPickerBackground guibg=#1f292e
+
+" Telescope styling
+highlight TelescopePromptTitle guifg=#1b1f27 guibg=#e06c75
+highlight TelescopePromptPrefix guifg=#e06c75
+highlight TelescopePromptNormal guibg=#252931
+highlight TelescopePromptBorder guifg=#252931 guibg=#252931
+
+highlight TelescopeResultsNormal guibg=#1b1f27
+highlight TelescopeResultsBorder guifg=#1b1f27 guibg=#1b1f27
+
+highlight TelescopePreviewTitle guifg=#1b1f27 guibg=#98c379
+highlight TelescopePreviewNormal guibg=#252931
+highlight TelescopePreviewBorder guifg=#252931 guibg=#252931
+
+highlight TelescopeSelection guifg=#B0BEC5 guibg=#252931
+
+" Coc styling
+" highlight CocFloating guibg=#1f292e
+" highlight CocErrFloat guibg=#1f292e
+highlight CocFloating guibg=#252931
+highlight CocErrFloat guibg=#252931
+
+" WhichKey styling
+highlight WhichKeyFloat guibg=#252931
+highlight WhichKey guifg=#009688 gui=bold
+highlight WhichKeyGroup guifg=#717CB4
+highlight WhichKeyDesc guifg=#B0BEC5 gui=italic
+highlight WhichKeySeparator guifg=#F07178
+highlight FloatBorder guibg=#252931
+"NORMAL: guifg=#B0BEC5 guibg=#263238
 "===========================================================
 "-----------------------Plugin Setups-----------------------
 "===========================================================
-"//////////////////////////Airline\\\\\\\\\\\\\\\\\\\\\\\\\\
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#show_splits = 0
-" let g:airline_theme='deus'
-" let g:airline#extensions#hunks#enabled = 1
-" let g:airline#extensions#tabline#enabled = 1
+"//////////////////////////Lualine\\\\\\\\\\\\\\\\\\\\\\\\\\
+" More in lua/lars-vc/lualine.lua
 set updatetime=100
 set noshowmode
 "\\\\\\\\\\\\\\\\\\\\\\\\\\______//////////////////////////
-
-"/////////////////////////NERDtree\\\\\\\\\\\\\\\\\\\\\\\\\\
-" autocmd VimEnter * NERDTree | wincmd p
-" autocmd VimEnter * if argc() == 1 | execute 'NERDTree' | wincmd p | endif
-" autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-nnoremap <leader>nt  :NERDTreeMirrorToggle<CR>
-nnoremap <leader>nc  :NERDTreeClose<CR>
-nnoremap <leader>no  :NERDTreeMirrorOpen<CR>
-nnoremap <leader>nf  :NERDTreeFind<CR>
-nnoremap <leader>nat :NERDTreeTabsToggle<CR>
-nnoremap <leader>nac :NERDTreeTabsClose<CR>
-nnoremap <leader>nao :NERDTreeTabsOpen<CR>
-" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-"\\\\\\\\\\\\\\\\\\\\\\\\\_______//////////////////////////
 
 "///////////////////////////COC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 set cmdheight=1
@@ -287,9 +297,6 @@ au FileType cpp        let b:coc_disabled_sources=["around", "buffer"]
 au FileType javascript let b:coc_disabled_sources=["around", "buffer"]
 au FileType typescript let b:coc_disabled_sources=["around", "buffer"]
 au FileType rust       let b:coc_disabled_sources=["around", "buffer"]
-" Colors for the floating menu
-highlight CocFloating guibg=#1f292e
-highlight CocErrFloat guibg=#1f292e
 "\\\\\\\\\\\\\\\\\\\\\\\\\\\___/////////////////////////////
 
 "/////////////////////////Telescope\\\\\\\\\\\\\\\\\\\\\\\\\
