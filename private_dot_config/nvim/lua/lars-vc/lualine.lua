@@ -1,7 +1,7 @@
 --==Own components==--
 -- total wordcount
 local function getWords()
-    return tostring(vim.fn.wordcount().words) .. 'W'
+    return 'W:' .. tostring(vim.fn.wordcount().words)
 end
 -- linenumbering of cursor
 local function getPos()
@@ -9,6 +9,7 @@ local function getPos()
     return ':'.. tostring(row) .. '/' .. tostring(vim.api.nvim_buf_line_count(0)) .. ' :' .. tostring(col)
 end
 
+-- setup
 require('lualine').setup {
     options = {
         icons_enabled = true,

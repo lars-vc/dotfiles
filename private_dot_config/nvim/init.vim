@@ -35,13 +35,13 @@ set textwidth=0         " no autowrapping at end of line
 set cursorline          " line highlighting the current line
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
+autocmd FileType * setlocal formatoptions-=o " disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
 "===========================================================
 "--------------------------Keymaps--------------------------
 "===========================================================
 inoremap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-
 " moving around in autocomplete window
 inoremap <expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-J>"
 inoremap <expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-K>"
@@ -139,7 +139,8 @@ Plug 'tpope/vim-surround'
 " --Treeshitter--
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " --Commenting (gcc)--
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
+Plug 'numToStr/Comment.nvim'
 " --Git stuff--
 " Plug 'airblade/vim-gitgutter'
 " --Wakatime--
@@ -153,7 +154,7 @@ Plug 'tpope/vim-repeat'
 Plug 'AckslD/nvim-neoclip.lua'
 " Plug 'tami5/sqlite.lua'
 " --TagBar--
-Plug 'preservim/tagbar'
+" Plug 'preservim/tagbar'
 " --WhichKey--
 Plug 'folke/which-key.nvim'
 " --Aligning text--
@@ -165,6 +166,7 @@ Plug 'dhruvasagar/vim-table-mode'
 " --Harpoon--
 Plug 'ThePrimeagen/harpoon'
 " --Snippets--
+" Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 " --IndentGuides--
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -232,7 +234,6 @@ set noshowmode
 "\\\\\\\\\\\\\\\\\\\\\\\\\\______//////////////////////////
 
 "///////////////////////////COC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-set cmdheight=1
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " use tab to autocomplete and jump to snippets
@@ -260,8 +261,6 @@ nmap <leader>cn <Plug>(coc-rename)
 let g:python3_host_prog="/usr/bin/python3"
 au BufWrite * :silent! call CocAction('format')
 noremap <C-A-l> :silent! call CocAction('format')<CR>
-" au BufWrite * :CocCommand editor.action.formatDocument<CR>
-" noremap <C-A-l> :CocCommand editor.action.formatDocument<CR>
 " GoTo code navigation.
 nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>cy <Plug>(coc-type-definition)
@@ -407,15 +406,6 @@ nnoremap mk :lua require("harpoon.ui").nav_file(6)<CR>
 nnoremap ml :lua require("harpoon.ui").nav_file(7)<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
 
-"//////////////////////////TagBar\\\\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap <leader>bt :TagbarToggle<CR>
-nnoremap <leader>bo :TagbarOpen<CR>
-nnoremap <leader>bc :TagbarClose<CR>
-let g:tagbar_map_nexttag = '<C-j>'
-let g:tagbar_map_prevtag = '<C-k>'
-let g:tagbar_map_showproto = "m"
-"\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
-
 "//////////////////////////VimWiki\\\\\\\\\\\\\\\\\\\\\\\\\\\
 " Dont convert every markdown file to a vimwiki format
 let g:vimwiki_global_ext = 0
@@ -430,18 +420,22 @@ nnoremap <leader>zr :GrammarousReset<CR>
 nnoremap <leader>zz 1z=
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
 
+"///////////////////////////Ranger\\\\\\\\\\\\\\\\\\\\\\\\\\\
+let g:rnvimr_enable_picker = 1 " Make Ranger to be hidden after picking a file
+let g:rnvimr_urc_path = '~/.config/ranger'
+nnoremap <leader>rr :RnvimrToggle<CR>
+nnoremap <silent> <M-r> :RnvimrToggle<CR>
+tnoremap <silent> <M-r> <C-\><C-n>:RnvimrToggle<CR>
+"\\\\\\\\\\\\\\\\\\\\\\\\\\\______///////////////////////////
+
 "//////////////////////////Other\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 " Gitgutter
 " :au VimEnter * :GitGutterSignsDisable
 " Nerd tree icons
-set conceallevel=3
+" set conceallevel=3
 " Prolog
 au FileType perl set filetype=prolog
 " highlight yanked region
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
-" Ranger
-let g:rnvimr_enable_picker = 1 " Make Ranger to be hidden after picking a file
-let g:rnvimr_urc_path = '$XDG_CONFIG_HOME/ranger'
-nnoremap <leader>rr :RnvimrToggle<CR>
 let g:Hexokinase_highlighters = ['virtual']
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_____////////////////////////////
