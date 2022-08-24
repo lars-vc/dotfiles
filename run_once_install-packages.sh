@@ -66,7 +66,7 @@ pip3 install pynvim
 pip3 install thefuck
 
 # Ranger
-$pkgm ranger
+pip3 install ranger-fm
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 # ueberzug won't work on wsl due to there not being a GUI (so ignore the errors, maybe I can add a check here or something)
 pip3 install ueberzug
