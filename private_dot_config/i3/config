@@ -15,18 +15,23 @@
 font pango:DejaVuSansMono Nerd Font Mono Bold 10
 
 #############################################################
-#                          VARS                      #
+#                           VARS                            #
 #############################################################
 # superkey
 set $mod Mod4
 set $terminal alacritty
 
+# screenlocker
 set $Locker ~/.config/i3/i3scripts/lock.sh && sleep 1
-set $scratchpad_settings resize set 1000 600, move position center, border pixel 0
-set $mode_system (l)ock, (L)ogout, (s)uspend, (S)hutdown, (R)eboot
+# settings on how scratchpads should look
+set $scratchpad_settings resize set 1000 650, move position center, border pixel 0
+# amount of pixels that the window will be resized by in Resize mode
 set $resizeamounthorz 9
 set $resizeamountvert 18
+# shutdown mode name (will also be displayed)
+set $mode_system (l)ock, (L)ogout, (s)uspend, (S)hutdown, (R)eboot
 
+# workspace names
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -52,7 +57,7 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 #############################################################
-#                          BINDINGS                      #
+#                          BINDINGS                         #
 #############################################################
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
@@ -166,7 +171,7 @@ bindsym $mod+Control+d focus child
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 # Show terminal scratchpad window
-bindsym $mod+minus [title="__scratchpad__"] scratchpad show, $scratchpad_settings
+bindsym $mod+minus [instance="scratchpad"] scratchpad show, $scratchpad_settings
 bindsym $mod+Control+o [class="Deezer"] scratchpad show, $scratchpad_settings
 
 # switch to workspace
@@ -215,17 +220,17 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Control+k exec --no-startup-id ~/.config/i3/i3scripts/keybinds.sh
 
 #############################################################
-#                          assginments                      #
+#                        ASSIGNMENTS                        #
 #############################################################
 # something this assignment can be weird, try out all names in the class output of `xprop`
 # assign discord to workspace 5
 assign [class="discord"] $ws5
-# assign deezer to workspace 5
-for_window [class="scratchpad"] move to scratchpad
+for_window [instance="scratchpad"] move to scratchpad
+for_window [class="Deezer"] move to scratchpad
 for_window [class="Blueberry.py"] floating enable, border pixel 0
 
 #############################################################
-#                          EXECS                      #
+#                           EXECS                           #
 #############################################################
 # shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
 exec systemctl --user stop pipewire.socket
@@ -268,14 +273,14 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker
 
 # startup applications
-exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws1; exec $terminal -e tmux new -A'
+exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws10'
-exec deezer-desktop
+exec --no-startup-id deezer-desktop
 exec --no-startup-id $terminal --class=scratchpad
 
 #############################################################
-#                          OTHERS                      #
+#                          OTHERS                           #
 #############################################################
 # hide borders on workspaces with 1 window
 hide_edge_borders smart
@@ -287,7 +292,7 @@ gaps horizontal 3
 for_window [class=".*"] border pixel 2
 
 # window colors
-#                       border              background         text                 indicator(split direction)
+# name                  border              background         text                 indicator(split direction)
 client.focused          $bg-color           $bg-color          $text-color          $bg-color
 client.unfocused        $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
 client.focused_inactive $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
