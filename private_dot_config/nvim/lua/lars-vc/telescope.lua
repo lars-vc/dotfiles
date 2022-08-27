@@ -4,11 +4,15 @@ telescope.setup {
     pickers = {
         find_files = {
             path_display = {"truncate"},
-            color_devicons=true,
+            color_devicons = true,
         },
         live_grep = {
             path_display = {"shorten"},
         },
+        current_buffer_fuzzy_find = {
+            previewer = false,
+            theme = "dropdown"
+        }
     },
     defaults = {
         mappings = {
@@ -63,7 +67,8 @@ telescope.setup {
     extensions = {
         neoclip = {
             on_complete = { function() vim.cmd"stopinsert" end }, -- doesnt work
-            initial_mode = "normal" -- doesnt work
+            initial_mode = "normal", -- doesnt work
+            previewer = false,
         },
     }
 }

@@ -33,6 +33,8 @@ set spelllang=en,nl     " spelling for certain files
 set fcs=eob:\           " hide tildes ~ at end of file
 set textwidth=0         " no autowrapping at end of line
 set cursorline          " line highlighting the current line
+set updatetime=100      " updatetime for statusbar
+set noshowmode          " dont show default statusbar
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
 autocmd FileType * setlocal formatoptions-=o " disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
@@ -108,7 +110,6 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 " --Optimisation--
 Plug 'lewis6991/impatient.nvim'
-" Plug 'nathom/filetype.nvim'
 " --Theme--
 Plug 'marko-cerovac/material.nvim'
 " --Telescope--
@@ -227,12 +228,6 @@ highlight FloatBorder guibg=#252931
 "===========================================================
 "-----------------------Plugin Setups-----------------------
 "===========================================================
-"//////////////////////////Lualine\\\\\\\\\\\\\\\\\\\\\\\\\\
-" More in lua/lars-vc/lualine.lua
-set updatetime=100
-set noshowmode
-"\\\\\\\\\\\\\\\\\\\\\\\\\\______//////////////////////////
-
 "///////////////////////////COC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -319,9 +314,6 @@ nnoremap <leader>fhb <cmd>Telescope builtin<cr>
 nnoremap <leader>gfc <cmd>Telescope git_commits<cr><esc>
 nnoremap <leader>gfb <cmd>Telescope git_bcommits<cr><esc>
 nnoremap <leader>gb <cmd>Telescope git_branches<cr>
-autocmd User FugitiveIndex nmap <buffer> <A-j> )
-autocmd User FugitiveIndex nmap <buffer> <A-k> (
-autocmd User FugitiveIndex nmap <buffer> <Tab> =
 "\\\\\\\\\\\\\\\\\\\\\\\\\_________/////////////////////////
 
 "////////////////////////Vimspector\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -329,7 +321,7 @@ let g:vimspector_code_minwidth = 90
 let g:vimspector_terminal_maxwidth = 75
 let g:vimspector_terminal_minwidth = 20
 " Debug launch window setup (hacky but works)
-nmap <leader>dd :call vimspector#Launch()<CR>:NERDTreeClose<CR>2<C-w>j:q<CR>
+nmap <leader>dd :call vimspector#Launch()<CR>2<C-w>j:q<CR>
 nmap <leader>dD :call vimspector#Launch()<CR>
 nmap <leader>dx :call vimspector#Reset()<CR>
 nnoremap <leader>dX :call vimspector#ClearBreakpoints()<CR>
@@ -357,6 +349,9 @@ nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>go :Git pull<CR>
 nnoremap <leader>gP :Git push --set-upstream origin HEAD<CR>
 nnoremap <leader>gc :Git commit -a -m ""<Left>
+autocmd User FugitiveIndex nmap <buffer> <A-j> )
+autocmd User FugitiveIndex nmap <buffer> <A-k> (
+autocmd User FugitiveIndex nmap <buffer> <Tab> =
 " for merge conflicts (pick left or right), to start comparing go into status and press dv on a file
 nnoremap <leader>gh :diffget //2<CR>
 nnoremap <leader>gl :diffget //3<CR>
@@ -394,7 +389,6 @@ autocmd FileType markdown setlocal dictionary+=/usr/share/dict/dutch
 "//////////////////////////Harpoon\\\\\\\\\\\\\\\\\\\\\\\\\\
 nnoremap , m
 nnoremap m <NOP>
-" nnoremap , <nop>
 nnoremap mm :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap mq :lua require("harpoon.mark").add_file()<CR>
 nnoremap mf :lua require("harpoon.ui").nav_file(1)<CR>

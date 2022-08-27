@@ -1,5 +1,4 @@
 require('material').setup({
-
 	contrast = {
 		sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
 		floating_windows = false, -- Enable contrast for floating windows
