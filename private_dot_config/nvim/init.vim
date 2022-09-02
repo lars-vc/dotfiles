@@ -139,6 +139,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'tpope/vim-surround'
 " --Treeshitter--
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 " --Commenting (gcc)--
 " Plug 'tpope/vim-commentary'
 Plug 'numToStr/Comment.nvim'
@@ -224,6 +225,9 @@ highlight WhichKeyGroup guifg=#717CB4
 highlight WhichKeyDesc guifg=#B0BEC5 gui=italic
 highlight WhichKeySeparator guifg=#F07178
 highlight FloatBorder guibg=#252931
+" Treesitter context styling
+highlight TreesitterContext guibg=#252931
+highlight TreesitterContextLineNumber guifg=#B0BEC5 guibg=#252931
 "NORMAL: guifg=#B0BEC5 guibg=#263238
 "===========================================================
 "-----------------------Plugin Setups-----------------------
