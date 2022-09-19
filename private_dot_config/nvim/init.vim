@@ -38,15 +38,16 @@ set noshowmode          " dont show default statusbar
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
 autocmd FileType * setlocal formatoptions-=o " disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
+set signcolumn=yes
 "===========================================================
 "--------------------------Keymaps--------------------------
 "===========================================================
-inoremap jk <Esc>
+" inoremap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 " moving around in autocomplete window
-inoremap <expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-J>"
-inoremap <expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-K>"
+" inoremap <expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-J>"
+" inoremap <expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-K>"
 " moving in insert mode
 inoremap <A-h> <Left>
 inoremap <A-j> <Down>
@@ -96,6 +97,9 @@ nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
 " easy spell correct
 inoremap <C-z> <C-g>u<Esc>[s1z=`]a<C-g>u
 nnoremap <BS> <C-^>
+" nnoremap <leader>p "_dP
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 "===========================================================
 "--------------------------Plugins--------------------------
 "===========================================================
@@ -112,20 +116,30 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'lewis6991/impatient.nvim'
 " --Theme--
 Plug 'marko-cerovac/material.nvim'
+" Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " --Telescope--
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make' }
 Plug 'kyazdani42/nvim-web-devicons'
 " --Statusline--
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'nvim-lualine/lualine.nvim'
 " --Vim-Fugitive--
 Plug 'tpope/vim-fugitive'
 " Plug 'kdheepak/lazygit.nvim'
 " --COC--
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+" Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'onsails/lspkind-nvim'
+Plug 'saadparwaiz1/cmp_luasnip'
 " --Nerd tree--
 " Plug 'preservim/nerdtree'
 " --Tree icons--
@@ -168,7 +182,7 @@ Plug 'dhruvasagar/vim-table-mode'
 " --Harpoon--
 Plug 'ThePrimeagen/harpoon'
 " --Snippets--
-" Plug 'L3MON4D3/LuaSnip'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 " --IndentGuides--
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -215,8 +229,8 @@ highlight TelescopeSelection guifg=#B0BEC5 guibg=#252931
 " Coc styling
 " highlight CocFloating guibg=#1f292e
 " highlight CocErrFloat guibg=#1f292e
-highlight CocFloating guibg=#252931
-highlight CocErrFloat guibg=#252931
+" highlight CocFloating guibg=#252931
+" highlight CocErrFloat guibg=#252931
 
 " WhichKey styling
 highlight WhichKeyFloat guibg=#252931
@@ -233,68 +247,67 @@ highlight TreesitterContextLineNumber guifg=#B0BEC5 guibg=#252931
 "-----------------------Plugin Setups-----------------------
 "===========================================================
 "///////////////////////////COC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-set signcolumn=yes
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" use tab to autocomplete and jump to snippets
-inoremap <silent><expr> <TAB>
-    \ coc#pum#visible() ? coc#_select_confirm() :
-    \ coc#expandableOrJumpable() ?
-    \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" use c-l and c-h to move to snippet placeholders
-imap <C-h> <nop>
-imap <C-l> <nop>
-let g:coc_snippet_prev = '<C-h>'
-let g:coc_snippet_next = '<C-l>'
-
-" Symbol renaming.
-nmap <leader>cn <Plug>(coc-rename)
-" Autoformatting with coc
-let g:python3_host_prog="/usr/bin/python3"
-au BufWrite * :silent! call CocAction('format')
-noremap <C-A-l> :silent! call CocAction('format')<CR>
-" GoTo code navigation.
-nmap <silent> <leader>cd <Plug>(coc-definition)
-nmap <silent> <leader>cy <Plug>(coc-type-definition)
-nmap <silent> <leader>ci <Plug>(coc-implementation)
-nmap <silent> <leader>cr <Plug>(coc-references)
-nnoremap <silent> <leader>ct :call <SID>show_documentation()<CR>
-" show documentation on hover and SPC ct
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <C-space> coc#refresh()
-" inoremap <silent><expr> <C-space> pumvisible() ? <Plug>(coc-float-hide) : coc#refresh()
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>ca  <Plug>(coc-codeaction-selected)
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ca  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>cf  <Plug>(coc-fix-current)
-" Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
-" Extensions
-let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets", "coc-marketplace", "coc-prettier"]
-" Disabling sources per filetype (just use lsp based completions)
-au FileType python     let b:coc_disabled_sources=["around", "buffer"]
-au FileType c          let b:coc_disabled_sources=["around", "buffer"]
-au FileType cpp        let b:coc_disabled_sources=["around", "buffer"]
-au FileType javascript let b:coc_disabled_sources=["around", "buffer"]
-au FileType typescript let b:coc_disabled_sources=["around", "buffer"]
-au FileType rust       let b:coc_disabled_sources=["around", "buffer"]
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+" " use tab to autocomplete and jump to snippets
+" inoremap <silent><expr> <TAB>
+"     \ coc#pum#visible() ? coc#_select_confirm() :
+"     \ coc#expandableOrJumpable() ?
+"     \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"     \ <SID>check_back_space() ? "\<TAB>" :
+"     \ coc#refresh()
+"
+" function! s:check_back_space() abort
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+"
+" " use c-l and c-h to move to snippet placeholders
+" imap <C-h> <nop>
+" imap <C-l> <nop>
+" let g:coc_snippet_prev = '<C-h>'
+" let g:coc_snippet_next = '<C-l>'
+"
+" " Symbol renaming.
+" nmap <leader>cn <Plug>(coc-rename)
+" " Autoformatting with coc
+" let g:python3_host_prog="/usr/bin/python3"
+" au BufWrite * :silent! call CocAction('format')
+" noremap <C-A-l> :silent! call CocAction('format')<CR>
+" " GoTo code navigation.
+" nmap <silent> <leader>cd <Plug>(coc-definition)
+" nmap <silent> <leader>cy <Plug>(coc-type-definition)
+" nmap <silent> <leader>ci <Plug>(coc-implementation)
+" nmap <silent> <leader>cr <Plug>(coc-references)
+" nnoremap <silent> <leader>ct :call <SID>show_documentation()<CR>
+" " show documentation on hover and SPC ct
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
+" " Use <c-space> to trigger completion.
+" inoremap <silent><expr> <C-space> coc#refresh()
+" " inoremap <silent><expr> <C-space> pumvisible() ? <Plug>(coc-float-hide) : coc#refresh()
+" " Applying codeAction to the selected region.
+" " Example: `<leader>aap` for current paragraph
+" xmap <leader>ca  <Plug>(coc-codeaction-selected)
+" " Remap keys for applying codeAction to the current buffer.
+" nmap <leader>ca  <Plug>(coc-codeaction)
+" " Apply AutoFix to problem on the current line.
+" nmap <leader>cf  <Plug>(coc-fix-current)
+" " Run the Code Lens action on the current line.
+" nmap <leader>cl  <Plug>(coc-codelens-action)
+" " Extensions
+" let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-java", "coc-json", "coc-kotlin", "coc-pyright", "coc-rls", "coc-tsserver", "coc-dictionary", "coc-snippets", "coc-marketplace", "coc-prettier"]
+" " Disabling sources per filetype (just use lsp based completions)
+" au FileType python     let b:coc_disabled_sources=["around", "buffer"]
+" au FileType c          let b:coc_disabled_sources=["around", "buffer"]
+" au FileType cpp        let b:coc_disabled_sources=["around", "buffer"]
+" au FileType javascript let b:coc_disabled_sources=["around", "buffer"]
+" au FileType typescript let b:coc_disabled_sources=["around", "buffer"]
+" au FileType rust       let b:coc_disabled_sources=["around", "buffer"]
 "\\\\\\\\\\\\\\\\\\\\\\\\\\\___/////////////////////////////
 
 "/////////////////////////Telescope\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -304,7 +317,8 @@ nnoremap <leader>fc <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fn <cmd>Telescope neoclip plus<cr><Esc>
 nnoremap <leader>fi <cmd>Telescope find_files cwd=~/.config/nvim prompt_title=VimRC<cr>
-nnoremap <leader>fp <cmd>Telescope planets<cr><esc>
+nnoremap <leader>fp <cmd>Telescope planets<cr>
+nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 " help related
 nnoremap <leader>fhh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fhc <cmd>Telescope command_history<cr>
