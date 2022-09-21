@@ -1,28 +1,23 @@
 local function on_attach(client, bufnr)
-    local opts = {
-        silent = true,
-        noremap = true,
-    }
-    local function buf_nmap(mapping, cmd) vim.api.nvim_buf_set_keymap(bufnr, "n", mapping, cmd, opts) end
-
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    -- Jump to declaration
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     -- Jump to definition
-    buf_nmap("gd", "<Cmd>vim.lsp.buf.definition<CR>")
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     -- Show hover info
-    buf_nmap("gh", "<Cmd>vim.lsp.buf.hover<CR>")
-    -- Format current buffer on write
-    -- vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]])
+    vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
     -- Show diagnostics for current line
-    buf_nmap("<leader>cc", "<Cmd>vim.diagnostic.open_float<CR>")
+    vim.keymap.set('n', 'go', vim.diagnostic.open_float, bufopts)
     -- Jump between diagnostic messages
-    buf_nmap("<leader>cj", "<Cmd>vim.diagnostic.goto_next<CR>")
-    buf_nmap("<leader>ck", "<Cmd>vim.diagnostic.goto_prev<CR>")
-    
-    buf_nmap("<leader>ct", "<Cmd>vim.diagnostic.type_definition<CR>")
-    buf_nmap("<leader>ci", "<Cmd>vim.diagnostic.implementation<CR>")
-    buf_nmap("<leader>cr", "<Cmd>vim.diagnostic.references<CR>")
+    vim.keymap.set('n', '<leader>cj', vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set('n', '<leader>ck', vim.diagnostic.goto_prev, bufopts)
+
+    vim.keymap.set('n', '<leader>ct', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     -- Rename symbol under cursor
-    buf_nmap("<leader>cn", "<Cmd>vim.lsp.buf.rename<CR>")
-    buf_nmap("<leader>ca", "<Cmd>vim.lsp.buf.code_actions<CR>")
+    vim.keymap.set('n', '<leader>cn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 end
 
 -- Set up lspconfig.
@@ -31,4 +26,28 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
 --     capabilities = capabilities
 -- }
-require('lspconfig').pyright.setup{ on_attach = on_attach, capabilities = capabilities }
+local lspconf = require("lspconfig")
+
+lspconf['pyright'].setup { on_attach = on_attach, capabilities = capabilities }
+
+lspconf['tsserver'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+lspconf['rust_analyzer'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+lspconf['sumneko_lua'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+-- custom stuff
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end

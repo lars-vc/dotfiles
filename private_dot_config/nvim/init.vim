@@ -100,6 +100,7 @@ nnoremap <BS> <C-^>
 " nnoremap <leader>p "_dP
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
+vnoremap <leader>d "_d
 "===========================================================
 "--------------------------Plugins--------------------------
 "===========================================================
@@ -138,6 +139,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'petertriho/cmp-git'
 Plug 'onsails/lspkind-nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 " --Nerd tree--
@@ -450,4 +452,6 @@ au FileType perl set filetype=prolog
 " highlight yanked region
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
 let g:Hexokinase_highlighters = ['virtual']
+" auto format on save
+autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_____////////////////////////////
