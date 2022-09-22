@@ -202,6 +202,8 @@ Plug 'rcarriga/nvim-notify'
 Plug 'ziontee113/color-picker.nvim'
 " --GrammerChecker (using languageTool)--
 Plug 'rhysd/vim-grammarous'
+" --Diagnostics list--
+Plug 'folke/trouble.nvim'
 call plug#end()
 " load lua files
 lua require('lars-vc')

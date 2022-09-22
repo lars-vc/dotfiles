@@ -14,7 +14,7 @@ local function on_attach(client, bufnr)
 
     vim.keymap.set('n', '<leader>ct', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'gR', vim.lsp.buf.references, bufopts)
     -- Rename symbol under cursor
     vim.keymap.set('n', '<leader>cn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)

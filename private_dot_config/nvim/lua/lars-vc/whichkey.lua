@@ -22,7 +22,7 @@ whichkey.setup {
     }
 
 }
-whichkey.register ({
+whichkey.register({
     ["<leader>"] = {
         f = {
             name = "+telescope",
@@ -46,16 +46,11 @@ whichkey.register ({
             }
         },
         c = {
-            name = "+coc",
-            a = "code actions",
-            l = "codelens actions",
-            d = "goto definition",
-            y = "goto type-definition",
-            i = "goto implementation",
-            f = "quick fix",
-            r = "show references",
-            n = "rename var",
-            t = "show documentation"
+            name = "+lsp",
+            t = "goto type-definition",
+            j = "goto next diagnostic",
+            k = "goto prev diagnostic",
+            n = "rename",
         },
         d = {
             name = "+vimspector",
@@ -131,8 +126,8 @@ whichkey.register ({
             x = "swap splits"
         },
         r = {
-             name = "+ranger",
-             r = "Open ranger"
+            name = "+ranger",
+            r = "Open ranger"
         },
         o = {
             name = "+createfiles",
@@ -145,6 +140,17 @@ whichkey.register ({
         w = {
             name = "+vimwiki",
             w = "open index.wiki"
+        },
+        p = "paste from clip",
+        P = "Paste from clip",
+        t = {
+            name = "+trouble",
+            t = "workspace diagnostic",
+            d = "document diagnostic",
+            x = "close trouble",
+            r = "refresh results",
+            q = "quickfix list",
+            l = "loclist",
         }
     },
     [","] = {
@@ -156,15 +162,20 @@ whichkey.register ({
         k = "harpoon item 6",
         l = "harpoon item 7",
         q = "add file to harpoon"
-    }
-}, {mode = "n"})
+    },
+    g = {
+        r = "goto references (trouble)",
+        R = "goto references",
+        i = "goto implementation",
+        d = "goto definition",
+        D = "goto declaration",
+        h = "show documentation",
+        o = "show diagnostic",
+    },
+}, { mode = "n" })
 
 whichkey.register({
     ["<leader>"] = {
-        c = {
-            name = "+coc",
-            a = "code actions"
-        },
         d = {
             name = "+vimspector",
             i = "balloon eval"
@@ -174,9 +185,6 @@ whichkey.register({
             h = "header decrease",
             l = "header increase",
         },
-        r = {
-            name = "+sniprun",
-            r = "run block"
-        }
-    }
-}, {mode = "v"})
+    },
+    d = "delete to other reg"
+}, { mode = "v" })
