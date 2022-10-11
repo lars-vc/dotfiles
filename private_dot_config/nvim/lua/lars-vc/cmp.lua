@@ -2,49 +2,49 @@ local lspkind = require('lspkind')
 lspkind.init()
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 -- Set up nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 -- add brackets after function complete
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
-small_mapping = {
-    ['<S-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
+local small_mapping = {
+    ['<S-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-e>'] = cmp.mapping(cmp.mapping.abort(), { 'i', 'c' }),
     ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
-            cmp.confirm({select = true})
+            cmp.confirm({ select = true })
         else
             fallback()
         end
-    end),
+    end, { 'i', 'c' }),
     ['<C-j>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
             cmp.select_next_item()
         else
             fallback()
         end
-    end),
+    end, { 'i', 'c' }),
     ['<C-k>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
             cmp.select_prev_item()
         else
             fallback()
         end
-    end),
+    end, { 'i', 'c' }),
 }
 
-small_format = {
-        format = lspkind.cmp_format({
-            mode = "symbol_text",
-            menu = ({
-                buffer = "[Buf]",
-                nvim_lsp = "[LSP]",
-                path = "[Path]",
-                luasnip = "[LuaSnip]",
-                nvim_lua = "[Lua]",
-            })
-        }),
-    }
+local small_format = {
+    format = lspkind.cmp_format({
+        mode = "symbol_text",
+        menu = ({
+            buffer = "[Buf]",
+            nvim_lsp = "[LSP]",
+            path = "[Path]",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+        })
+    }),
+}
 
 cmp.setup({
     snippet = {
@@ -67,7 +67,7 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.confirm({select = true})
+                cmp.confirm({ select = true })
             else
                 fallback()
             end
@@ -97,7 +97,7 @@ cmp.setup({
         -- { name = 'snippy' }, -- For snippy users.
         { name = 'buffer', keyword_length = 3 },
     }),
-    formatting = small_format,         
+    formatting = small_format,
     experimental = {
         ghost_text = true
     }
@@ -105,7 +105,33 @@ cmp.setup({
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
-    mapping = small_mapping,
+    mapping = cmp.mapping.preset.insert({
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-u>'] = cmp.mapping.scroll_docs(4),
+        ['<S-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.confirm({ select = true })
+            else
+                fallback()
+            end
+        end),
+        ['<C-j>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                fallback()
+            end
+        end),
+        ['<C-k>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                fallback()
+            end
+        end),
+    }),
     sources = cmp.config.sources({
         { name = 'git' }, -- You can specify the `cmp_git` source if you have installed it.
     }, {

@@ -9,15 +9,15 @@ local function on_attach(client, bufnr)
     -- Show diagnostics for current line
     vim.keymap.set('n', 'go', vim.diagnostic.open_float, bufopts)
     -- Jump between diagnostic messages
-    vim.keymap.set('n', '<leader>cj', vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set('n', '<leader>ck', vim.diagnostic.goto_prev, bufopts)
+    vim.keymap.set('n', '<leader>lj', vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set('n', '<leader>lk', vim.diagnostic.goto_prev, bufopts)
 
-    vim.keymap.set('n', '<leader>ct', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', 'gR', vim.lsp.buf.references, bufopts)
     -- Rename symbol under cursor
-    vim.keymap.set('n', '<leader>cn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
 end
 
 -- Set up lspconfig.
@@ -44,6 +44,13 @@ lspconf['sumneko_lua'].setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
+
+-- comes with clang I think (sudo _ install clang)
+lspconf['clangd'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
 
 -- custom stuff
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

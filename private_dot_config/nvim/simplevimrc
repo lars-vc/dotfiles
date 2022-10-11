@@ -26,7 +26,6 @@ set timeoutlen=555      " for whichkey to show up quicker
 "===========================================================
 "--------------------------Keymaps--------------------------
 "===========================================================
-inoremap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 " navigating plugins

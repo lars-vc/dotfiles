@@ -129,7 +129,6 @@ export EDITOR=nvim
 # aliases
 alias unt='cd /mnt/data/Ugent'
 alias clip='xclip -selection clipboard'
-alias extract='dtrx -n'
 alias rr='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias nv='nvim'

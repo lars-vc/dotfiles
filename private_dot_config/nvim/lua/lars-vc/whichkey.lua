@@ -24,6 +24,7 @@ whichkey.setup {
 }
 whichkey.register({
     ["<leader>"] = {
+        ["<leader>"] = "save all",
         f = {
             name = "+telescope",
             f = "find a file",
@@ -45,12 +46,20 @@ whichkey.register({
                 b = "builtin pickers",
             }
         },
-        c = {
+        l = {
             name = "+lsp",
             t = "goto type-definition",
             j = "goto next diagnostic",
             k = "goto prev diagnostic",
+            a = "code actions",
             n = "rename",
+            l = "workspace diagnostic",
+            d = "document diagnostic",
+            x = "close trouble",
+            r = "refresh trouble results",
+            q = "trouble quickfix",
+            c = "trouble loclist",
+            i = "trouble todo-list",
         },
         d = {
             name = "+vimspector",
@@ -143,15 +152,6 @@ whichkey.register({
         },
         p = "paste from clip",
         P = "Paste from clip",
-        t = {
-            name = "+trouble",
-            t = "workspace diagnostic",
-            d = "document diagnostic",
-            x = "close trouble",
-            r = "refresh results",
-            q = "quickfix list",
-            l = "loclist",
-        }
     },
     [","] = {
         f = "harpoon item 1",
@@ -169,8 +169,8 @@ whichkey.register({
         i = "goto implementation",
         d = "goto definition",
         D = "goto declaration",
-        h = "show documentation",
-        o = "show diagnostic",
+        h = "expand documentation",
+        o = "expand diagnostic",
     },
 }, { mode = "n" })
 

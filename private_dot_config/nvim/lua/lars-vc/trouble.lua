@@ -49,22 +49,22 @@ require("trouble").setup(
 )
 
 -- Keymaps
-vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+vim.keymap.set("n", "<leader>ll", "<cmd>TroubleToggle workspace_diagnostics<cr>",
     { silent = true, noremap = true }
 )
-vim.keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>",
+vim.keymap.set("n", "<leader>ld", "<cmd>TroubleToggle document_diagnostics<cr>",
     { silent = true, noremap = true }
 )
-vim.keymap.set("n", "<leader>tr", "<cmd>TroubleRefresh<cr>",
+vim.keymap.set("n", "<leader>lr", "<cmd>TroubleRefresh<cr>",
     { silent = true, noremap = true }
 )
-vim.keymap.set("n", "<leader>tx", "<cmd>TroubleClose<cr>",
+vim.keymap.set("n", "<leader>lx", "<cmd>TroubleClose<cr>",
     { silent = true, noremap = true }
 )
-vim.keymap.set("n", "<leader>tl", "<cmd>TroubleToggle loclist<cr>",
+vim.keymap.set("n", "<leader>lc", "<cmd>TroubleToggle loclist<cr>",
     { silent = true, noremap = true }
 )
-vim.keymap.set("n", "<leader>tq", "<cmd>TroubleToggle quickfix<cr>",
+vim.keymap.set("n", "<leader>lq", "<cmd>TroubleToggle quickfix<cr>",
     { silent = true, noremap = true }
 )
 vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<cr>",

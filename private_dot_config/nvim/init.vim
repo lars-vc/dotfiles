@@ -45,19 +45,21 @@ set signcolumn=yes
 " inoremap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-" moving around in autocomplete window
-" inoremap <expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-J>"
-" inoremap <expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-K>"
+nnoremap <leader><leader> :wa<CR>
 " moving in insert mode
 inoremap <A-h> <Left>
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
 inoremap <A-l> <Right>
 " moving around windows
-nnoremap <A-H> <C-w>h
-nnoremap <A-J> <C-w>j
-nnoremap <A-K> <C-w>k
-nnoremap <A-L> <C-w>l
+" nnoremap <A-H> <C-w>h
+" nnoremap <A-J> <C-w>j
+" nnoremap <A-K> <C-w>k
+" nnoremap <A-L> <C-w>l
+nnoremap <C-H> <C-w>h
+nnoremap <C-J> <C-w>j
+nnoremap <C-K> <C-w>k
+nnoremap <C-L> <C-w>l
 " creating and moving the splits
 nnoremap <leader>sv :vsplit<CR>
 nnoremap <leader>ss :split<CR>
@@ -157,10 +159,7 @@ Plug 'tpope/vim-surround'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 " --Commenting (gcc)--
-" Plug 'tpope/vim-commentary'
 Plug 'numToStr/Comment.nvim'
-" --Git stuff--
-" Plug 'airblade/vim-gitgutter'
 " --Wakatime--
 Plug 'wakatime/vim-wakatime'
 " --Debugger--
@@ -204,6 +203,8 @@ Plug 'ziontee113/color-picker.nvim'
 Plug 'rhysd/vim-grammarous'
 " --Diagnostics list--
 Plug 'folke/trouble.nvim'
+" --Better todo comments--
+Plug 'folke/todo-comments.nvim'
 call plug#end()
 " load lua files
 lua require('lars-vc')
