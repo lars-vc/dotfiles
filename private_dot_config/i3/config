@@ -215,6 +215,8 @@ bindsym $mod+r mode "Resize"
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+# run autorandr
+bindsym $mod+Shift+a exec autorandr --change
 
 # list all keybinds
 bindsym $mod+Control+k exec --no-startup-id ~/.config/i3/i3scripts/keybinds.sh
@@ -235,7 +237,8 @@ for_window [class="Blueberry.py"] floating enable, border pixel 0
 # shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
 exec systemctl --user stop pipewire.socket
 # setup second monitor
-exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
+#exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
+exec autorandr --change
 # start notification daemon
 exec dunst &
 # refresh time based wallpaper 

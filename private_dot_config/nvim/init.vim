@@ -35,6 +35,7 @@ set textwidth=0         " no autowrapping at end of line
 set cursorline          " line highlighting the current line
 set updatetime=100      " updatetime for statusbar
 set noshowmode          " dont show default statusbar
+set conceallevel=3      " conceallevel for markdown
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
 autocmd FileType * setlocal formatoptions-=o " disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
@@ -118,8 +119,8 @@ call plug#begin('~/.config/nvim/plugged')
 " --Optimisation--
 Plug 'lewis6991/impatient.nvim'
 " --Theme--
-Plug 'marko-cerovac/material.nvim'
-" Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+" Plug 'marko-cerovac/material.nvim'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " --Telescope--
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -157,7 +158,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'tpope/vim-surround'
 " --Treeshitter--
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-context'
+" Plug 'nvim-treesitter/nvim-treesitter-context'
 " --Commenting (gcc)--
 Plug 'numToStr/Comment.nvim'
 " --Wakatime--
@@ -205,16 +206,20 @@ Plug 'rhysd/vim-grammarous'
 Plug 'folke/trouble.nvim'
 " --Better todo comments--
 Plug 'folke/todo-comments.nvim'
+" --Latex notetaking--
+Plug 'jbyuki/nabla.nvim'
+" --Navigation bar--
+Plug 'SmiteshP/nvim-navic'
 call plug#end()
+
 " load lua files
 lua require('lars-vc')
 "===========================================================
 "--------------------------Colors---------------------------
 "===========================================================
-colorscheme material
-let g:material_style = 'oceanic'
-highlight CursorLine guibg=#2e3d45 " set color of cursorline
-highlight Cursor guifg=black guibg=white " set color of cursor
+colorscheme catppuccin
+" highlight CursorLine guibg=#2e3d45 " set color of cursorline
+" highlight Cursor guifg=black guibg=white " set color of cursor
 
 " Telescope styling
 highlight TelescopePromptTitle guifg=#1b1f27 guibg=#e06c75
@@ -243,10 +248,11 @@ highlight WhichKey guifg=#009688 gui=bold
 highlight WhichKeyGroup guifg=#717CB4
 highlight WhichKeyDesc guifg=#B0BEC5 gui=italic
 highlight WhichKeySeparator guifg=#F07178
-highlight FloatBorder guibg=#252931
+highlight WhichkeyBorder guibg=#252931
+" highlight FloatBorder guibg=#252931
 " Treesitter context styling
-highlight TreesitterContext guibg=#252931
-highlight TreesitterContextLineNumber guifg=#B0BEC5 guibg=#252931
+" highlight TreesitterContext guibg=#252931
+" highlight TreesitterContextLineNumber guifg=#B0BEC5 guibg=#252931
 "NORMAL: guifg=#B0BEC5 guibg=#263238
 "===========================================================
 "-----------------------Plugin Setups-----------------------
@@ -431,18 +437,18 @@ autocmd FileType vimwiki setlocal spell
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
 "
 "//////////////////////////Grammar\\\\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap <leader>zg :GrammarousCheck<CR>
-nnoremap <leader>zr :GrammarousReset<CR>
-" take first spellingfix
-nnoremap <leader>zz 1z=
+" nnoremap <leader>zg :GrammarousCheck<CR>
+" nnoremap <leader>zr :GrammarousReset<CR>
+" " take first spellingfix
+" nnoremap <leader>zz 1z=
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
 
 "///////////////////////////Ranger\\\\\\\\\\\\\\\\\\\\\\\\\\\
-let g:rnvimr_enable_picker = 1 " Make Ranger to be hidden after picking a file
-let g:rnvimr_urc_path = '~/.config/ranger'
-nnoremap <leader>rr :RnvimrToggle<CR>
-nnoremap <silent> <M-r> :RnvimrToggle<CR>
-tnoremap <silent> <M-r> <C-\><C-n>:RnvimrToggle<CR>
+" let g:rnvimr_enable_picker = 1 " Make Ranger to be hidden after picking a file
+" let g:rnvimr_urc_path = '~/.config/ranger'
+" nnoremap <leader>rr :RnvimrToggle<CR>
+" nnoremap <silent> <M-r> :RnvimrToggle<CR>
+" tnoremap <silent> <M-r> <C-\><C-n>:RnvimrToggle<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\\\\\______///////////////////////////
 
 "//////////////////////////Other\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -456,5 +462,5 @@ au FileType perl set filetype=prolog
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
 let g:Hexokinase_highlighters = ['virtual']
 " auto format on save
-autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre * lua vim.lsp.buf.format()
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_____////////////////////////////
