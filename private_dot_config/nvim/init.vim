@@ -36,8 +36,8 @@ set cursorline          " line highlighting the current line
 set updatetime=100      " updatetime for statusbar
 set noshowmode          " dont show default statusbar
 set conceallevel=3      " conceallevel for markdown
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
+" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
+" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
 autocmd FileType * setlocal formatoptions-=o " disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
 set signcolumn=yes
 "===========================================================
@@ -119,7 +119,7 @@ call plug#begin('~/.config/nvim/plugged')
 " --Optimisation--
 Plug 'lewis6991/impatient.nvim'
 " --Theme--
-" Plug 'marko-cerovac/material.nvim'
+Plug 'marko-cerovac/material.nvim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " --Telescope--
 Plug 'nvim-lua/plenary.nvim'
@@ -158,7 +158,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'tpope/vim-surround'
 " --Treeshitter--
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 " --Commenting (gcc)--
 Plug 'numToStr/Comment.nvim'
 " --Wakatime--
@@ -208,8 +208,6 @@ Plug 'folke/trouble.nvim'
 Plug 'folke/todo-comments.nvim'
 " --Latex notetaking--
 Plug 'jbyuki/nabla.nvim'
-" --Navigation bar--
-Plug 'SmiteshP/nvim-navic'
 call plug#end()
 
 " load lua files
@@ -218,6 +216,7 @@ lua require('lars-vc')
 "--------------------------Colors---------------------------
 "===========================================================
 colorscheme catppuccin
+" colorscheme material
 " highlight CursorLine guibg=#2e3d45 " set color of cursorline
 " highlight Cursor guifg=black guibg=white " set color of cursor
 
@@ -243,13 +242,14 @@ highlight TelescopeSelection guifg=#B0BEC5 guibg=#252931
 " highlight CocErrFloat guibg=#252931
 
 " WhichKey styling
-highlight WhichKeyFloat guibg=#252931
-highlight WhichKey guifg=#009688 gui=bold
-highlight WhichKeyGroup guifg=#717CB4
-highlight WhichKeyDesc guifg=#B0BEC5 gui=italic
-highlight WhichKeySeparator guifg=#F07178
-highlight WhichkeyBorder guibg=#252931
+" highlight WhichKeyFloat guibg=#252931
+" highlight WhichKey guifg=#009688 gui=bold
+" highlight WhichKeyGroup guifg=#717CB4
+" highlight WhichKeyDesc guifg=#B0BEC5 gui=italic
+" highlight WhichKeySeparator guifg=#F07178
+" highlight WhichkeyBorder guibg=#252931
 " highlight FloatBorder guibg=#252931
+
 " Treesitter context styling
 " highlight TreesitterContext guibg=#252931
 " highlight TreesitterContextLineNumber guifg=#B0BEC5 guibg=#252931
@@ -322,27 +322,27 @@ highlight WhichkeyBorder guibg=#252931
 "\\\\\\\\\\\\\\\\\\\\\\\\\\\___/////////////////////////////
 
 "/////////////////////////Telescope\\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fc <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fn <cmd>Telescope neoclip plus<cr><Esc>
-nnoremap <leader>fi <cmd>Telescope find_files cwd=~/.config/nvim prompt_title=VimRC<cr>
-nnoremap <leader>fp <cmd>Telescope planets<cr>
-nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
-" help related
-nnoremap <leader>fhh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fhc <cmd>Telescope command_history<cr>
-nnoremap <leader>fhs <cmd>Telescope search_history<cr>
-nnoremap <leader>fhm <cmd>Telescope man_pages<cr>
-nnoremap <leader>fhk <cmd>Telescope keymaps<cr>
-nnoremap <leader>fho <cmd>Telescope vim_options<cr>
-nnoremap <leader>fhr <cmd>Telescope reloader<cr>
-nnoremap <leader>fhb <cmd>Telescope builtin<cr>
-" git related stuff
-nnoremap <leader>gfc <cmd>Telescope git_commits<cr><esc>
-nnoremap <leader>gfb <cmd>Telescope git_bcommits<cr><esc>
-nnoremap <leader>gb <cmd>Telescope git_branches<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fc <cmd>Telescope current_buffer_fuzzy_find<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fn <cmd>Telescope neoclip plus<cr><Esc>
+" nnoremap <leader>fi <cmd>Telescope find_files cwd=~/.config/nvim prompt_title=VimRC<cr>
+" nnoremap <leader>fp <cmd>Telescope planets<cr>
+" nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
+" " help related
+" nnoremap <leader>fhh <cmd>Telescope help_tags<cr>
+" nnoremap <leader>fhc <cmd>Telescope command_history<cr>
+" nnoremap <leader>fhs <cmd>Telescope search_history<cr>
+" nnoremap <leader>fhm <cmd>Telescope man_pages<cr>
+" nnoremap <leader>fhk <cmd>Telescope keymaps<cr>
+" nnoremap <leader>fho <cmd>Telescope vim_options<cr>
+" nnoremap <leader>fhr <cmd>Telescope reloader<cr>
+" nnoremap <leader>fhb <cmd>Telescope builtin<cr>
+" " git related stuff
+" nnoremap <leader>gfc <cmd>Telescope git_commits<cr><esc>
+" nnoremap <leader>gfb <cmd>Telescope git_bcommits<cr><esc>
+" nnoremap <leader>gb <cmd>Telescope git_branches<cr>
 "\\\\\\\\\\\\\\\\\\\\\\\\\_________/////////////////////////
 
 "////////////////////////Vimspector\\\\\\\\\\\\\\\\\\\\\\\\\

@@ -18,7 +18,7 @@ whichkey.setup {
         ["<tab>"] = "TAB",
     },
     window = {
-        border = "double"
+        --border = "double"
     }
 
 }

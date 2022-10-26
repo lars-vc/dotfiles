@@ -30,7 +30,7 @@ navic.setup {
         TypeParameter = " ",
     },
     highlight = true,
-    separator = " > ",
-    depth_limit = 0,
+    separator = " » ",
+    depth_limit = 7,
     depth_limit_indicator = "..",
 }

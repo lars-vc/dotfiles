@@ -21,7 +21,9 @@ local function on_attach(client, bufnr)
     vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
     -- Navic
-    navic.attach(client, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 end
 
 -- Set up lspconfig.
@@ -47,7 +49,27 @@ lspconf['rust_analyzer'].setup {
 
 lspconf['sumneko_lua'].setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
 }
 
 -- comes with clang I think (sudo _ install clang)
