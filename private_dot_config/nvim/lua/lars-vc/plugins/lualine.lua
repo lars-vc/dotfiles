@@ -11,6 +11,7 @@ local function getPos()
 end
 
 -- setup
+local navic = require("nvim-navic")
 require('lualine').setup {
     options = {
         icons_enabled = true,
@@ -19,7 +20,7 @@ require('lualine').setup {
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
             statusline = {},
-            winbar = {},
+            winbar = { 'Trouble', 'fugitive', 'neotest-summary' },
         },
         ignore_focus = {},
         always_divide_middle = true,
@@ -32,7 +33,7 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diagnostics' },
+        lualine_b = { 'diagnostics' },
         lualine_c = { 'filename' },
         lualine_x = { 'diff', 'encoding', 'fileformat', 'filetype' },
         lualine_y = { { getWords } },
@@ -47,7 +48,27 @@ require('lualine').setup {
         lualine_z = {}
     },
     tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = { 'fugitive' }
+    winbar = {
+        lualine_a = {},
+        lualine_b = { { function()
+            return "Navic"
+        end } },
+        lualine_c = {
+            { navic.get_location, cond = navic.is_available }
+        },
+        lualine_x = {},
+        lualine_y = { 'branch', 'filesize' },
+        lualine_z = {}
+    },
+    inactive_winbar = {
+        lualine_a = {},
+        lualine_b = { { function()
+            return "Navic"
+        end } },
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+    },
+    extensions = {}
 }

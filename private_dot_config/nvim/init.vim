@@ -130,8 +130,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
 " --Vim-Fugitive--
 Plug 'tpope/vim-fugitive'
-" Plug 'kdheepak/lazygit.nvim'
-" --COC--
+Plug 'lewis6991/gitsigns.nvim'
+" --LSP--
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -158,7 +158,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'tpope/vim-surround'
 " --Treeshitter--
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-context'
+" Plug 'nvim-treesitter/nvim-treesitter-context'
 " --Commenting (gcc)--
 Plug 'numToStr/Comment.nvim'
 " --Wakatime--
@@ -208,6 +208,14 @@ Plug 'folke/trouble.nvim'
 Plug 'folke/todo-comments.nvim'
 " --Latex notetaking--
 Plug 'jbyuki/nabla.nvim'
+" --Navic--
+Plug 'SmiteshP/nvim-navic'
+" --Neotest--
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-python'
+Plug 'nvim-neotest/neotest-go'
+Plug 'haydenmeade/neotest-jest'
+Plug 'rouge8/neotest-rust'
 call plug#end()
 
 " load lua files
@@ -378,6 +386,7 @@ nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>go :Git pull<CR>
 nnoremap <leader>gP :Git push --set-upstream origin HEAD<CR>
 nnoremap <leader>gc :Git commit -a -m ""<Left>
+nnoremap <leader>ga :!git config --global --add safe.directory <C-R>=getcwd()<CR><CR>
 autocmd User FugitiveIndex nmap <buffer> <A-j> )
 autocmd User FugitiveIndex nmap <buffer> <A-k> (
 autocmd User FugitiveIndex nmap <buffer> <Tab> =

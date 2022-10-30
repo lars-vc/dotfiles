@@ -36,6 +36,7 @@ require("catppuccin").setup {
         lsp_trouble = true,
         which_key = true,
         vimwiki = true,
+        gitsigns = true,
         native_lsp = {
             enabled = true,
             virtual_text = {
@@ -50,6 +51,10 @@ require("catppuccin").setup {
                 warnings = { "underline" },
                 information = { "underline" },
             },
+        },
+        navic = {
+            enabled = true,
+            custom_bg = "#181825",
         },
     }
 }
