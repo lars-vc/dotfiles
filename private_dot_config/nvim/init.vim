@@ -8,102 +8,102 @@
 "===========================================================
 "---------------------------Basic---------------------------
 "===========================================================
-syntax on               " enables syntax highlighting
-set termguicolors       " better colors
-set tabstop=4           " number of spaces in a <Tab>
-set shiftwidth=4        "
-set softtabstop=4       "
-set expandtab           "
-set smartindent         " enable autoindents
-set number              " adds line numbers
-set relativenumber      " relative numbers in sidebar
-set numberwidth=4       " columns used for the line number
-set incsearch           " highlighting matched strings while searching
-set nohlsearch          " no remaining highlights on search
-set noea                " splitting windows
-set hidden              " navigate buffers without losing unsaved work
-set scrolloff=8         " start scrolling when 8 lines from top or bottom
-set undofile            " save undo history
-set mouse=a             " enable mouse support
-set ignorecase          " case insensitive search unless capital letters are used
-set smartcase           "
-set nrformats+=alpha    " increment letters
-set timeoutlen=555      " for whichkey to show up quicker
-set spelllang=en,nl     " spelling for certain files
-set fcs=eob:\           " hide tildes ~ at end of file
-set textwidth=0         " no autowrapping at end of line
-set cursorline          " line highlighting the current line
-set updatetime=100      " updatetime for statusbar
-set noshowmode          " dont show default statusbar
-set conceallevel=3      " conceallevel for markdown
-" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
-" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
-autocmd FileType * setlocal formatoptions-=o " disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
-set signcolumn=yes
+" syntax on               " enables syntax highlighting
+" set termguicolors       " better colors
+" set tabstop=4           " number of spaces in a <Tab>
+" set shiftwidth=4        "
+" set softtabstop=4       "
+" set expandtab           "
+" set smartindent         " enable autoindents
+" set number              " adds line numbers
+" set relativenumber      " relative numbers in sidebar
+" set numberwidth=4       " columns used for the line number
+" set incsearch           " highlighting matched strings while searching
+" set nohlsearch          " no remaining highlights on search
+" set noea                " splitting windows
+" set hidden              " navigate buffers without losing unsaved work
+" set scrolloff=8         " start scrolling when 8 lines from top or bottom
+" set undofile            " save undo history
+" set mouse=a             " enable mouse support
+" set ignorecase          " case insensitive search unless capital letters are used
+" set smartcase           "
+" set nrformats+=alpha    " increment letters
+" set timeoutlen=555      " for whichkey to show up quicker
+" set spelllang=en,nl     " spelling for certain files
+" set fcs=eob:\           " hide tildes ~ at end of file
+" set textwidth=0         " no autowrapping at end of line
+" set cursorline          " line highlighting the current line
+" set updatetime=100      " updatetime for statusbar
+" set noshowmode          " dont show default statusbar
+" set conceallevel=3      " conceallevel for markdown
+" " let &t_8f="\<Esc>[38;2;%lu;%lu;%lum" " color fix for tmux
+" " let &t_8b="\<Esc>[48;2;%lu;%lu;%lum" " color fix for tmux
+" autocmd FileType * setlocal formatoptions-=o " disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
+" set signcolumn=yes
 "===========================================================
 "--------------------------Keymaps--------------------------
 "===========================================================
-" inoremap jk <Esc>
-nnoremap <SPACE> <Nop>
-let mapleader = " "
-nnoremap <leader><leader> :wa<CR>
-" moving in insert mode
-inoremap <A-h> <Left>
-inoremap <A-j> <Down>
-inoremap <A-k> <Up>
-inoremap <A-l> <Right>
-" moving around windows
-" nnoremap <A-H> <C-w>h
-" nnoremap <A-J> <C-w>j
-" nnoremap <A-K> <C-w>k
-" nnoremap <A-L> <C-w>l
-nnoremap <C-H> <C-w>h
-nnoremap <C-J> <C-w>j
-nnoremap <C-K> <C-w>k
-nnoremap <C-L> <C-w>l
-" creating and moving the splits
-nnoremap <leader>sv :vsplit<CR>
-nnoremap <leader>ss :split<CR>
-nnoremap <leader>sx <C-w>x
-" searching centers the line
-nnoremap n nzzzv
-nnoremap N Nzzzv
-" closing stuff
-nnoremap <leader>xt :wa<cr>:tabclose<cr>
-nnoremap <leader>xx :wa<cr>:qa<cr>
-nnoremap <leader>xq :qa!<cr>
-" cheatsheet (outdated)
-:command Cheat tabedit ~/.config/nvim/cheatsheet.vim
-" undo breakpoints
-inoremap . .<C-g>u
-inoremap , ,<C-g>u
-" moving text
-nnoremap <A-k> :m .-2<CR>
-nnoremap <A-j> :m .+1<CR>
-vnoremap <A-j> :m '>+1<CR>gv
-vnoremap <A-k> :m '<-2<CR>gv
-nnoremap <A-l> >>
-nnoremap <A-h> <<
-vnoremap <A-h> :<<CR>gv
-vnoremap <A-l> :><CR>gv
-" moving around in command mode
-cnoremap <A-h> <Left>
-cnoremap <A-j> <Down>
-cnoremap <A-k> <Up>
-cnoremap <A-l> <Right>
-" creating files
-nnoremap <leader>ot :!touch <C-R>=getcwd()<CR>/
-nnoremap <leader>oe :edit <C-R>=getcwd()<CR>/
-nnoremap <leader>od :!mkdir -p <C-R>=getcwd()<CR>/
-nnoremap <leader>om :!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/
-nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
-" easy spell correct
-inoremap <C-z> <C-g>u<Esc>[s1z=`]a<C-g>u
-nnoremap <BS> <C-^>
-" nnoremap <leader>p "_dP
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>d "_d
+" " inoremap jk <Esc>
+" nnoremap <SPACE> <Nop>
+" let mapleader = " "
+" nnoremap <leader><leader> :wa<CR>
+" " moving in insert mode
+" inoremap <A-h> <Left>
+" inoremap <A-j> <Down>
+" inoremap <A-k> <Up>
+" inoremap <A-l> <Right>
+" " moving around windows
+" " nnoremap <A-H> <C-w>h
+" " nnoremap <A-J> <C-w>j
+" " nnoremap <A-K> <C-w>k
+" " nnoremap <A-L> <C-w>l
+" nnoremap <C-H> <C-w>h
+" nnoremap <C-J> <C-w>j
+" nnoremap <C-K> <C-w>k
+" nnoremap <C-L> <C-w>l
+" " creating and moving the splits
+" nnoremap <leader>sv :vsplit<CR>
+" nnoremap <leader>ss :split<CR>
+" nnoremap <leader>sx <C-w>x
+" " searching centers the line
+" nnoremap n nzzzv
+" nnoremap N Nzzzv
+" " closing stuff
+" nnoremap <leader>xt :wa<cr>:tabclose<cr>
+" nnoremap <leader>xx :wa<cr>:qa<cr>
+" nnoremap <leader>xq :qa!<cr>
+" " cheatsheet (outdated)
+" :command Cheat tabedit ~/.config/nvim/cheatsheet.vim
+" " undo breakpoints
+" inoremap . .<C-g>u
+" inoremap , ,<C-g>u
+" " moving text
+" nnoremap <A-k> :m .-2<CR>
+" nnoremap <A-j> :m .+1<CR>
+" vnoremap <A-j> :m '>+1<CR>gv
+" vnoremap <A-k> :m '<-2<CR>gv
+" nnoremap <A-l> >>
+" nnoremap <A-h> <<
+" vnoremap <A-h> :<<CR>gv
+" vnoremap <A-l> :><CR>gv
+" " moving around in command mode
+" cnoremap <A-h> <Left>
+" cnoremap <A-j> <Down>
+" cnoremap <A-k> <Up>
+" cnoremap <A-l> <Right>
+" " creating files
+" nnoremap <leader>ot :!touch <C-R>=getcwd()<CR>/
+" nnoremap <leader>oe :edit <C-R>=getcwd()<CR>/
+" nnoremap <leader>od :!mkdir -p <C-R>=getcwd()<CR>/
+" nnoremap <leader>om :!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/
+" nnoremap <leader>or :!rm -r <C-R>=getcwd()<CR>/
+" " easy spell correct
+" inoremap <C-z> <C-g>u<Esc>[s1z=`]a<C-g>u
+" nnoremap <BS> <C-^>
+" " nnoremap <leader>p "_dP
+" nnoremap <leader>p "+p
+" nnoremap <leader>P "+P
+" vnoremap <leader>d "_d
 "===========================================================
 "--------------------------Plugins--------------------------
 "===========================================================
@@ -119,7 +119,6 @@ call plug#begin('~/.config/nvim/plugged')
 " --Optimisation--
 Plug 'lewis6991/impatient.nvim'
 " --Theme--
-Plug 'marko-cerovac/material.nvim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " --Telescope--
 Plug 'nvim-lua/plenary.nvim'
@@ -132,10 +131,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 " --LSP--
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
-" Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -145,11 +141,6 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'petertriho/cmp-git'
 Plug 'onsails/lspkind-nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
-" --Nerd tree--
-" Plug 'preservim/nerdtree'
-" --Tree icons--
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'ryanoasis/vim-devicons'
 " --Better scrolling--
 Plug 'psliwka/vim-smoothie'
 " --Auto pairs--
@@ -171,8 +162,6 @@ Plug 'tpope/vim-repeat'
 " --Neoclip--
 Plug 'AckslD/nvim-neoclip.lua'
 " Plug 'tami5/sqlite.lua'
-" --TagBar--
-" Plug 'preservim/tagbar'
 " --WhichKey--
 Plug 'folke/which-key.nvim'
 " --Aligning text--
@@ -190,8 +179,6 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " --Ranger--
 Plug 'kevinhwang91/rnvimr'
-" --Multicursor--
-" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " --colorize hexcodes--
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " --Personal wiki--
@@ -216,6 +203,10 @@ Plug 'nvim-neotest/neotest-python'
 Plug 'nvim-neotest/neotest-go'
 Plug 'haydenmeade/neotest-jest'
 Plug 'rouge8/neotest-rust'
+" --Hovering--
+Plug 'lewis6991/hover.nvim'
+" --Better codeaction--
+Plug 'weilbith/nvim-code-action-menu'
 call plug#end()
 
 " load lua files
@@ -380,69 +371,69 @@ xmap <leader>di <Plug>VimspectorBalloonEval
 "\\\\\\\\\\\\\\\\\\\\\\\\__________/////////////////////////
 
 "///////////////////////Vim-fugitive\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap <leader>gg :Git 
-nnoremap <leader>gs :Git<CR>
-nnoremap <leader>gp :Git push<CR>
-nnoremap <leader>go :Git pull<CR>
-nnoremap <leader>gP :Git push --set-upstream origin HEAD<CR>
-nnoremap <leader>gc :Git commit -a -m ""<Left>
-nnoremap <leader>ga :!git config --global --add safe.directory <C-R>=getcwd()<CR><CR>
-autocmd User FugitiveIndex nmap <buffer> <A-j> )
-autocmd User FugitiveIndex nmap <buffer> <A-k> (
-autocmd User FugitiveIndex nmap <buffer> <Tab> =
-" for merge conflicts (pick left or right), to start comparing go into status and press dv on a file
-nnoremap <leader>gh :diffget //2<CR>
-nnoremap <leader>gl :diffget //3<CR>
+" nnoremap <leader>gg :Git 
+" nnoremap <leader>gs :Git<CR>
+" nnoremap <leader>gp :Git push<CR>
+" nnoremap <leader>go :Git pull<CR>
+" nnoremap <leader>gP :Git push --set-upstream origin HEAD<CR>
+" nnoremap <leader>gc :Git commit -a -m ""<Left>
+" nnoremap <leader>ga :!git config --global --add safe.directory <C-R>=getcwd()<CR><CR>
+" autocmd User FugitiveIndex nmap <buffer> <A-j> )
+" autocmd User FugitiveIndex nmap <buffer> <A-k> (
+" autocmd User FugitiveIndex nmap <buffer> <Tab> =
+" " for merge conflicts (pick left or right), to start comparing go into status and press dv on a file
+" nnoremap <leader>gh :diffget //2<CR>
+" nnoremap <leader>gl :diffget //3<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\____________////////////////////////
 
 "/////////////////////////Markdown\\\\\\\\\\\\\\\\\\\\\\\\\\
-" need to be in the markdown buffer for these to work
-nnoremap <leader>mpo :MarkdownPreview<CR>
-nnoremap <leader>mpc :MarkdownPreviewStop<CR>
-nnoremap <leader>mpp :MarkdownPreviewToggle<CR>
-nnoremap <leader>mh  :HeaderDecrease<CR>
-nnoremap <leader>ml  :HeaderIncrease<CR>
-xnoremap <leader>mh  :HeaderDecrease<CR>
-xnoremap <leader>ml  :HeaderIncrease<CR>
-nnoremap <leader>mt  :TableFormat<CR>
-nnoremap <leader>mii :InsertToc<CR>
-nnoremap <leader>min :InsertNToc<CR>
-nnoremap <leader>mic :InsertToc
-" Table mode
-let g:table_mode_map_prefix = '<Leader>ma'
-" Tabular
-xnoremap <leader>t :Tabular /
-let g:vim_markdown_conceal_code_blocks = 0
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_edit_url_in = 'tab'
-let g:vim_markdown_folding_style_pythonic = 1
-let g:vim_markdown_follow_anchor = 1
-let g:vim_markdown_strikethrough = 1
-" Turn on spelling only for that buffer
-autocmd FileType markdown setlocal spell
-autocmd FileType markdown setlocal dictionary+=/usr/share/dict/words
-autocmd FileType markdown setlocal dictionary+=/usr/share/dict/dutch
+" " need to be in the markdown buffer for these to work
+" nnoremap <leader>mpo :MarkdownPreview<CR>
+" nnoremap <leader>mpc :MarkdownPreviewStop<CR>
+" nnoremap <leader>mpp :MarkdownPreviewToggle<CR>
+" nnoremap <leader>mh  :HeaderDecrease<CR>
+" nnoremap <leader>ml  :HeaderIncrease<CR>
+" xnoremap <leader>mh  :HeaderDecrease<CR>
+" xnoremap <leader>ml  :HeaderIncrease<CR>
+" nnoremap <leader>mt  :TableFormat<CR>
+" nnoremap <leader>mii :InsertToc<CR>
+" nnoremap <leader>min :InsertNToc<CR>
+" nnoremap <leader>mic :InsertToc
+" " Table mode
+" let g:table_mode_map_prefix = '<Leader>ma'
+" " Tabular
+" xnoremap <leader>t :Tabular /
+" let g:vim_markdown_conceal_code_blocks = 0
+" let g:vim_markdown_new_list_item_indent = 0
+" let g:vim_markdown_edit_url_in = 'tab'
+" let g:vim_markdown_folding_style_pythonic = 1
+" let g:vim_markdown_follow_anchor = 1
+" let g:vim_markdown_strikethrough = 1
+" " Turn on spelling only for that buffer
+" autocmd FileType markdown setlocal spell
+" autocmd FileType markdown setlocal dictionary+=/usr/share/dict/words
+" autocmd FileType markdown setlocal dictionary+=/usr/share/dict/dutch
 "\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
 
 "//////////////////////////Harpoon\\\\\\\\\\\\\\\\\\\\\\\\\\
-nnoremap , m
-nnoremap m <NOP>
-nnoremap mm :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap mq :lua require("harpoon.mark").add_file()<CR>
-nnoremap mf :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap md :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap ms :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap ma :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap mj :lua require("harpoon.ui").nav_file(5)<CR>
-nnoremap mk :lua require("harpoon.ui").nav_file(6)<CR>
-nnoremap ml :lua require("harpoon.ui").nav_file(7)<CR>
+" nnoremap , m
+" nnoremap m <NOP>
+" nnoremap mm :lua require("harpoon.ui").toggle_quick_menu()<CR>
+" nnoremap mq :lua require("harpoon.mark").add_file()<CR>
+" nnoremap mf :lua require("harpoon.ui").nav_file(1)<CR>
+" nnoremap md :lua require("harpoon.ui").nav_file(2)<CR>
+" nnoremap ms :lua require("harpoon.ui").nav_file(3)<CR>
+" nnoremap ma :lua require("harpoon.ui").nav_file(4)<CR>
+" nnoremap mj :lua require("harpoon.ui").nav_file(5)<CR>
+" nnoremap mk :lua require("harpoon.ui").nav_file(6)<CR>
+" nnoremap ml :lua require("harpoon.ui").nav_file(7)<CR>
 "\\\\\\\\\\\\\\\\\\\\\\\\\________//////////////////////////
 
 "//////////////////////////VimWiki\\\\\\\\\\\\\\\\\\\\\\\\\\\
-" Dont convert every markdown file to a vimwiki format
-let g:vimwiki_global_ext = 0
-" Turn on spelling only for that buffer
-autocmd FileType vimwiki setlocal spell
+" " Dont convert every markdown file to a vimwiki format
+" let g:vimwiki_global_ext = 0
+" " Turn on spelling only for that buffer
+" autocmd FileType vimwiki setlocal spell
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_______///////////////////////////
 "
 "//////////////////////////Grammar\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -461,15 +452,15 @@ autocmd FileType vimwiki setlocal spell
 "\\\\\\\\\\\\\\\\\\\\\\\\\\\______///////////////////////////
 
 "//////////////////////////Other\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-" Gitgutter
-" :au VimEnter * :GitGutterSignsDisable
-" Nerd tree icons
-" set conceallevel=3
-" Prolog
-au FileType perl set filetype=prolog
-" highlight yanked region
-autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
-let g:Hexokinase_highlighters = ['virtual']
-" auto format on save
-autocmd BufWritePre * lua vim.lsp.buf.format()
+" " Gitgutter
+" " :au VimEnter * :GitGutterSignsDisable
+" " Nerd tree icons
+" " set conceallevel=3
+" " Prolog
+" au FileType perl set filetype=prolog
+" " highlight yanked region
+" autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=125}
+" let g:Hexokinase_highlighters = ['virtual']
+" " auto format on save
+" autocmd BufWritePre * lua vim.lsp.buf.format()
 "\\\\\\\\\\\\\\\\\\\\\\\\\\_____////////////////////////////

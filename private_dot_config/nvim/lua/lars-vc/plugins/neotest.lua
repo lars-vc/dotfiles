@@ -94,7 +94,7 @@ neotest.setup({
             attach = "a",
             clear_marked = "M",
             clear_target = "T",
-            expand = { "<space>", "<CR>", "<2-LeftMouse>" },
+            expand = { "<CR>", "<2-LeftMouse>" },
             expand_all = "e",
             jumpto = "i",
             mark = "m",

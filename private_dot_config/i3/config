@@ -216,7 +216,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # run autorandr
-bindsym $mod+Shift+a exec autorandr --change
+bindsym $mod+Shift+a exec --no-startup-id autorandr --change; restart
 
 # list all keybinds
 bindsym $mod+Control+k exec --no-startup-id ~/.config/i3/i3scripts/keybinds.sh

@@ -6,20 +6,29 @@ local function on_attach(client, bufnr)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     -- Jump to definition
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    -- Show hover info
-    vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
+    -- Show hover info (replaced with hover.nvim)
+    -- vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
     -- Show diagnostics for current line
     vim.keymap.set('n', 'go', vim.diagnostic.open_float, bufopts)
     -- Jump between diagnostic messages
     vim.keymap.set('n', '<leader>lj', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', '<leader>lk', vim.diagnostic.goto_prev, bufopts)
 
-    vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', 'gR', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'gR', vim.lsp.buf.references, bufopts) -- gr uses trouble
     -- Rename symbol under cursor
     vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
+    -- Apply the first code action
+    vim.keymap.set('n', 'ga', function()
+        vim.lsp.buf.code_action({ apply = true, context = { only = { 'quickfix', 'refactor' } } })
+    end, bufopts)
+    -- list all code actions for line
+    vim.keymap.set('n', 'gA', '<cmd>CodeActionMenu<cr>', bufopts)
+    -- list all code actions for document (cant use end key)
+    -- vim.keymap.set('n', '<leader>la', function()
+    --     vim.lsp.buf.code_action({ range = {start = {0,0}, d = {-1,-1}}})
+    -- end, bufopts)
     -- Navic
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)

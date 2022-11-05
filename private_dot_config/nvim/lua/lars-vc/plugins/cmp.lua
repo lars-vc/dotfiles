@@ -2,7 +2,7 @@ local lspkind = require('lspkind')
 lspkind.init()
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 -- Set up nvim-cmp.
-local cmp = require 'cmp'
+local cmp = require('cmp')
 
 -- add brackets after function complete
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
@@ -95,7 +95,7 @@ cmp.setup({
         { name = 'luasnip' }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
-        { name = 'buffer', keyword_length = 3 },
+        { name = 'buffer', keyword_length = 4 },
     }),
     formatting = small_format,
     experimental = {

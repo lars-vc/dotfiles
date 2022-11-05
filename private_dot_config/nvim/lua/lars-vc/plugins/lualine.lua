@@ -20,7 +20,7 @@ require('lualine').setup {
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
             statusline = {},
-            winbar = { 'Trouble', 'fugitive', 'neotest-summary' },
+            winbar = { 'Trouble', 'fugitive', 'neotest-summary', 'gitcommit', 'help' },
         },
         ignore_focus = {},
         always_divide_middle = true,
@@ -51,7 +51,7 @@ require('lualine').setup {
     winbar = {
         lualine_a = {},
         lualine_b = { { function()
-            return "Navic"
+            return "larsvc"
         end } },
         lualine_c = {
             { navic.get_location, cond = navic.is_available }

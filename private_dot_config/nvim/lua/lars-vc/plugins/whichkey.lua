@@ -48,10 +48,8 @@ whichkey.register({
         },
         l = {
             name = "+lsp",
-            t = "goto type-definition",
             j = "goto next diagnostic",
             k = "goto prev diagnostic",
-            a = "code actions",
             n = "rename",
             l = "workspace diagnostic",
             d = "document diagnostic",
@@ -191,7 +189,7 @@ whichkey.register({
         p = "paste from clip",
         P = "Paste from clip",
     },
-    [","] = {
+    m = {
         f = "harpoon item 1",
         d = "harpoon item 2",
         s = "harpoon item 3",
@@ -199,6 +197,7 @@ whichkey.register({
         j = "harpoon item 5",
         k = "harpoon item 6",
         l = "harpoon item 7",
+        m = "show menu",
         q = "add file to harpoon"
     },
     g = {
@@ -207,8 +206,12 @@ whichkey.register({
         i = "goto implementation",
         d = "goto definition",
         D = "goto declaration",
+        t = "goto type-definition",
         h = "expand documentation",
+        H = "select documentation",
         o = "expand diagnostic",
+        a = "apply code action",
+        A = "list all code actions",
     },
 }, { mode = "n" })
 

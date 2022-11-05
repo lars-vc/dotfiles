@@ -1,11 +1,14 @@
 --==INIT.LUA==--
+-- General --
+require('lars-vc/general')
+require('lars-vc/keymaps')
 -- Plugins --
 require('lars-vc/plugins/impatient')
 require('lars-vc/plugins/telescope')
 require('lars-vc/plugins/whichkey')
--- require('lars-vc/plugins/web-devicons')
+require('lars-vc/plugins/web-devicons')
 require('lars-vc/plugins/treesitter')
--- require('lars-vc/plugins/treesitter-context')
+-- -- require('lars-vc/plugins/treesitter-context')
 require('lars-vc/plugins/lightspeed')
 require('lars-vc/plugins/indentguides')
 require('lars-vc/plugins/notify')
@@ -26,3 +29,9 @@ require('lars-vc/plugins/grammarous')
 require('lars-vc/plugins/rnvimr')
 require('lars-vc/plugins/gitsigns')
 require('lars-vc/plugins/neotest')
+require('lars-vc/plugins/harpoon')
+require('lars-vc/plugins/fugitive')
+require('lars-vc/plugins/markdown')
+require('lars-vc/plugins/hover')
+
+require('lars-vc/random')
