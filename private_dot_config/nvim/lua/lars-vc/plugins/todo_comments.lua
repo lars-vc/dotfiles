@@ -65,7 +65,7 @@ require("todo-comments").setup {
 }
 
 -- Keymaps
-vim.keymap.set("n", "<leader>li", "<cmd>TodoTrouble<cr>",
+vim.keymap.set("n", "<leader>lt", "<cmd>TodoTrouble<cr>",
     { silent = true, noremap = true }
 )
 vim.keymap.set("n", "]t", function()

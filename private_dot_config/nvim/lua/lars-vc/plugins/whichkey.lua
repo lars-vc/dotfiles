@@ -57,7 +57,7 @@ whichkey.register({
             r = "refresh trouble results",
             q = "trouble quickfix",
             c = "trouble loclist",
-            i = "trouble todo-list",
+            t = "trouble todo-list",
         },
         d = {
             name = "+vimspector",

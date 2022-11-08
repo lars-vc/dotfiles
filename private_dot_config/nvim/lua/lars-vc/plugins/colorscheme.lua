@@ -27,7 +27,14 @@ require("catppuccin").setup {
         operators = {},
     },
     color_overrides = {},
-    custom_highlights = {},
+    custom_highlights = function(cp)
+        return {
+            DiagnosticVirtualTextError = { bg = cp.none },
+            DiagnosticVirtualTextWarn = { bg = cp.none },
+            DiagnosticVirtualTextInfo = { bg = cp.none },
+            DiagnosticVirtualTextHint = { bg = cp.none },
+        }
+    end,
     integrations = {
         -- harpoon = true,
         notify = true,
