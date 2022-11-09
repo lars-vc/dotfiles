@@ -1,4 +1,4 @@
-local navic = require("nvim-navic")
+-- local navic = require("nvim-navic")
 
 local function on_attach(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -30,9 +30,9 @@ local function on_attach(client, bufnr)
     --     vim.lsp.buf.code_action({ range = {start = {0,0}, d = {-1,-1}}})
     -- end, bufopts)
     -- Navic
-    if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
-    end
+    -- if client.server_capabilities.documentSymbolProvider then
+    --     navic.attach(client, bufnr)
+    -- end
 end
 
 -- Set up lspconfig.

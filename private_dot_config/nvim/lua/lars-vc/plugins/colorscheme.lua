@@ -60,10 +60,10 @@ require("catppuccin").setup {
                 information = { "underline" },
             },
         },
-        navic = {
+        dap = {
             enabled = true,
-            custom_bg = "#181825",
-        },
+            enable_ui = true, -- enable nvim-dap-ui
+        }
     }
 }
 

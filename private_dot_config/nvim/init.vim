@@ -149,13 +149,16 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'tpope/vim-surround'
 " --Treeshitter--
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 " --Commenting (gcc)--
 Plug 'numToStr/Comment.nvim'
 " --Wakatime--
 Plug 'wakatime/vim-wakatime'
 " --Debugger--
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
 " --Lightspeed--
 Plug 'ggandor/lightspeed.nvim'
 Plug 'tpope/vim-repeat'
@@ -196,7 +199,7 @@ Plug 'folke/todo-comments.nvim'
 " --Latex notetaking--
 Plug 'jbyuki/nabla.nvim'
 " --Navic--
-Plug 'SmiteshP/nvim-navic'
+" Plug 'SmiteshP/nvim-navic'
 " --Neotest--
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-python'
@@ -345,29 +348,29 @@ highlight TelescopeSelection guifg=#B0BEC5 guibg=#252931
 "\\\\\\\\\\\\\\\\\\\\\\\\\_________/////////////////////////
 
 "////////////////////////Vimspector\\\\\\\\\\\\\\\\\\\\\\\\\
-let g:vimspector_code_minwidth = 90
-let g:vimspector_terminal_maxwidth = 75
-let g:vimspector_terminal_minwidth = 20
-" Debug launch window setup (hacky but works)
-nmap <leader>dd :call vimspector#Launch()<CR>2<C-w>j:q<CR>
-nmap <leader>dD :call vimspector#Launch()<CR>
-nmap <leader>dx :call vimspector#Reset()<CR>
-nnoremap <leader>dX :call vimspector#ClearBreakpoints()<CR>
-nnoremap <S-k> :call vimspector#StepOut()<CR>
-nnoremap <S-l> :call vimspector#StepInto()<CR>
-nnoremap <S-j> :call vimspector#StepOver()<CR>
-nnoremap <leader>dr :call vimspector#Restart()<CR>
-nnoremap <leader>dn :call vimspector#Continue()<CR>
-nnoremap <leader>dc :call vimspector#RunToCursor()<CR>
-nnoremap <leader>dh :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <leader>de :call vimspector#ToggleConditionalBreakpoint()<CR>
-nmap <leader>db <Plug>VimspectorBreakpoints
-nmap <leader>dg <Plug>VimspectorGoToCurrentLine
-let g:vimspector_install_gadgets = ['debugpy', 'vscode-cpptools', 'CodeLLDB', 'vscode-node-debug2']
-" for normal mode - the word under the cursor
-nmap <leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <leader>di <Plug>VimspectorBalloonEval
+" let g:vimspector_code_minwidth = 90
+" let g:vimspector_terminal_maxwidth = 75
+" let g:vimspector_terminal_minwidth = 20
+" " Debug launch window setup (hacky but works)
+" nmap <leader>dd :call vimspector#Launch()<CR>2<C-w>j:q<CR>
+" nmap <leader>dD :call vimspector#Launch()<CR>
+" nmap <leader>dx :call vimspector#Reset()<CR>
+" nnoremap <leader>dX :call vimspector#ClearBreakpoints()<CR>
+" nnoremap <S-k> :call vimspector#StepOut()<CR>
+" nnoremap <S-l> :call vimspector#StepInto()<CR>
+" nnoremap <S-j> :call vimspector#StepOver()<CR>
+" nnoremap <leader>dr :call vimspector#Restart()<CR>
+" nnoremap <leader>dn :call vimspector#Continue()<CR>
+" nnoremap <leader>dc :call vimspector#RunToCursor()<CR>
+" nnoremap <leader>dh :call vimspector#ToggleBreakpoint()<CR>
+" nnoremap <leader>de :call vimspector#ToggleConditionalBreakpoint()<CR>
+" nmap <leader>db <Plug>VimspectorBreakpoints
+" nmap <leader>dg <Plug>VimspectorGoToCurrentLine
+" let g:vimspector_install_gadgets = ['debugpy', 'vscode-cpptools', 'CodeLLDB', 'vscode-node-debug2']
+" " for normal mode - the word under the cursor
+" nmap <leader>di <Plug>VimspectorBalloonEval
+" " for visual mode, the visually selected text
+" xmap <leader>di <Plug>VimspectorBalloonEval
 "\\\\\\\\\\\\\\\\\\\\\\\\__________/////////////////////////
 
 "///////////////////////Vim-fugitive\\\\\\\\\\\\\\\\\\\\\\\\

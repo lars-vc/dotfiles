@@ -11,7 +11,7 @@ local function getPos()
 end
 
 -- setup
-local navic = require("nvim-navic")
+-- local navic = require("nvim-navic")
 require('lualine').setup {
     options = {
         icons_enabled = true,
@@ -20,7 +20,7 @@ require('lualine').setup {
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
             statusline = {},
-            winbar = { 'Trouble', 'fugitive', 'neotest-summary', 'gitcommit', 'help' },
+            winbar = { 'Trouble', 'fugitive', 'neotest-summary', 'gitcommit', 'help', 'dapui_console', 'dapui_stacks', },
         },
         ignore_focus = {},
         always_divide_middle = true,
@@ -48,27 +48,29 @@ require('lualine').setup {
         lualine_z = {}
     },
     tabline = {},
-    winbar = {
-        lualine_a = {},
-        lualine_b = { { function()
-            return "larsvc"
-        end } },
-        lualine_c = {
-            { navic.get_location, cond = navic.is_available }
-        },
-        lualine_x = {},
-        lualine_y = { 'branch', 'filesize' },
-        lualine_z = {}
-    },
-    inactive_winbar = {
-        lualine_a = {},
-        lualine_b = { { function()
-            return "Navic"
-        end } },
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-    },
+    winbar = {},
+    inactive_winbar = {},
+    -- winbar = {
+    --     lualine_a = {},
+    --     lualine_b = { { function()
+    --         return "larsvc"
+    --     end } },
+    --     lualine_c = {
+    --         { navic.get_location, cond = navic.is_available }
+    --     },
+    --     lualine_x = {},
+    --     lualine_y = { 'branch', 'filesize' },
+    --     lualine_z = {}
+    -- },
+    -- inactive_winbar = {
+    --     lualine_a = {},
+    --     lualine_b = { { function()
+    --         return "Navic"
+    --     end } },
+    --     lualine_c = {},
+    --     lualine_x = {},
+    --     lualine_y = {},
+    --     lualine_z = {}
+    -- },
     extensions = {}
 }
