@@ -33,7 +33,7 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'diagnostics' },
+        lualine_b = { 'branch', 'diagnostics' },
         lualine_c = { 'filename' },
         lualine_x = { 'diff', 'encoding', 'fileformat', 'filetype' },
         lualine_y = { { getWords } },

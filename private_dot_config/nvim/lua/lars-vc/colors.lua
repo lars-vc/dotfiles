@@ -1,0 +1,15 @@
+-- file not used
+-- Set highlight groups --
+-- highlight TelescopePromptTitle guifg=#1b1f27 guibg=#e06c75
+-- highlight TelescopePromptPrefix guifg=#e06c75
+-- highlight TelescopePromptNormal guibg=#252931
+-- highlight TelescopePromptBorder guifg=#252931 guibg=#252931
+--
+-- highlight TelescopeResultsNormal guibg=#1b1f27
+-- highlight TelescopeResultsBorder guifg=#1b1f27 guibg=#1b1f27
+--
+-- highlight TelescopePreviewTitle guifg=#1b1f27 guibg=#98c379
+-- highlight TelescopePreviewNormal guibg=#252931
+-- highlight TelescopePreviewBorder guifg=#252931 guibg=#252931
+--
+-- highlight TelescopeSelection guifg=#B0BEC5 guibg=#252931

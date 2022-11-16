@@ -15,8 +15,6 @@ vim.keymap.set('n', '<leader>min', '<cmd>InsertNToc<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>mic', ':InsertNToc ', { noremap = true })
 -- Table mode
 g['table_mode_map_prefix'] = '<Leader>ma'
--- Tabular
-vim.keymap.set('x', '<leader>t', ':Tabular / ', { noremap = true })
 
 g['vim_markdown_conceal_code_blocks'] = 0
 g['vim_markdown_new_list_item_indent'] = 0

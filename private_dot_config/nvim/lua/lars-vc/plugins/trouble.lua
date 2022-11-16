@@ -47,26 +47,3 @@ require("trouble").setup(
         use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
     }
 )
-
--- Keymaps
-vim.keymap.set("n", "<leader>ll", "<cmd>TroubleToggle workspace_diagnostics<cr>",
-    { silent = true, noremap = true }
-)
-vim.keymap.set("n", "<leader>ld", "<cmd>TroubleToggle document_diagnostics<cr>",
-    { silent = true, noremap = true }
-)
-vim.keymap.set("n", "<leader>lr", "<cmd>TroubleRefresh<cr>",
-    { silent = true, noremap = true }
-)
-vim.keymap.set("n", "<leader>lx", "<cmd>TroubleClose<cr>",
-    { silent = true, noremap = true }
-)
-vim.keymap.set("n", "<leader>lc", "<cmd>TroubleToggle loclist<cr>",
-    { silent = true, noremap = true }
-)
-vim.keymap.set("n", "<leader>lq", "<cmd>TroubleToggle quickfix<cr>",
-    { silent = true, noremap = true }
-)
-vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<cr>",
-    { silent = true, noremap = true }
-)

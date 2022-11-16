@@ -44,9 +44,12 @@ vim.keymap.set('n', '<leader>om', ':!mv <C-R>=getcwd()<CR>/ <C-R>=getcwd()<CR>/'
 vim.keymap.set('n', '<leader>or', ':!rm -r <C-R>=getcwd()<CR>/', { noremap = true })
 -- easy spell correct
 vim.keymap.set('i', '<C-z>', '<C-g>u<Esc>[s1z=`]a<C-g>u', { noremap = true })
+-- take first spellingfix
+vim.keymap.set('n', '<leader>zz', '1z=', { noremap = true })
+-- alternate file
 vim.keymap.set('n', '<BS>', '<C-^>', { noremap = true })
 -- pasting
-vim.keymap.set('v', 'gd', '"_d', { noremap = true })
-vim.keymap.set('v', 'gp', '"_dP', { noremap = true })
+vim.keymap.set('v', '<leader>d', '"_d', { noremap = true })
+-- vim.keymap.set('v', 'gp', '"_dP', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P', { noremap = true })

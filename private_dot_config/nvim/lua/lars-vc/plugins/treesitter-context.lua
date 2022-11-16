@@ -1,4 +1,4 @@
-require'treesitter-context'.setup{
+require 'treesitter-context'.setup {
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
     max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
     trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
@@ -53,6 +53,9 @@ require'treesitter-context'.setup{
     --     you can safely ignore them.
 
     zindex = 20, -- The Z-index of the context window
-    mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+    mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
     separator = nil, -- Separator between context and content. Should be a single character string, like '-'.
 }
+-- vim.cmd [[hi TreesitterContext gui=underline guisp=Grey]]
+vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = '#181825' })
+vim.api.nvim_set_hl(0, 'TreesitterContextLineNumber', { bg = '#181825' })

@@ -104,41 +104,41 @@ cmp.setup({
 })
 
 -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-    mapping = cmp.mapping.preset.insert({
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-u>'] = cmp.mapping.scroll_docs(4),
-        ['<S-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.confirm({ select = true })
-            else
-                fallback()
-            end
-        end),
-        ['<C-j>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            else
-                fallback()
-            end
-        end),
-        ['<C-k>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            else
-                fallback()
-            end
-        end),
-    }),
-    sources = cmp.config.sources({
-        { name = 'git' }, -- You can specify the `cmp_git` source if you have installed it.
-    }, {
-        { name = 'buffer' },
-    }),
-    formatting = small_format,
-})
+-- cmp.setup.filetype('gitcommit', {
+--     mapping = cmp.mapping.preset.insert({
+--         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+--         ['<C-u>'] = cmp.mapping.scroll_docs(4),
+--         ['<S-Space>'] = cmp.mapping.complete(),
+--         ['<C-e>'] = cmp.mapping.abort(),
+--         ['<Tab>'] = cmp.mapping(function(fallback)
+--             if cmp.visible() then
+--                 cmp.confirm({ select = true })
+--             else
+--                 fallback()
+--             end
+--         end),
+--         ['<C-j>'] = cmp.mapping(function(fallback)
+--             if cmp.visible() then
+--                 cmp.select_next_item()
+--             else
+--                 fallback()
+--             end
+--         end),
+--         ['<C-k>'] = cmp.mapping(function(fallback)
+--             if cmp.visible() then
+--                 cmp.select_prev_item()
+--             else
+--                 fallback()
+--             end
+--         end),
+--     }),
+--     sources = cmp.config.sources({
+--         { name = 'git' }, -- You can specify the `cmp_git` source if you have installed it.
+--     }, {
+--         { name = 'buffer' },
+--     }),
+--     formatting = small_format,
+-- })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
@@ -159,5 +159,3 @@ cmp.setup.cmdline(':', {
     }),
     formatting = small_format,
 })
-
-require("cmp_git").setup()

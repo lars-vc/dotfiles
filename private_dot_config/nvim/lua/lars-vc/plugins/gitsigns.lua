@@ -7,7 +7,7 @@ require('gitsigns').setup {
         topdelete    = { hl = 'GitSignsDelete', text = '‾', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
         changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
     },
-    signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
+    signcolumn                   = false, -- Toggle with `:Gitsigns toggle_signs`
     numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
     linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -40,11 +40,3 @@ require('gitsigns').setup {
         enable = false
     },
 }
-
--- keymaps
-vim.keymap.set('n', '<leader>gii', '<cmd>Gitsigns toggle_signs<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gin', '<cmd>Gitsigns toggle_numhl<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gil', '<cmd>Gitsigns toggle_linehl<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>giw', '<cmd>Gitsigns toggle_word_diff<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gib', '<cmd>Gitsigns toggle_current_line_blame<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gid', '<cmd>Gitsigns toggle_deleted<CR>', { noremap = true })

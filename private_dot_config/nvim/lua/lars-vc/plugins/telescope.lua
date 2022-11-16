@@ -82,7 +82,6 @@ telescope.setup {
 }
 
 telescope.load_extension('fzf')
-telescope.load_extension('harpoon')
 
 -- Neoclip setup
 local function is_whitespace(line)
@@ -105,28 +104,17 @@ require('neoclip').setup {
     end,
 }
 
---==Keymaps==--
-local builtin = require('telescope.builtin')
+-- Telescope
+vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = '#1b1f27', bg = '#e06c75' })
+vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = '#e06c75' })
+vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = '#252931' })
+vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = '#252931', bg = '#252931' })
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { noremap = true })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { noremap = true })
-vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, { noremap = true })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { noremap = true })
-vim.keymap.set('n', '<leader>fn', '<cmd>Telescope neoclip plus<cr><Esc>', { noremap = true })
-vim.keymap.set('n', '<leader>fi', '<cmd>Telescope find_files cwd=~/.config/nvim prompt_title=VimRC<cr>',
-    { noremap = true })
-vim.keymap.set('n', '<leader>fp', builtin.planets, { noremap = true })
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { noremap = true })
--- help related
-vim.keymap.set('n', '<leader>fhh', builtin.help_tags, { noremap = true })
-vim.keymap.set('n', '<leader>fhc', builtin.command_history, { noremap = true })
-vim.keymap.set('n', '<leader>fhs', builtin.search_history, { noremap = true })
-vim.keymap.set('n', '<leader>fhm', builtin.man_pages, { noremap = true })
-vim.keymap.set('n', '<leader>fhk', builtin.keymaps, { noremap = true })
-vim.keymap.set('n', '<leader>fho', builtin.vim_options, { noremap = true })
-vim.keymap.set('n', '<leader>fhr', builtin.reloader, { noremap = true })
-vim.keymap.set('n', '<leader>fhb', builtin.builtin, { noremap = true })
--- git related stuff
-vim.keymap.set('n', '<leader>gfc', builtin.git_commits, { noremap = true })
-vim.keymap.set('n', '<leader>gfb', builtin.git_bcommits, { noremap = true })
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, { noremap = true })
+vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', { bg = '#1b1f27' })
+vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = '#1b1f27', bg = '#1b1f27' })
+
+vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = '#1b1f27', bg = '#98c379' })
+vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { bg = '#252931' })
+vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = '#252931', bg = '#252931' })
+
+vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = '#cdd6f4', bg = '#252931' })

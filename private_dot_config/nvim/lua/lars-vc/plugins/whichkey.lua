@@ -220,15 +220,11 @@ whichkey.register({
 
 whichkey.register({
     ["<leader>"] = {
-        d = {
-            name = "+vimspector",
-            i = "balloon eval"
-        },
         m = {
             name = "+markdown",
             h = "header decrease",
             l = "header increase",
         },
+        d = "delete to other reg"
     },
-    d = "delete to other reg"
 }, { mode = "v" })
