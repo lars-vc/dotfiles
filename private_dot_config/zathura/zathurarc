@@ -2,19 +2,22 @@ set selection-clipboard clipboard
 # font
 set font "DejaVuSansMono Nerd Font Mono Bold 9"
 
-# One page per row by default
-set pages-per-row 1
-
 # stop at page boundries
 set scroll-page-aware "true"
 set scroll-full-overlap 0.01
-set scroll-step 100
+set scroll-step 50
+
+# shorten filepath with ~
+set statusbar-home-tilde "true"
 
 # colors
 set default-bg "#FFFFFF" #00
 
+set statusbar-fg "#3e3e3e" #04
+set statusbar-bg "#FFFFFF" #01
 
-set statusbar-fg "#000000" #01
-set statusbar-bg "#FFFFFF" #04
-# set statusbar-fg "#c5c8c6" #04
-# set statusbar-bg "#262c34" #01
+set inputbar-fg "#3e3e3e" #04
+set inputbar-bg "#FFFFFF" #01
+
+set highlight-color "#bd93f9"
+set highlight-active-color "#d08770"
