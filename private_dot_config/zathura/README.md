@@ -1,0 +1,2 @@
+# Zathura configfiles
+WIP

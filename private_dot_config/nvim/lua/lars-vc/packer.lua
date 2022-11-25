@@ -210,7 +210,7 @@ return packer.startup(function(use)
 
     --==Colorpicker==--
     use { 'ziontee113/color-picker.nvim', opt = true, cmd = { 'PickColor', 'PickColorInsert' },
-        config = function() require('plugins.colorpicker') end
+        config = function() require('lars-vc.plugins.colorpicker') end
     }
 
     --==GrammarChecker==--
@@ -252,8 +252,31 @@ return packer.startup(function(use)
     --==Better Codeaction==--
     use { 'weilbith/nvim-code-action-menu', opt = true, cmd = 'CodeActionMenu' }
 
+    -- use { 'cshuaimin/ssr.nvim',
+    --     -- Calling setup is optional.
+    --     config = function()
+    --         require('ssr').setup {
+    --             min_width = 50,
+    --             min_height = 5,
+    --             keymaps = {
+    --                 close = 'q',
+    --                 next_match = 'n',
+    --                 prev_match = 'N',
+    --                 replace_all = '<leader><cr>',
+    --             },
+    --         }
+    --     end,
+    --     opt = true,
+    --     module = 'ssr',
+    -- } -- has malloc bugs
+
+    --==Latex==--
+    use { 'lervag/vimtex', ft = { 'tex', 'vimtex' }, opt = true,
+        config = function() require('lars-vc.plugins.vimtex') end
+    }
+
     --==Colorscheme==--
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use { 'catppuccin/nvim', as = 'catppuccin' }
 
     --Bootstrap--
     if packer_bootstrap then

@@ -5,7 +5,7 @@ vim.cmd [[autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim
 -- hexokinase highlighters
 vim.cmd [[ let g:Hexokinase_highlighters = ['virtual'] ]]
 -- auto format on save
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre * silent! lua vim.lsp.buf.format()]]
 -- disable some useless builtin plugins
 local disabled_built_ins = {
     'netrw',

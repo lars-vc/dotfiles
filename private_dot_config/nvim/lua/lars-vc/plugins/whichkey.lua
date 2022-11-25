@@ -34,6 +34,7 @@ whichkey.register({
             n = "neoclip",
             i = "find in config",
             p = "view the planets",
+            d = "diagnostics",
             h = {
                 name = "+help",
                 h = "help tags",
@@ -150,12 +151,12 @@ whichkey.register({
             r = "Open ranger"
         },
         o = {
-            name = "+createfiles",
+            name = "+other",
             t = "touch",
             e = "touch and edit",
             d = "mkdir",
             m = "move",
-            r = "remove"
+            r = "remove",
         },
         w = {
             name = "+vimwiki",
