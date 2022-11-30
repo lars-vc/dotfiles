@@ -39,12 +39,17 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconf = require("lspconfig")
+
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
 --     capabilities = capabilities
+--     on_attach = on_attach
 -- }
 
-lspconf['pyright'].setup { on_attach = on_attach, capabilities = capabilities }
+lspconf['pyright'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
 
 lspconf['tsserver'].setup {
     on_attach = on_attach,
@@ -83,6 +88,11 @@ lspconf['sumneko_lua'].setup {
 
 -- comes with clang I think (sudo _ install clang)
 lspconf['clangd'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+lspconf['texlab'].setup {
     on_attach = on_attach,
     capabilities = capabilities
 }

@@ -148,9 +148,11 @@ alias wiki='nvim +VimwikiIndex'
 export PATH=$PATH:~/scripts
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.config/lsp/lua-language-server-3.5.6-linux-x64/bin
+export PATH=$PATH:~/.config/lsp/latexindent/
 if [ -d "/path/dir/" ]; then
     . "$HOME/.cargo/env"
 fi
+export LUA_INCDIR=/usr/local/opt/lua/include
 # save the current directory in a file
 # this is useful to open new terminals in the current working dir
 precmd() { pwd > ~/.current_dir }

@@ -5,4 +5,8 @@
 -- ╱         ╱     ____╱   ___╱  ╱   ╲        ╱╱   ╱╱   ╱  ╱  ╱
 -- ╲__╱╲____╱╲________╱╲________╱     ╲______╱╱___╱ ╲__╱__╱__╱
 
-require('lars-vc')
+-- Installed LSPservers: pyright, rust_analyzer, tsserver, sumneko_lua, texlab, clangd
+-- Installed DAPservers: debugpy, codelldb, node2
+-- Installed Linters: eslint, flake8
+-- Installed Formatters: black, prettier, stylua, latexindent, beautysh
+require("lars-vc")

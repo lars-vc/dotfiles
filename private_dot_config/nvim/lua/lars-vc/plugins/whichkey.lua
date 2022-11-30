@@ -1,6 +1,6 @@
 --documenting which key
-local whichkey = require('which-key')
-whichkey.setup {
+local whichkey = require("which-key")
+whichkey.setup({
     plugins = {
         spelling = {
             enabled = true,
@@ -9,7 +9,7 @@ whichkey.setup {
         presets = {
             operators = false,
             motions = false,
-        }
+        },
     },
     key_labels = {
         ["<space>"] = "SPC",
@@ -19,9 +19,8 @@ whichkey.setup {
     },
     window = {
         --border = "double"
-    }
-
-}
+    },
+})
 whichkey.register({
     ["<leader>"] = {
         ["<leader>"] = "save all",
@@ -45,7 +44,7 @@ whichkey.register({
                 o = "vim options",
                 r = "lua module reloader",
                 b = "builtin pickers",
-            }
+            },
         },
         l = {
             name = "+lsp",
@@ -59,6 +58,7 @@ whichkey.register({
             q = "trouble quickfix",
             c = "trouble loclist",
             t = "trouble todo-list",
+            f = "format",
         },
         d = {
             name = "+debug",
@@ -109,7 +109,7 @@ whichkey.register({
             name = "+spellgram",
             z = "quick spellfix",
             g = "grammarous check",
-            r = "grammarous reset"
+            r = "grammarous reset",
         },
         m = {
             name = "+markdown",
@@ -120,35 +120,35 @@ whichkey.register({
                 name = "+inserttoc",
                 c = "custom toc",
                 i = "regular toc",
-                n = "toc with numbers"
+                n = "toc with numbers",
             },
             p = {
                 name = "+preview",
                 o = "open preview",
                 c = "close preview",
-                p = "toggle preview"
+                p = "toggle preview",
             },
             a = {
                 name = "+tablemode",
                 m = "toggle table mode",
-                t = "tableize"
-            }
+                t = "tableize",
+            },
         },
         x = {
             name = "+closing",
             x = "save all and quit nvim",
             t = "save all and close tab",
-            q = "quit nvim"
+            q = "quit nvim",
         },
         s = {
             name = "+split",
             v = "open vertical split",
             s = "open horizontal split",
-            x = "swap splits"
+            x = "swap splits",
         },
         r = {
             name = "+ranger",
-            r = "Open ranger"
+            r = "Open ranger",
         },
         o = {
             name = "+other",
@@ -160,7 +160,7 @@ whichkey.register({
         },
         w = {
             name = "+vimwiki",
-            w = "open index.wiki"
+            w = "open index.wiki",
         },
         n = {
             name = "+nabla",
@@ -202,7 +202,7 @@ whichkey.register({
         k = "harpoon item 6",
         l = "harpoon item 7",
         m = "show menu",
-        q = "add file to harpoon"
+        q = "add file to harpoon",
     },
     g = {
         r = "goto references (trouble)",
@@ -226,6 +226,6 @@ whichkey.register({
             h = "header decrease",
             l = "header increase",
         },
-        d = "delete to other reg"
+        d = "delete to other reg",
     },
 }, { mode = "v" })
