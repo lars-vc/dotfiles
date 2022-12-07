@@ -190,3 +190,7 @@ vim.keymap.set('n', '<leader>nc', function() require('nabla').disable_virt() end
 
 -- SSR --
 -- vim.keymap.set({ 'n', 'x' }, '<leader>os', function() require('ssr').open() end)
+
+-- Leap --
+vim.keymap.set('n', 's', function() require('leap').leap { target_windows = { vim.fn.win_getid() } } end,
+    { noremap = true })

@@ -7,6 +7,6 @@
 
 -- Installed LSPservers: pyright, rust_analyzer, tsserver, sumneko_lua, texlab, clangd
 -- Installed DAPservers: debugpy, codelldb, node2
--- Installed Linters: eslint, flake8
--- Installed Formatters: black, prettier, stylua, latexindent, beautysh
+-- Installed Linters:    eslint, flake8
+-- Installed Formatters: black, prettier, stylua, latexindent, beautysh, clang-format
 require("lars-vc")

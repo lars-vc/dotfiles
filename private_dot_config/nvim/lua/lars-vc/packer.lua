@@ -26,7 +26,7 @@ packer.init({
     },
 })
 
-local lspfiletypes = { "c", "cpp", "rust", "lua", "python", "typescript", "javascript" }
+local lspfiletypes = { "c", "cpp", "rust", "lua", "python", "typescript", "javascript", "tex" }
 
 return packer.startup(function(use)
     --==Impatient==--
@@ -110,12 +110,12 @@ return packer.startup(function(use)
     })
 
     --==NULLls==--
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("lars-vc.plugins.nullls")
-        end,
-    })
+    -- use({
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     config = function()
+    --         require("lars-vc.plugins.nullls")
+    --     end,
+    -- })
 
     --==CMP==--
     use({
@@ -170,6 +170,12 @@ return packer.startup(function(use)
     -- use { 'nvim-treesitter/nvim-treesitter-context',
     --     config = function() require('lars-vc.plugins.treesitter-context') end
     -- }
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        -- config = function()
+        --     require("lars-vc.plugins.treesitter-textobj")
+        -- end,
+    })
 
     --==Commenting==--
     use({
@@ -217,6 +223,15 @@ return packer.startup(function(use)
     -- use { 'ggandor/lightspeed.nvim', requires = 'tpope/vim-repeat',
     --     config = function() require('lars-vc.plugins.lightspeed') end } -- use leap.nvim soon
     use("tpope/vim-repeat")
+    use({
+        "ggandor/leap.nvim",
+        requires = "tpope/vim-repeat",
+        config = function()
+            local leap = require("leap")
+            leap.opts.safe_labels = {}
+            -- leap.add_default_mappings()
+        end,
+    }) -- use leap.nvim soon
 
     --==Whichkey==--
     use({
@@ -241,8 +256,9 @@ return packer.startup(function(use)
     use({
         "iamcco/markdown-preview.nvim",
         run = "cd app && yarn install",
-        opt = true,
         cmd = { "MarkdownPreview", "MarkdownPreviewToggle" },
+        ft = { "markdown" },
+        opt = true,
     })
     use({ "dhruvasagar/vim-table-mode", opt = true, ft = { "markdown" } })
 

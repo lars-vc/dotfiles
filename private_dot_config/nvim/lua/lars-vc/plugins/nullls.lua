@@ -10,12 +10,14 @@ null_ls.setup({
         format.black,
         format.latexindent,
         format.beautysh,
+        format.clang_format.with({ extra_args = { '-style="{IndentWidth: 4}"' } }),
+        -- format.clang_format.with({ extra_args = { '-style="{IndentWidth:', '8}"' } }),
         -- format.markdownlint,
 
         -- Diagnostics --
         diagno.eslint,
-        diagno.flake8,
-        -- diagno.luacheck,
+        -- diagno.flake8, -- idk if I like em
+        -- diagno.luacheck, cant install this
 
         -- Completion --
         -- null_ls.builtins.completion.spell,
