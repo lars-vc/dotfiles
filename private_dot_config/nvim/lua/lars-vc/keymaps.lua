@@ -54,3 +54,5 @@ vim.keymap.set("v", "<leader>d", '"_d', { noremap = true })
 -- vim.keymap.set('v', 'gp', '"_dP', { noremap = true })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { noremap = true })
+-- For snippets
+vim.keymap.set({ "s" }, "<backspace>", "<backspace>i")

@@ -1,11 +1,11 @@
 --==INIT.LUA==--
 -- General --
-require('lars-vc/general')
-require('lars-vc/keymaps')
-require('lars-vc/plugmaps')
+require("lars-vc/general")
+require("lars-vc/keymaps")
+require("lars-vc/plugmaps")
 -- Plugins --
-require('lars-vc/packer')
--- require('lars-vc/plugins/impatient') alr inside packer
+require("lars-vc/packer")
+-- require('lars-vc/plugins/impatient') already inside packer
 -- require('lars-vc/plugins/telescope')
 -- require('lars-vc/plugins/whichkey')
 -- require('lars-vc/plugins/web-devicons')
@@ -36,6 +36,6 @@ require('lars-vc/packer')
 -- require('lars-vc/plugins/fugitive')
 -- require('lars-vc/plugins/markdown')
 -- require('lars-vc/plugins/hover')
-require('lars-vc/plugins/colorscheme')
-vim.cmd [[colorscheme catppuccin]]
-require('lars-vc/random')
+require("lars-vc/plugins/colorscheme")
+vim.cmd([[colorscheme catppuccin]])
+require("lars-vc/random")

@@ -3,8 +3,8 @@ local ls = require("luasnip")
 
 --==Keymaps==--
 vim.keymap.set({ "i", "s" }, "<C-l>", function()
-    if ls.jumpable(1) then
-        ls.jump(1)
+    if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
     end
 end)
 
@@ -27,9 +27,38 @@ local i = ls.insert_node
 local t = ls.text_node
 local sn = ls.snippet_node
 local cn = ls.choice_node
+local fn = ls.function_node
 
+-- All
+-- ls.add_snippets("all", {
+--     snippet(t("Lars Van Cauter"))
+-- })
+
+-- \documentclass{article}
+-- \usepackage[utf8]{inputenc}
+-- \usepackage{graphicx, caption, subcaption}
+-- \graphicspath{images/}
+--
+-- \title{TITLE}
+-- \author{Lars Van Cauter}
+-- \date{DATE}
+--
+-- \begin{document}
+-- \maketitle
+
+
+-- \end{document}
 -- Latex
 ls.add_snippets("tex", {
+    snippet("init", {
+        t({ "\\documentclass{article}", "\\usepackage[utf8]{inputenc}", "\\usepackage{graphicx, caption, subcaption}",
+            "\\graphicspath{images/}", "", "\\title{" }), i(1, "TITLE"),
+        t({ "}", "\\author{Lars Van Cauter}", "\\date{" }),
+        fn(function(args, snip, user_args)
+            return os.date("%B %Y")
+        end),
+        t({ "}", "", "\\begin{document}", "\\maketitle", "", "" }), i(0), t({ "", "", "\\end{document}" })
+    }),
     snippet("image",
         {
             t({ "\\begin{figure}", "\t\\centering", "\t\\includegraphics[" }),
@@ -41,12 +70,15 @@ ls.add_snippets("tex", {
                     i(1, "0.95"), t("\\linewidth"),
                 })
             }),
-            t("]"), t("{"), i(2, "FILE"),
+            t("]"), t("{images/"), i(2, "FILE"),
             t({ "}", "\t\\captionof{figure}{" }), i(3, "CAPTION"), t({ "}", "\t\\label{fig:" }), i(4, "LABEL"),
             t({ "}", "\\end{figure}" }),
         }
     ),
-    snippet("use", { t("\\usepackage{"), i(1, "PACKAGE"), t("}") }),
+    snippet("use",
+        { t("\\usepackage"), cn(1, { sn(nil, { t("["), i(1, "OPTS"), t("]") }), t("") }), t("{"), i(2, "PACKAGE"), t("}")
+        }
+    ),
     snippet("margins",
         {
             t({ "\\usepackage{geometry}  % margins", "\\geometry{", "\ta4paper", "\ttotal={170mm,257mm}", "\tleft=20mm",
