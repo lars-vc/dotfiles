@@ -9,10 +9,8 @@ opt.number = true -- adds line numbers
 opt.relativenumber = true -- relative numbers in sidebar
 opt.numberwidth = 4 -- columns used for the line number
 opt.incsearch = true -- highlighting matched strings while searching
-vim.cmd([[set noea]])
-vim.cmd([[set noshowmode]])
 opt.hlsearch = false -- no remaining highlights on search
--- opt.noea = true -- splitting windows
+opt.ea = false -- splitting windows
 opt.hidden = true -- navigate buffers without losing unsaved work
 opt.scrolloff = 8 -- start scrolling when 8 lines from top or bottom
 opt.undofile = true -- save undo history
@@ -26,7 +24,7 @@ opt.fcs = "eob:\\" -- hide tildes ~ at end of file
 opt.textwidth = 0 -- no autowrapping at end of line
 opt.cursorline = true -- line highlighting the current line
 opt.updatetime = 100 -- updatetime for statusbar
--- opt.noshowmode = true -- dont show default statusbar
+opt.showmode = false -- dont show default statusbar
 opt.conceallevel = 3 -- conceallevel for markdown
 -- disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
 --vim.cmd [[autocmd FileType * setlocal formatoptions-=o]]
