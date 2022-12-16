@@ -147,8 +147,11 @@ alias wiki='nvim +VimwikiIndex'
 # path stuff
 export PATH=$PATH:~/scripts
 export PATH=$PATH:~/.local/bin
+# Add lSPs to path
 export PATH=$PATH:~/.config/lsp/lua-language-server-3.5.6-linux-x64/bin
 export PATH=$PATH:~/.config/lsp/latexindent/
+export PATH=$PATH:~/.config/lsp/ltex-ls-15.2.0/bin
+export PATH=$PATH:~/.config/lsp/LanguageTool-5.9
 if [ -d "/path/dir/" ]; then
     . "$HOME/.cargo/env"
 fi

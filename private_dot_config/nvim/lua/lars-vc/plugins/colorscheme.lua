@@ -1,75 +1,74 @@
 -- Theme setup
---vim.cmd.colorscheme = 'catppuccin' does work
 
 --==Catppuccin==--
 require("catppuccin").setup({
-    flavour = "mocha", -- mocha, macchiato, frappe, latte
-    compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
-    transparent_background = false,
-    term_colors = false,
-    dim_inactive = {
-        enabled = false,
-        shade = "dark",
-        percentage = 0.15,
-    },
-    styles = {
-        comments = {},
-        conditionals = {},
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-    },
-    color_overrides = {},
-    custom_highlights = function(cp)
-        return {
-            DiagnosticVirtualTextError = { bg = cp.none },
-            DiagnosticVirtualTextWarn = { bg = cp.none },
-            DiagnosticVirtualTextInfo = { bg = cp.none },
-            DiagnosticVirtualTextHint = { bg = cp.none },
-        }
-    end,
-    integrations = {
-        -- harpoon = true,
-        notify = true,
-        markdown = true,
-        cmp = true,
-        treesitter = true,
-        lsp_trouble = true,
-        which_key = true,
-        vimwiki = true,
-        gitsigns = true,
-        leap = true,
-        native_lsp = {
-            enabled = true,
-            virtual_text = {
-                errors = {},
-                hints = {},
-                warnings = {},
-                information = {},
-            },
-            underlines = {
-                errors = { "underline" },
-                hints = { "underline" },
-                warnings = { "underline" },
-                information = { "underline" },
-            },
-        },
-        dap = {
-            enabled = true,
-            enable_ui = true, -- enable nvim-dap-ui
-        },
-        indent_blankline = {
-            enabled = true,
-            colored_indent_levels = false,
-        },
-    },
+	flavour = "mocha", -- mocha, macchiato, frappe, latte
+	compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
+	transparent_background = false,
+	term_colors = false,
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
+	},
+	styles = {
+		comments = {},
+		conditionals = {},
+		loops = {},
+		functions = {},
+		keywords = {},
+		strings = {},
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = {},
+		types = {},
+		operators = {},
+	},
+	color_overrides = {},
+	custom_highlights = function(cp)
+		return {
+			DiagnosticVirtualTextError = { bg = cp.none },
+			DiagnosticVirtualTextWarn = { bg = cp.none },
+			DiagnosticVirtualTextInfo = { bg = cp.none },
+			DiagnosticVirtualTextHint = { bg = cp.none },
+		}
+	end,
+	integrations = {
+		-- harpoon = true,
+		notify = true,
+		markdown = true,
+		cmp = true,
+		treesitter = true,
+		lsp_trouble = true,
+		which_key = true,
+		vimwiki = true,
+		gitsigns = true,
+		leap = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = {},
+				hints = {},
+				warnings = {},
+				information = {},
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+			},
+		},
+		dap = {
+			enabled = true,
+			enable_ui = true, -- enable nvim-dap-ui
+		},
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = false,
+		},
+	},
 })
 
 --==Material==--

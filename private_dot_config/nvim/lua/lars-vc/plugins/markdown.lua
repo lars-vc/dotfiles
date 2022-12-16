@@ -28,8 +28,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	-- command = "nmap <buffer> <A-j> )",
 	pattern = { "markdown" },
 	callback = function()
-		vim.cmd([[setlocal spell]])
-		vim.cmd([[dictionary+=/usr/share/dict/words]])
+		vim.opt_local.spell = true
+		-- vim.cmd([[setlocal dictionary+=/usr/share/dict/words]])
 		-- vim.cmd([[dictionary+=/usr/share/dict/dutch]])
 	end,
 })

@@ -1,9 +1,7 @@
 -------PACKER--------
--- ensure that packer is installed
--- lazy load --
--- treesitter context bufread?
 -- https://www.reddit.com/r/neovim/comments/opipij/guide_tips_and_tricks_to_reduce_startup_and/
 
+-- ensure that packer is installed
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -26,7 +24,9 @@ packer.init({
 	},
 })
 
-local lspfiletypes = { "c", "cpp", "rust", "lua", "python", "typescript", "javascript", "tex" }
+local lspfiletypes = { "c", "cpp", "rust", "lua", "python", "typescript", "javascript", "tex", "text" }
+local nulllsfiletypes =
+	{ "c", "cpp", "rust", "lua", "python", "typescript", "javascript", "tex", "json", "sh", "bash", "text" }
 
 return packer.startup(function(use)
 	--==Impatient==--
@@ -54,7 +54,8 @@ return packer.startup(function(use)
 		-- module = { 'telescope' },
 		-- cmd = { 'Telescope' },
 		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-tree/nvim-web-devicons" } },
-		after = { "nvim-neoclip.lua" },
+		-- after = { "nvim-neoclip.lua" },
+		after = { "telescope-fzf-native.nvim" },
 		config = function()
 			require("lars-vc.plugins.telescope")
 		end,
@@ -66,11 +67,12 @@ return packer.startup(function(use)
 		cmd = { "Telescope" },
 		opt = true,
 	})
-	use({
-		"AckslD/nvim-neoclip.lua",
-		requires = { "nvim-telescope/telescope.nvim" },
-		after = { "telescope-fzf-native.nvim" },
-	})
+	-- use({
+	-- 	"AckslD/nvim-neoclip.lua",
+	-- 	-- event = { "TextYankPost" },
+	-- 	requires = { "nvim-telescope/telescope.nvim" },
+	-- 	after = { "telescope-fzf-native.nvim" },
+	-- })
 
 	--==Statusline==--
 	use({
@@ -115,6 +117,7 @@ return packer.startup(function(use)
 		config = function()
 			require("lars-vc.plugins.nullls")
 		end,
+		ft = nulllsfiletypes,
 	})
 
 	--==CMP==--
@@ -129,6 +132,7 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" })
 	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
 	use("onsails/lspkind-nvim")
 	-- use { 'petertriho/cmp-git', opt = true, ft = { 'gitcommit' }, config = function() require('cmp_git').setup() end }
@@ -319,7 +323,9 @@ return packer.startup(function(use)
 	use({
 		"rcarriga/nvim-notify",
 		config = function()
-			vim.notify = require("notify")
+			local notify = require("notify")
+			notify.setup({ stages = "fade", timeout = 3000 })
+			vim.notify = notify
 		end,
 	})
 
@@ -379,7 +385,7 @@ return packer.startup(function(use)
 	use({
 		"lewis6991/hover.nvim",
 		opt = true,
-		keys = { "gh", "gH" },
+		module = "hover",
 		config = function()
 			require("lars-vc.plugins.hover")
 		end,
@@ -416,8 +422,19 @@ return packer.startup(function(use)
 		end,
 	})
 
+	--==Ipynb==--
+	-- use({
+	-- 	"meatballs/ipynb.nvim", --[[ ft= {"ipynb"} ]]
+	-- })
+
 	--==Colorscheme==--
-	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+		config = function()
+			require("lars-vc/plugins/colorscheme")
+		end,
+	})
 
 	--Bootstrap--
 	if packer_bootstrap then

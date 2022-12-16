@@ -15,4 +15,14 @@ g["vimtex_view_general_options"] = "--unique file:@pdf\\#src:@line@tex"
 -- g['vimtex_compiler_method'] = 'latexrun'
 
 -- spell check
-vim.cmd([[autocmd FileType tex setlocal spell]])
+-- vim.cmd([[autocmd FileType tex setlocal spell]])
+-- Turn on spelling only for that buffer (not needed anymore with ltex-ls)
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	-- command = "nmap <buffer> <A-j> )",
+-- 	pattern = { "tex" },
+-- 	callback = function()
+-- 		vim.opt_local.spell = true
+-- 		-- vim.cmd([[setlocal dictionary+=/usr/share/dict/words]])
+-- 		-- vim.cmd([[dictionary+=/usr/share/dict/dutch]])
+-- 	end,
+-- })

@@ -49,7 +49,8 @@ vim.keymap.set("i", "<C-z>", "<C-g>u<Esc>[s1z=`]a<C-g>u", { noremap = true })
 vim.keymap.set("n", "<leader>zz", "1z=", { noremap = true })
 -- alternate file
 vim.keymap.set("n", "<BS>", "<C-^>", { noremap = true })
--- pasting
+-- yanking and pasting
+vim.keymap.set("n", "<leader>y", '<cmd>let @+=@"<cr>', { noremap = true }) -- move clipboard content to sys clipboard
 vim.keymap.set("v", "<leader>d", '"_d', { noremap = true })
 -- vim.keymap.set('v', 'gp', '"_dP', { noremap = true })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true })
