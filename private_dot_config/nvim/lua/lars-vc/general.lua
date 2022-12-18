@@ -1,3 +1,4 @@
+---OPTIONS---
 local opt = vim.opt
 opt.termguicolors = true -- better colors
 opt.tabstop = 4 -- number of spaces in a <Tab>
@@ -29,7 +30,8 @@ opt.conceallevel = 3 -- conceallevel for markdown
 -- disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
 --vim.cmd [[autocmd FileType * setlocal formatoptions-=o]]
 vim.api.nvim_create_autocmd("FileType", {
-	command = "setlocal formatoptions-=o ",
-	pattern = { "*" },
+    command = "setlocal formatoptions-=o ",
+    pattern = { "*" },
 })
-opt.signcolumn = "yes"
+opt.signcolumn = "yes" -- extra column showing sign for e.g. LSP related stuff
+opt.breakindent = true -- wordwrap respects indent

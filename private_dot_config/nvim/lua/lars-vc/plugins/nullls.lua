@@ -102,6 +102,7 @@ local langtool = {
 	-- that spawns the command with the given arguments and options
 
 	generator = null_ls.generator({
+		-- NOTE: This is commented out below
 		command = "langtoolDummy",
 		args = {},
 		to_stdin = true,
@@ -150,4 +151,4 @@ local langtool = {
 	}),
 }
 
-null_ls.register(langtool)
+-- null_ls.register(langtool)

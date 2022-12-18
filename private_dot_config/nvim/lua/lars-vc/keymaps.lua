@@ -1,9 +1,18 @@
---==Keymaps for none plugin stuff==--
+---KEYMAPS for none plugin stuff---
 -- leader key
 vim.keymap.set("n", "<space>", "<nop>", { noremap = true })
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader><leader>", "<cmd>wa<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>lf", function()
+    -- check if null-ls exists
+    local check, nullls = pcall(require, "null-ls")
+    -- check if a formatting source of null-ls is registered
+    if check and nullls.is_registered({ method = nullls.methods.FORMATTING }) then
+        vim.lsp.buf.format()
+    else
+        vim.cmd([[normal gg=G<C-o>]])
+    end
+end, { noremap = true })
 -- moving in insert mode and cmdmode
 vim.keymap.set({ "i", "c" }, "<A-h>", "<Left>", { noremap = true })
 vim.keymap.set({ "i", "c" }, "<A-j>", "<Down>", { noremap = true })
@@ -57,3 +66,11 @@ vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { noremap = true })
 -- For snippets
 vim.keymap.set({ "s" }, "<backspace>", "<backspace>i")
+-- Show diagnostics for current line
+vim.keymap.set("n", "go", vim.diagnostic.open_float, { noremap = true })
+-- Jump between diagnostic messages
+vim.keymap.set("n", "<leader>lj", vim.diagnostic.goto_next, { noremap = true })
+vim.keymap.set("n", "<leader>lk", vim.diagnostic.goto_prev, { noremap = true })
+-- For navigating wordwrapped text
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

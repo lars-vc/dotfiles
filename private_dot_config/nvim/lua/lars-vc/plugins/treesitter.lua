@@ -56,6 +56,8 @@ require("nvim-treesitter.configs").setup({
                 ["il"] = { query = "@loop.inner", desc = "inner of a loop " },
                 ["ai"] = { query = "@conditional.outer", desc = "around of a cond" },
                 ["ii"] = { query = "@conditional.inner", desc = "inner of a cond" },
+                ["ia"] = { query = "@parameter.inner", desc = "inner of a parameter" },
+                ["aa"] = { query = "@parameter.outer", desc = "outer of a parameter" },
                 ["ao"] = { query = "@comment.outer", desc = "outer of a comment" },
             },
             -- You can choose the select mode (default is charwise 'v')

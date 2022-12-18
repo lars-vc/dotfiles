@@ -20,7 +20,6 @@ vim.keymap.set({ "i", "s" }, "<C-e>", function()
     end
 end)
 
-
 --==Own snippets==--
 local snippet = ls.snippet
 local i = ls.insert_node
@@ -46,43 +45,68 @@ local fn = ls.function_node
 -- \begin{document}
 -- \maketitle
 
-
 -- \end{document}
 -- Latex
 ls.add_snippets("tex", {
     snippet("init", {
-        t({ "\\documentclass{article}", "\\usepackage[utf8]{inputenc}", "\\usepackage{graphicx, caption, subcaption}",
-            "\\graphicspath{images/}", "", "\\title{" }), i(1, "TITLE"),
+        t({
+            "\\documentclass{article}",
+            "\\usepackage[utf8]{inputenc}",
+            "\\usepackage{graphicx, caption, subcaption}",
+            "\\graphicspath{images/}",
+            "",
+            "\\title{",
+        }),
+        i(1, "TITLE"),
         t({ "}", "\\author{Lars Van Cauter}", "\\date{" }),
         fn(function(args, snip, user_args)
             return os.date("%B %Y")
         end),
-        t({ "}", "", "\\begin{document}", "\\maketitle", "", "" }), i(0), t({ "", "", "\\end{document}" })
+        t({ "}", "", "\\begin{document}", "\\maketitle", "", "" }),
+        i(0),
+        t({ "", "", "\\end{document}" }),
     }),
-    snippet("image",
-        {
-            t({ "\\begin{figure}", "\t\\centering", "\t\\includegraphics[" }),
-            cn(1, {
-                sn(nil, {
-                    t("scale="), i(1, "0.5"),
-                }),
-                sn(nil, {
-                    i(1, "0.95"), t("\\linewidth"),
-                })
+    snippet("image", {
+        t({ "\\begin{figure}", "\t\\centering", "\t\\includegraphics[" }),
+        cn(1, {
+            sn(nil, {
+                t("scale="),
+                i(1, "0.5"),
             }),
-            t("]"), t("{images/"), i(2, "FILE"),
-            t({ "}", "\t\\captionof{figure}{" }), i(3, "CAPTION"), t({ "}", "\t\\label{fig:" }), i(4, "LABEL"),
-            t({ "}", "\\end{figure}" }),
-        }
-    ),
-    snippet("use",
-        { t("\\usepackage"), cn(1, { sn(nil, { t("["), i(1, "OPTS"), t("]") }), t("") }), t("{"), i(2, "PACKAGE"), t("}")
-        }
-    ),
-    snippet("margins",
+            sn(nil, {
+                t("width="),
+                i(1, "0.95"),
+                t("\\linewidth"),
+            }),
+        }),
+        t("]"),
+        t("{images/"),
+        i(2, "FILE"),
+        t({ "}", "\t\\captionof{figure}{" }),
+        i(3, "CAPTION"),
+        t({ "}", "\t\\label{fig:" }),
+        i(4, "LABEL"),
+        t({ "}", "\\end{figure}" }),
+    }),
+    snippet(
+        "use",
         {
-            t({ "\\usepackage{geometry}  % margins", "\\geometry{", "\ta4paper", "\ttotal={170mm,257mm}", "\tleft=20mm",
-                "\ttop=20mm", "}" })
+            t("\\usepackage"),
+            cn(1, { sn(nil, { t("["), i(1, "OPTS"), t("]") }), t("") }),
+            t("{"),
+            i(2, "PACKAGE"),
+            t("}"),
         }
     ),
+    snippet("margins", {
+        t({
+            "\\usepackage{geometry}  % margins",
+            "\\geometry{",
+            "\ta4paper",
+            "\ttotal={170mm,257mm}",
+            "\tleft=20mm",
+            "\ttop=20mm",
+            "}",
+        }),
+    }),
 })
