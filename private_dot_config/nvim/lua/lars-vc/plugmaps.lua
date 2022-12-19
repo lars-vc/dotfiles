@@ -268,3 +268,7 @@ end, { desc = "hover.nvim" })
 vim.keymap.set("n", "gH", function()
     require("hover").hover_select()
 end, { desc = "hover.nvim (select)" })
+
+-- CodeActionMenu --
+-- list all code actions for line
+vim.keymap.set({ "n", "v" }, "gA", "<cmd>CodeActionMenu<cr>", { noremap = true })

@@ -14,11 +14,9 @@ local function on_attach(client, bufnr)
     -- Rename symbol under cursor
     vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, bufopts)
     -- Apply the first code action
-    vim.keymap.set("n", "ga", function()
+    vim.keymap.set({ "n", "v" }, "ga", function()
         vim.lsp.buf.code_action({ apply = true, context = { only = { "quickfix", "refactor" } } })
     end, bufopts)
-    -- list all code actions for line
-    vim.keymap.set("n", "gA", "<cmd>CodeActionMenu<cr>", bufopts)
     -- list all code actions for document (cant use end key)
     -- vim.keymap.set('n', '<leader>la', function()
     --     vim.lsp.buf.code_action({ range = {start = {0,0}, d = {-1,-1}}})

@@ -110,6 +110,16 @@ return packer.startup(function(use)
         after = { "cmp-nvim-lsp" },
     })
 
+    --==Refactoring.nvim==--
+    use({
+        "ThePrimeagen/refactoring.nvim",
+        config = function()
+            require("refactoring").setup()
+        end,
+        ft = nulllsfiletypes,
+        -- ft = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "php", "ruby" },
+    })
+
     --==Fidget==--
     use({
         "j-hui/fidget.nvim",
