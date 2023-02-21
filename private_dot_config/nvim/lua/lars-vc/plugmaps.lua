@@ -23,6 +23,9 @@ vim.keymap.set("n", "<leader>lx", "<cmd>TroubleClose<cr>", { silent = true, nore
 vim.keymap.set("n", "<leader>lc", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>lq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gd", "<cmd>TroubleToggle lsp_definitions<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gt", "<cmd>TroubleToggle lsp_type_definitions<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gi", "<cmd>TroubleToggle lsp_implementations<cr>", { silent = true, noremap = true })
 
 -- Telescope --
 vim.keymap.set("n", "<leader>ff", function()
@@ -240,6 +243,9 @@ vim.keymap.set("n", "<S-l>", function()
 end, { noremap = true })
 vim.keymap.set("n", "<S-h>", function()
     require("dap").step_out()
+end, { noremap = true })
+vim.keymap.set("v", "<leader>e", function()
+    require("dapui").eval()
 end, { noremap = true })
 
 -- Nabla --

@@ -68,6 +68,7 @@ bindsym $mod+p move workspace to output right
 #runmenu
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec rofi -show window
+bindsym $mod+q exec rofi -show file-browser-extended
 # open quick calculator
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 # bindsym $mod+w exec ~/.config/i3/i3scripts/rofi-nm
@@ -94,6 +95,8 @@ bindsym $mod+Shift+s exec flameshot gui
 bindsym $mod+Shift+x exec $Locker
 # open firefox
 bindsym $mod+Shift+f exec firefox
+# open discord (from appimage)
+bindsym $mod+Shift+d exec ~/Documents/discord-0.0.24/Discord/Discord
 # open system monitor
 bindsym $mod+m exec $terminal -e ~/.config/i3/i3scripts/sysmon.sh
 # open network manager
@@ -235,7 +238,7 @@ for_window [class="Blueberry.py"] floating enable, border pixel 0
 #                           EXECS                           #
 #############################################################
 # shady fix for audio, cant uninstall pipewire but I want to use pulseaudio
-exec systemctl --user stop pipewire.socket
+# exec systemctl --user stop pipewire.socket
 # setup second monitor
 #exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
 exec autorandr --change

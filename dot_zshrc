@@ -142,6 +142,9 @@ alias cat='bat -pp'
 alias less='bat'
 alias tx='tmux'
 alias wiki='nvim +VimwikiIndex'
+alias gsti='gst-inspect-1.0'
+alias gstd='gst-discoverer-1.0'
+alias gstl='gst-launch-1.0'
 
 
 # path stuff

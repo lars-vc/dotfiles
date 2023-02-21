@@ -20,18 +20,19 @@ g["vim_markdown_conceal_code_blocks"] = 0
 g["vim_markdown_new_list_item_indent"] = 0
 g["vim_markdown_edit_url_in"] = "tab"
 g["vim_markdown_folding_style_pythonic"] = 1
-g["vim_markdown_folding_disabled"] = 1
+g["vim_markdown_folding_level"] = 9
+-- g["vim_markdown_folding_disabled"] = 1
 g["vim_markdown_follow_anchor"] = 1
 g["vim_markdown_strikethrough"] = 1
 -- Turn on spelling only for that buffer
 vim.api.nvim_create_autocmd("FileType", {
-	-- command = "nmap <buffer> <A-j> )",
-	pattern = { "markdown" },
-	callback = function()
-		vim.opt_local.spell = true
-		-- vim.cmd([[setlocal dictionary+=/usr/share/dict/words]])
-		-- vim.cmd([[dictionary+=/usr/share/dict/dutch]])
-	end,
+    -- command = "nmap <buffer> <A-j> )",
+    pattern = { "markdown" },
+    callback = function()
+        vim.opt_local.spell = true
+        -- vim.cmd([[setlocal dictionary+=/usr/share/dict/words]])
+        -- vim.cmd([[dictionary+=/usr/share/dict/dutch]])
+    end,
 })
 -- vim.cmd([[autocmd FileType markdown setlocal spell]])
 -- vim.cmd([[autocmd FileType markdown setlocal dictionary+=/usr/share/dict/words]])

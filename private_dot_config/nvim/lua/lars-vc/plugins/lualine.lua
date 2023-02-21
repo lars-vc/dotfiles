@@ -1,26 +1,33 @@
 --==Own components==--
 -- total wordcount
 local function getWords()
-    return 'W:' .. tostring(vim.fn.wordcount().words)
+    return "W:" .. tostring(vim.fn.wordcount().words)
 end
 
 -- linenumbering of cursor
 local function getPos()
     local row, col = table.unpack(vim.api.nvim_win_get_cursor(0))
-    return ':' .. tostring(row) .. '/' .. tostring(vim.api.nvim_buf_line_count(0)) .. ' :' .. tostring(col)
+    local totalline = vim.api.nvim_buf_line_count(0)
+    local rowstr = tostring(row)
+    local colstr = tostring(col)
+    if col < 10 then
+        colstr = "0" .. colstr
+    end
+    rowstr = string.rep("0", math.floor(math.log10(totalline)) - math.floor(math.log10(row))) .. rowstr
+    return ":" .. rowstr .. "/" .. tostring(totalline) .. " :" .. colstr
 end
 
 -- setup
 -- local navic = require("nvim-navic")
-require('lualine').setup {
+require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = 'catppuccin',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        theme = "catppuccin",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {
             statusline = {},
-            winbar = { 'Trouble', 'fugitive', 'neotest-summary', 'gitcommit', 'help', 'dapui_console', 'dapui_stacks', },
+            winbar = { "Trouble", "fugitive", "neotest-summary", "gitcommit", "help", "dapui_console", "dapui_stacks" },
         },
         ignore_focus = {},
         always_divide_middle = true,
@@ -29,23 +36,23 @@ require('lualine').setup {
             statusline = 1000,
             tabline = 1000,
             winbar = 1000,
-        }
+        },
     },
     sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diagnostics' },
-        lualine_c = { 'filename' },
-        lualine_x = { 'diff', 'encoding', 'fileformat', 'filetype' },
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diagnostics" },
+        lualine_c = { "filename" },
+        lualine_x = { "diff", "encoding", "fileformat", "filetype" },
         lualine_y = { { getWords } },
-        lualine_z = { { getPos } }
+        lualine_z = { { getPos } },
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
         lualine_y = {},
-        lualine_z = {}
+        lualine_z = {},
     },
     tabline = {},
     winbar = {},
@@ -72,5 +79,5 @@ require('lualine').setup {
     --     lualine_y = {},
     --     lualine_z = {}
     -- },
-    extensions = {}
-}
+    extensions = {},
+})

@@ -4,14 +4,14 @@ vim.keymap.set("n", "<space>", "<nop>", { noremap = true })
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader><leader>", "<cmd>wa<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>lf", function()
-    -- check if null-ls exists
-    local check, nullls = pcall(require, "null-ls")
-    -- check if a formatting source of null-ls is registered
-    if check and nullls.is_registered({ method = nullls.methods.FORMATTING }) then
-        vim.lsp.buf.format()
-    else
-        vim.cmd([[normal gg=G<C-o>]])
-    end
+	-- check if null-ls exists
+	local check, nullls = pcall(require, "null-ls")
+	-- check if a formatting source of null-ls is registered
+	if check and nullls.is_registered({ method = nullls.methods.FORMATTING }) then
+		vim.lsp.buf.format()
+	else
+		vim.cmd([[normal gg=G<C-o>]])
+	end
 end, { noremap = true })
 -- moving in insert mode and cmdmode
 vim.keymap.set({ "i", "c" }, "<A-h>", "<Left>", { noremap = true })
@@ -23,6 +23,11 @@ vim.keymap.set("n", "<C-H>", "<C-w>h", { noremap = true })
 vim.keymap.set("n", "<C-J>", "<C-w>j", { noremap = true })
 vim.keymap.set("n", "<C-K>", "<C-w>k", { noremap = true })
 vim.keymap.set("n", "<C-L>", "<C-w>l", { noremap = true })
+
+vim.keymap.set("t", "<C-H>", "<C-\\><C-n><C-w>h", { noremap = true })
+vim.keymap.set("t", "<C-J>", "<C-\\><C-n><C-w>j", { noremap = true })
+vim.keymap.set("t", "<C-K>", "<C-\\><C-n><C-w>k", { noremap = true })
+vim.keymap.set("t", "<C-L>", "<C-\\><C-n><C-w>l", { noremap = true })
 -- creating and moving the splits
 vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>ss", "<cmd>split<cr>", { noremap = true })
@@ -59,7 +64,7 @@ vim.keymap.set("n", "<leader>zz", "1z=", { noremap = true })
 -- alternate file
 vim.keymap.set("n", "<BS>", "<C-^>", { noremap = true })
 -- yanking and pasting
-vim.keymap.set("n", "<leader>y", '<cmd>let @+=@"<cr>', { noremap = true }) -- move clipboard content to sys clipboard
+vim.keymap.set("n", "<leader>y", '<cmd>let @+=@" | echo "ClipYanked"<cr>', { noremap = true }) -- move clipboard content to sys clipboard
 vim.keymap.set("v", "<leader>d", '"_d', { noremap = true })
 -- vim.keymap.set('v', 'gp', '"_dP', { noremap = true })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true })
