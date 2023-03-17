@@ -252,7 +252,7 @@ exec xautolock -time 30 -locker "systemctl suspend" &
 exec --no-startup-id /usr/lib/blueberry/blueberry-tray.py
 exec --no-startup-id /usr/lib/blueberry/blueberry-obex-agent.py
 # compositor
-exec --no-startup-id picom --experimental-backends -b
+exec --no-startup-id picom -b
 # numlock
 exec_always --no-startup-id numlockx on
 
@@ -303,3 +303,6 @@ client.focused          $bg-color           $bg-color          $text-color      
 client.unfocused        $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
 client.focused_inactive $transp-bg-color    $transp-bg-color   $text-color          $transp-bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $transp-bg-color
+
+# floating windows no border
+for_window [floating] border pixel 0
