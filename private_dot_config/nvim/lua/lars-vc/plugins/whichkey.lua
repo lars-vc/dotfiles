@@ -28,7 +28,7 @@ whichkey.register({
 			name = "+telescope",
 			f = "find a file",
 			b = "find an open buffer",
-			c = "search in current buffer",
+			c = "continue prev search",
 			g = "search in all files",
 			-- n = "neoclip",
 			i = "find in config",
@@ -171,7 +171,8 @@ whichkey.register({
 		t = {
 			name = "+neotest",
 			t = "run nearby test",
-			a = "run all test",
+			a = "run all tests",
+			f = "run tests in file",
 			d = "debug nearby test(wip)",
 			h = "attach nearby test(wip)",
 			x = "stop nearby test",
