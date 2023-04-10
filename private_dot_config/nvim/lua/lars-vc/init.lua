@@ -5,6 +5,5 @@ require("lars-vc/keymaps")
 require("lars-vc/plugmaps")
 -- Plugins --
 require("lars-vc/packer")
-vim.cmd([[colorscheme catppuccin]])
 require("lars-vc/plugins/checker")
 require("lars-vc/random")

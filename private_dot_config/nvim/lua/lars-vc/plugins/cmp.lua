@@ -12,7 +12,7 @@ local small_mapping = {
     ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
     ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-            cmp.confirm({ select = true })
+            cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })
         else
             fallback()
         end
@@ -42,7 +42,9 @@ local small_format = {
             path = "[Path]",
             luasnip = "[LuaSnip]",
             nvim_lua = "[Lua]",
+            -- Copilot = "[]",
         },
+        symbol_map = { Copilot = "" },
     }),
 }
 
@@ -63,11 +65,11 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<S-Space>"] = cmp.mapping.complete(),
+        ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.confirm({ select = true })
+                cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })
             else
                 fallback()
             end
