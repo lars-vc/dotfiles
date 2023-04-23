@@ -1,10 +1,11 @@
 ---OPTIONS---
 local opt = vim.opt
 opt.termguicolors = true -- better colors
-opt.tabstop = 4 -- number of spaces in a <Tab>
-opt.shiftwidth = 4 --
-opt.softtabstop = 4 --
-opt.expandtab = true --
+opt.tabstop = 4 -- number of spaces in a <Tab> (CHANGE THIS VARIABLE TO CHANGE TAB/SPACES WIDTH)
+opt.shiftwidth = 0 -- will use tabstop if 0
+opt.softtabstop = -1 -- will use shiftwidth if negative
+opt.expandtab = true -- use spaces instead of tabs
+opt.smarttab = true --
 opt.smartindent = true -- enable autoindents
 opt.number = true -- adds line numbers
 opt.relativenumber = true -- relative numbers in sidebar
