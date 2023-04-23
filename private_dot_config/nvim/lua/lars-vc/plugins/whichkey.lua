@@ -80,7 +80,6 @@ whichkey.register({
 		},
 		g = {
 			name = "+git",
-			c = "coma",
 			s = "status",
 			g = ":Git {cmd}",
 			p = "push",
@@ -90,8 +89,8 @@ whichkey.register({
 			l = "merge-conflict pick right",
 			b = "see branches",
 			a = "add as safe dir",
-			f = {
-				name = "+commitlist",
+			c = {
+				name = "+commits",
 				c = "list all commits",
 				b = "list open buffer commits",
 			},
@@ -191,9 +190,13 @@ whichkey.register({
 				t = "run marked tests",
 			},
 		},
+		k = {
+			name = "+flote",
+		},
 		p = "clippaste",
 		P = "clipPaste",
 		y = "clipyank",
+		e = "docstring",
 	},
 	m = {
 		f = "harpoon item 1",

@@ -18,4 +18,4 @@ require("color-picker").setup({ -- for changing icons & mappings
     --    ["text_highlight_group"] = "CocFloating"
 })
 -- dont think this works?
-vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
+-- vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.

@@ -7,7 +7,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
     sources = {
         -- Formatting --
-        format.prettier.with({ extra_args = { "--tab-width", "4" } }),
+        format.prettier.with({ disabled_filetypes = { "markdown" }, extra_args = { "--tab-width", "4" } }),
         format.stylua,
         format.black,
         format.latexindent,
@@ -19,7 +19,7 @@ null_ls.setup({
         diagno.eslint,
         -- diagno.ltrs.with({extra_args= {  }}),
         diagno.flake8.with({ extra_args = { "--append-config", "~/.config/flake8" } }), -- idk if I like em
-        diagno.ltrs,
+        diagno.ltrs.with({ disabled_filetypes = { "markdown" } }),
         -- diagno.luacheck, cant install this
 
         -- Completion --
@@ -27,7 +27,7 @@ null_ls.setup({
 
         -- Code actions --
         -- codeac.refactoring, -- very slow startup
-        codeac.ltrs,
+        codeac.ltrs.with({ disabled_filetypes = { "markdown" } }),
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then

@@ -29,19 +29,19 @@ vim.keymap.set("n", "gi", "<cmd>TroubleToggle lsp_implementations<cr>", { silent
 
 -- Telescope --
 vim.keymap.set("n", "<leader>ff", function()
-    require("telescope.builtin").find_files()
+	require("telescope.builtin").find_files()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fg", function()
-    require("telescope.builtin").live_grep()
+	require("telescope.builtin").live_grep()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fc", function()
-    require("telescope.builtin").resume()
+	require("telescope.builtin").resume()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>/", function()
-    require("telescope.builtin").current_buffer_fuzzy_find()
+	require("telescope.builtin").current_buffer_fuzzy_find()
 end, { noremap = true, desc = "buf fuzzyfind" })
 vim.keymap.set("n", "<leader>fb", function()
-    require("telescope.builtin").buffers()
+	require("telescope.builtin").buffers()
 end, { noremap = true })
 -- vim.keymap.set(
 --     "n",
@@ -50,51 +50,51 @@ end, { noremap = true })
 --     { noremap = true }
 -- )
 vim.keymap.set(
-    "n",
-    "<leader>fi",
-    "<cmd>Telescope find_files cwd=~/.config/nvim prompt_title=VimRC<cr>",
-    { noremap = true }
+	"n",
+	"<leader>fi",
+	"<cmd>Telescope find_files cwd=~/.config/nvim prompt_title=VimRC<cr>",
+	{ noremap = true }
 )
 vim.keymap.set("n", "<leader>fp", function()
-    require("telescope.builtin").planets()
+	require("telescope.builtin").planets()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fd", function()
-    require("telescope.builtin").diagnostics()
+	require("telescope.builtin").diagnostics()
 end, { noremap = true })
 -- help related
 vim.keymap.set("n", "<leader>fhh", function()
-    require("telescope.builtin").help_tags()
+	require("telescope.builtin").help_tags()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fhc", function()
-    require("telescope.builtin").command_history()
+	require("telescope.builtin").command_history()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fhs", function()
-    require("telescope.builtin").search_history()
+	require("telescope.builtin").search_history()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fhm", function()
-    require("telescope.builtin").man_pages()
+	require("telescope.builtin").man_pages()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fhk", function()
-    require("telescope.builtin").keymaps()
+	require("telescope.builtin").keymaps()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fho", function()
-    require("telescope.builtin").vim_options()
+	require("telescope.builtin").vim_options()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fhr", function()
-    require("telescope.builtin").reloader()
+	require("telescope.builtin").reloader()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>fhb", function()
-    require("telescope.builtin").builtin()
+	require("telescope.builtin").builtin()
 end, { noremap = true })
 -- git related stuff
-vim.keymap.set("n", "<leader>gfc", function()
-    require("telescope.builtin").git_commits()
+vim.keymap.set("n", "<leader>gcc", function()
+	require("telescope.builtin").git_commits()
 end, { noremap = true })
-vim.keymap.set("n", "<leader>gfb", function()
-    require("telescope.builtin").git_bcommits()
+vim.keymap.set("n", "<leader>gcb", function()
+	require("telescope.builtin").git_bcommits()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>gb", function()
-    require("telescope.builtin").git_branches()
+	require("telescope.builtin").git_branches()
 end, { noremap = true })
 
 -- Fugitive --
@@ -103,12 +103,11 @@ vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>gp", "<cmd>Git push<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>gP", "<cmd>Git push --set-upstream origin HEAD<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>go", "<cmd>Git pull<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>gc", ':Git commit -a -m ""<Left>', { noremap = true })
 vim.keymap.set(
-    "n",
-    "<leader>ga",
-    "<cmd>!git config --global --add safe.directory <C-R>=getcwd()<CR><CR>",
-    { noremap = true }
+	"n",
+	"<leader>ga",
+	"<cmd>!git config --global --add safe.directory <C-R>=getcwd()<CR><CR>",
+	{ noremap = true }
 )
 -- for merge conflicts (pick left or right), to start comparing go into status and press dv on a file
 vim.keymap.set("n", "<leader>gh", "<cmd>diffget //2<CR>", { noremap = true })
@@ -116,81 +115,81 @@ vim.keymap.set("n", "<leader>gl", "<cmd>diffget //3<CR>", { noremap = true })
 
 -- Neotest --
 vim.keymap.set("n", "<leader>tt", function()
-    require("neotest").run.run()
+	require("neotest").run.run()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>tf", function()
-    require("neotest").run.run(vim.fn.expand("%"))
+	require("neotest").run.run(vim.fn.expand("%"))
 end, { noremap = true })
 vim.keymap.set("n", "<leader>ta", function()
-    require("neotest").run.run(".")
+	require("neotest").run.run(".")
 end, { noremap = true })
 vim.keymap.set("n", "<leader>td", function()
-    require("neotest").run.run({ strategy = "dap" })
+	require("neotest").run.run({ strategy = "dap" })
 end, { noremap = true })
 vim.keymap.set("n", "<leader>tx", function()
-    require("neotest").run.stop()
+	require("neotest").run.stop()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>th", function()
-    require("neotest").run.attach()
+	require("neotest").run.attach()
 end, { noremap = true })
 
 vim.keymap.set("n", "<leader>too", function()
-    require("neotest").output.open({ enter = true })
+	require("neotest").output.open({ enter = true })
 end, { noremap = true })
 vim.keymap.set("n", "<leader>tos", function()
-    require("neotest").output.open({ enter = true, short = true })
+	require("neotest").output.open({ enter = true, short = true })
 end, { noremap = true })
 
 vim.keymap.set("n", "<leader>tj", function()
-    require("neotest").jump.next({ status = "failed" })
+	require("neotest").jump.next({ status = "failed" })
 end, { noremap = true })
 vim.keymap.set("n", "<leader>tk", function()
-    require("neotest").jump.prev({ status = "failed" })
+	require("neotest").jump.prev({ status = "failed" })
 end, { noremap = true })
 
 vim.keymap.set("n", "<leader>tss", function()
-    require("neotest").summary.toggle()
+	require("neotest").summary.toggle()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>tso", function()
-    require("neotest").summary.open()
+	require("neotest").summary.open()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>tsc", function()
-    require("neotest").summary.close()
+	require("neotest").summary.close()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>tst", function()
-    require("neotest").summary.run_marked()
+	require("neotest").summary.run_marked()
 end, { noremap = true })
 
 -- Harpoon --
 vim.keymap.set("n", ",", "m", { noremap = true })
 vim.keymap.set("n", "m", "<NOP>", { noremap = true })
 vim.keymap.set("n", "mm", function()
-    require("harpoon.ui").toggle_quick_menu()
+	require("harpoon.ui").toggle_quick_menu()
 end, { noremap = true })
 vim.keymap.set("n", "mq", function()
-    require("harpoon.mark").add_file()
+	require("harpoon.mark").add_file()
 end, { noremap = true })
 -- naving
 vim.keymap.set("n", "mf", function()
-    require("harpoon.ui").nav_file(1)
+	require("harpoon.ui").nav_file(1)
 end, { noremap = true })
 vim.keymap.set("n", "md", function()
-    require("harpoon.ui").nav_file(2)
+	require("harpoon.ui").nav_file(2)
 end, { noremap = true })
 vim.keymap.set("n", "ms", function()
-    require("harpoon.ui").nav_file(3)
+	require("harpoon.ui").nav_file(3)
 end, { noremap = true })
 vim.keymap.set("n", "ma", function()
-    require("harpoon.ui").nav_file(4)
+	require("harpoon.ui").nav_file(4)
 end, { noremap = true })
 vim.keymap.set("n", "mj", function()
-    require("harpoon.ui").nav_file(5)
+	require("harpoon.ui").nav_file(5)
 end, { noremap = true })
 vim.keymap.set("n", "mk", function()
-    require("harpoon.ui").nav_file(6)
+	require("harpoon.ui").nav_file(6)
 end, { noremap = true })
 vim.keymap.set("n", "ml", function()
-    require("harpoon.ui").nav_file(7)
+	require("harpoon.ui").nav_file(7)
 end, { noremap = true })
 
 -- GitSigns --
@@ -203,84 +202,84 @@ vim.keymap.set("n", "<leader>gid", "<cmd>Gitsigns toggle_deleted<CR>", { noremap
 
 -- DAP --
 vim.keymap.set("n", "<leader>dq", function()
-    require("dap").run({
-        name = "launch",
-        type = "lldb",
-        request = "launch",
-        program = vim.fn.expand("/mnt/data/Ugent/dma/dma-3-lars-vc/bin/bin/DMAencoder"),
-        stopOnEntry = false,
-        args = {
-            vim.fn.expand("/mnt/data/Ugent/dma/dma-3-lars-vc/data/football_352x288_50.yuv"),
-            "352",
-            "288",
-            "5",
-            "5",
-            "/mnt/data/Ugent/dma/dma-3-lars-vc/bin/t.bin",
-        },
-    })
+	require("dap").run({
+		name = "launch",
+		type = "lldb",
+		request = "launch",
+		program = vim.fn.expand("/mnt/data/Ugent/dma/dma-3-lars-vc/bin/bin/DMAencoder"),
+		stopOnEntry = false,
+		args = {
+			vim.fn.expand("/mnt/data/Ugent/dma/dma-3-lars-vc/data/flower_352x288_50.yuv"),
+			"352",
+			"288",
+			"200",
+			"60",
+			"/mnt/data/Ugent/dma/dma-3-lars-vc/bin/t.bin",
+		},
+	})
 end, { noremap = true })
 
 vim.keymap.set("n", "<leader>dd", function()
-    require("dap").continue()
+	require("dap").continue()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dt", function()
-    require("dap").toggle_breakpoint()
+	require("dap").toggle_breakpoint()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dbm", function()
-    require("dap").set_breakpoint({ nil, nil, vim.fn.input("[Log msg] > ") })
+	require("dap").set_breakpoint({ nil, nil, vim.fn.input("[Log msg] > ") })
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dbc", function()
-    require("dap").set_breakpoint(vim.fn.input("[Condition] > "))
+	require("dap").set_breakpoint(vim.fn.input("[Condition] > "))
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dbx", function()
-    require("dap").clear_breakpoints()
+	require("dap").clear_breakpoints()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dbl", function()
-    require("dap").list_breakpoints()
+	require("dap").list_breakpoints()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dx", function()
-    require("dap").terminate()
+	require("dap").terminate()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dr", function()
-    require("dap").restart()
+	require("dap").restart()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dn", function()
-    require("dap").continue()
+	require("dap").continue()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dl", function()
-    require("dap").run_last()
+	require("dap").run_last()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dc", function()
-    require("dap").run_to_cursor()
+	require("dap").run_to_cursor()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>dp", function()
-    require("dap").pause()
+	require("dap").pause()
 end, { noremap = true })
 vim.keymap.set("n", "<S-j>", function()
-    require("dap").step_into()
+	require("dap").step_into()
 end, { noremap = true })
 vim.keymap.set("n", "<S-k>", function()
-    require("dap").step_back()
+	require("dap").step_back()
 end, { noremap = true })
 vim.keymap.set("n", "<S-l>", function()
-    require("dap").step_over()
+	require("dap").step_over()
 end, { noremap = true })
 vim.keymap.set("n", "<S-h>", function()
-    require("dap").step_out()
+	require("dap").step_out()
 end, { noremap = true })
 vim.keymap.set("v", "<leader>e", function()
-    require("dapui").eval()
+	require("dapui").eval()
 end, { noremap = true })
 
 -- Nabla --
 vim.keymap.set("n", "<leader>nn", function()
-    require("nabla").popup()
+	require("nabla").popup()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>no", function()
-    require("nabla").enable_virt()
+	require("nabla").enable_virt()
 end, { noremap = true })
 vim.keymap.set("n", "<leader>nc", function()
-    require("nabla").disable_virt()
+	require("nabla").disable_virt()
 end, { noremap = true })
 
 -- SSR --
@@ -288,14 +287,30 @@ end, { noremap = true })
 
 -- Leap --
 vim.keymap.set("n", "s", function()
-    require("leap").leap({ target_windows = { vim.fn.win_getid() } })
+	require("leap").leap({ target_windows = { vim.fn.win_getid() } })
 end, { noremap = true })
 
 -- Hover --
 vim.keymap.set("n", "gh", function()
-    require("pretty_hover").hover()
+	require("pretty_hover").hover()
 end, { desc = "hover info" })
 
 -- CodeActionMenu --
 -- list all code actions for line
 vim.keymap.set({ "n", "v" }, "gA", "<cmd>CodeActionMenu<cr>", { noremap = true })
+
+-- Flote --
+vim.keymap.set("n", "<leader>kk", function()
+	vim.cmd([[Flote]])
+	vim.diagnostic.disable(0)
+end, { noremap = true })
+vim.keymap.set("n", "<leader>km", "<cmd>Flote manage<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>kg", function()
+	vim.cmd([[Flote global]])
+	vim.diagnostic.disable(0)
+end, { noremap = true })
+
+-- Neogen --
+vim.keymap.set("n", "<leader>e", function()
+	require("neogen").generate()
+end, { noremap = true })

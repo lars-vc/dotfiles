@@ -405,6 +405,12 @@ return packer.startup(function(use)
 		"Fildo7525/pretty_hover",
 		opt = true,
 		module = "pretty_hover",
+		config = function()
+			require("pretty_hover").setup()
+			-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+			--     border = "rounded",
+			-- })
+		end,
 	})
 
 	--==Better Codeaction==--
@@ -459,6 +465,35 @@ return packer.startup(function(use)
 		config = function()
 			require("copilot_cmp").setup()
 		end,
+	})
+
+	--==Flote==--
+	use({
+		"JellyApple102/flote.nvim",
+		config = function()
+			require("flote").setup({
+				q_to_quit = true,
+				window_style = "minimal",
+				window_border = "solid",
+				window_title = false, -- set to true when 0.9 is out
+			})
+		end,
+		opt = true,
+		cmd = "Flote",
+	})
+
+	--==Neogen==--
+	use({
+		"danymat/neogen",
+		opt = true,
+		config = function()
+			require("neogen").setup({ snippet_engine = "luasnip" })
+		end,
+		module = "neogen",
+		cmd = "Neogen",
+		requires = { "nvim-treesitter/nvim-treesitter", "L3MON4D3/LuaSnip" },
+		-- Uncomment next line if you want to follow only stable versions
+		-- tag = "*"
 	})
 
 	--==Colorscheme==--

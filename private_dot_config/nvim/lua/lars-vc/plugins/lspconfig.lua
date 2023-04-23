@@ -25,6 +25,9 @@ local function on_attach(client, bufnr)
     -- if client.server_capabilities.documentSymbolProvider then
     --     navic.attach(client, bufnr)
     -- end
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+    })
 end
 
 -- Set up lspconfig.
