@@ -32,10 +32,12 @@ require("catppuccin").setup({
             DiagnosticVirtualTextWarn = { bg = cp.none },
             DiagnosticVirtualTextInfo = { bg = cp.none },
             DiagnosticVirtualTextHint = { bg = cp.none },
+            Folded = { bg = cp.none },
         }
     end,
     integrations = {
         -- harpoon = true,
+        neotest = true,
         notify = true,
         markdown = true,
         cmp = true,
@@ -72,6 +74,7 @@ require("catppuccin").setup({
 })
 
 vim.cmd([[colorscheme catppuccin]])
+
 --==Material==--
 -- vim.g['material_style'] = "oceanic"
 -- require('material').setup({

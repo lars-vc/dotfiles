@@ -32,6 +32,13 @@ end
 
 -- Set up lspconfig.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- add this for ufo
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+}
+-- make ufo use the lsp if attached
+-- require("ufo").setup()
 
 local lspconf = require("lspconfig")
 
