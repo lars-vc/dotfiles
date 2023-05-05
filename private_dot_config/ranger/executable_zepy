@@ -1,6 +1,7 @@
 #!/bin/bash
 
 help () {
+    echo "Zepy - Zipper and Extracty to make compressing and decompressing easier"
     echo "Usage: $0 [x/z] [OPTIONS]... [FILES]..."
     echo "  Zipper:"
     echo "    $0 z [ZIPTYPE] [FILES]..."
