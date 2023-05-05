@@ -41,7 +41,9 @@ return packer.startup(function(use)
     use({
         "nvim-tree/nvim-web-devicons",
         config = function()
-            require("lars-vc.plugins.web-devicons")
+            require("nvim-web-devicons").setup({
+                default = true,
+            })
         end,
     }) -- icons in telescope and lualine
 
@@ -172,7 +174,16 @@ return packer.startup(function(use)
             require("nvim-ts-autotag")
         end,
     })
-    use("tpope/vim-surround")
+    -- use("tpope/vim-surround")
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end,
+    })
 
     --==Treesitter==--
     use({
@@ -187,9 +198,6 @@ return packer.startup(function(use)
     })
     use({
         "nvim-treesitter/nvim-treesitter-textobjects",
-    })
-    use({
-        "nvim-treesitter/playground",
     })
 
     --==Commenting==--
@@ -455,6 +463,7 @@ return packer.startup(function(use)
         module = "copilot",
         cmd = "Copilot",
         event = "InsertEnter",
+        branch = "formatting-fixes",
         config = function()
             require("lars-vc.plugins.copilot")
         end,
@@ -500,6 +509,7 @@ return packer.startup(function(use)
     use({
         "kevinhwang91/nvim-ufo",
         requires = "kevinhwang91/promise-async",
+        keys = { "z" },
         config = function()
             vim.o.foldcolumn = "0" -- '0' is not bad
             vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -558,6 +568,36 @@ return packer.startup(function(use)
     --     opt = true,
     --     module = "muren",
     -- })
+
+    --==ranger==-- (currently I prefer rnvimr)
+    -- use({
+    -- 	"kelly-lin/ranger.nvim",
+    -- 	config = function()
+    -- 		require("ranger-nvim").setup({
+    -- 			replace_netrw = true,
+    -- 		})
+    -- 	end,
+    -- })
+
+    --==Telekasten==--
+    use({
+        "renerocksai/telekasten.nvim",
+        config = function()
+            require("telekasten").setup({
+                home = vim.fn.expand("~/zettelkasten"),
+            })
+        end,
+        opt = true,
+        cmd = "Telekasten",
+        module = "telekasten",
+    })
+
+    --==Calendar==--
+    use({
+        "renerocksai/calendar-vim",
+        opt = true,
+        cmd = { "CalendarVR", "Calendar" },
+    })
 
     --==Colorscheme==--
     use({

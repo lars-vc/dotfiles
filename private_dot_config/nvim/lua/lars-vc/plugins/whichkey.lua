@@ -34,6 +34,7 @@ whichkey.register({
             i = "find in config",
             p = "view the planets",
             d = "diagnostics",
+            l = "lsp symbols",
             h = {
                 name = "+help",
                 h = "help tags",
@@ -162,7 +163,7 @@ whichkey.register({
             r = "remove",
         },
         w = {
-            name = "+vimwiki",
+            name = "+wiki/flote",
             w = "open index.wiki",
         },
         n = {
@@ -193,9 +194,6 @@ whichkey.register({
                 c = "close summary",
                 t = "run marked tests",
             },
-        },
-        k = {
-            name = "+flote",
         },
         p = "clippaste",
         P = "clipPaste",

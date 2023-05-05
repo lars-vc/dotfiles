@@ -1,0 +1,87 @@
+#!/bin/bash
+
+help () {
+    echo "Usage: $0 [x/z] [OPTIONS]... [FILES]..."
+    echo "  Zipper:"
+    echo "    $0 z [ZIPTYPE] [FILES]..."
+    echo "    example: $u z 7z file1 file2 file3"
+    echo "    Supported ziptypes: bz2, gz, tar.bz2, tar.gz, tar, tbz2, tgz, zip, Z, 7z, rar, jar"
+    echo "  Extracty:"
+    echo "    $0 x [FILES]..."
+    echo "    example: $0 x file1.bz2 file2.tar file3.7z"
+    exit 1
+}
+
+extracty () {
+    for arg in $@ ; do
+        if [ -f $arg ] ; then
+            case $arg in
+                *.tar.bz2)  mkdir -p $(echo $arg | sed -E 's/(.*).tar.bz2$/\1/') && tar xjf $arg -C $_ ;;
+                *.tar.gz)   mkdir -p $(echo $arg | sed -E 's/(.*).tar.gz$/\1/') && tar xzf $arg -C $_  ;;
+                *.bz2)      bunzip2 -k $arg                                                            ;;
+                *.gz)       gunzip -k $arg                                                             ;;
+                *.tar)      mkdir -p $(echo $arg | sed -E 's/(.*).tar$/\1/') && tar xf $arg -C $_      ;;
+                *.tbz2)     mkdir -p $(echo $arg | sed -E 's/(.*).tbz2$/\1/') && tar xjf $arg -C $_    ;;
+                *.tgz)      mkdir -p $(echo $arg | sed -E 's/(.*).tgz$/\1/') && tar xzf $arg -C $_     ;;
+                *.zip)      mkdir -p $(echo $arg | sed -E 's/(.*).zip$/\1/') && unzip $arg -d $_       ;;
+                *.7z)       mkdir -p $(echo $arg | sed -E 's/(.*).7z$/\1/') && 7z x $arg -o$_          ;;
+                *.Z)        uncompress $arg                                                            ;;
+                *.rar)      rar x $arg                                                                 ;; # 'rar' must to be installed
+                *.jar)      mkdir -p $(echo $arg | sed -E 's/(.*).7z$/\1/') && jar -xvf $arg -C $_     ;; # 'jdk' must to be installed
+                *)          echo "'$arg' cannot be extracted via extracty" ;;
+            esac
+        else
+            echo "'$arg' is not a valid file, skipping"
+        fi
+    done
+}
+
+zipper () {
+    ziptype=$1
+    shift
+    shift
+
+    for arg in $@ ; do
+        if [ ! -f $arg ] && [ ! -d $arg ] ; then
+            echo "'$arg' is not a valid file/dir, exiting"
+            exit 1
+        fi
+    done
+
+    # These compressions use a file by file basis
+    case $ziptype in
+        bz2)      bzip2 -k $@; exit 0         ;;
+        gz)       gzip -k $@; exit 0          ;;
+        *) ;;
+    esac
+
+    echo "Enter filename without extension:"
+    read filename
+    case $ziptype in
+        tar.bz2)  tar cvjf "$filename.tar.bz2" $@          ;;
+        tar.gz)   tar cvzf "$filename.tar.gz" $@           ;;
+        tar)      tar cf "$filename.tar" $@                ;;
+        tbz2)     tar cvjf "$filename.tbz2" $@             ;;
+        tgz)      tar cvzf "$filename.tgz" $@              ;;
+        zip)      zip "$filename.zip" -r $@                ;;
+        Z)        compress "$filename.Z" $@                ;;
+        7z)       7z a "$filename.7z" $@                   ;;
+        rar)      rar a "$filename.rar" $@                 ;; # 'rar' must to be installed
+        jar)      jar -cvf "$filename.jar" $@              ;; # 'rar' must to be installed # 'jdk' must to be installed
+        *)        echo "'$ziptype' is not a valid ZIPTYPE" ;;
+    esac
+}
+
+if [ $# -lt 1 ];then
+    help
+fi
+
+if [ $1 = "x" ] || [ $1 = "extract" ] || [ $1 = "e" ] || [ $1 = "extracty" ]; then
+    shift
+    extracty $@
+elif [ $1 = "z" ] || [$1 = "compress"] || [ $1 = "c" ] || [ $1 = "zipper" ]; then
+    shift
+    zipper $1 $@
+else
+    help
+fi

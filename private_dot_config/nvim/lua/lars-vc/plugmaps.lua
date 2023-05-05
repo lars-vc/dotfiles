@@ -60,6 +60,9 @@ end, { noremap = true })
 vim.keymap.set("n", "<leader>fd", function()
     require("telescope.builtin").diagnostics()
 end, { noremap = true })
+vim.keymap.set("n", "<leader>fl", function()
+    require("telescope.builtin").lsp_document_symbols()
+end, { noremap = true })
 -- help related
 vim.keymap.set("n", "<leader>fhh", function()
     require("telescope.builtin").help_tags()
@@ -291,19 +294,21 @@ end, { noremap = true })
 
 -- Hover --
 vim.keymap.set("n", "gh", function()
-    local winid = require("ufo").peekFoldedLinesUnderCursor()
-    if winid then
-        local bufnr = vim.api.nvim_win_get_buf(winid)
-        local keys = { "a", "i", "o", "A", "I", "O", "gd", "gr", "gi" }
-        for _, k in ipairs(keys) do
-            -- Add a prefix key to fire `trace` action,
-            vim.keymap.set("n", k, "<CR>" .. k, { noremap = false, buffer = bufnr })
+    local check, ufo = pcall(require, "ufo")
+    if check then
+        local winid = ufo.peekFoldedLinesUnderCursor()
+        if winid then
+            local bufnr = vim.api.nvim_win_get_buf(winid)
+            local keys = { "a", "i", "o", "A", "I", "O", "gd", "gr", "gi" }
+            for _, k in ipairs(keys) do
+                -- Add a prefix key to fire `trace` action,
+                vim.keymap.set("n", k, "<CR>" .. k, { noremap = false, buffer = bufnr })
+            end
+            return
         end
-    else
-        -- choose one of coc.nvim and nvim lsp
-        require("pretty_hover").hover()
-        -- vim.lsp.buf.hover()
     end
+    require("pretty_hover").hover()
+    -- vim.lsp.buf.hover()
 end, { desc = "hover info" })
 
 -- CodeActionMenu --
@@ -311,19 +316,19 @@ end, { desc = "hover info" })
 vim.keymap.set({ "n", "v" }, "gA", "<cmd>CodeActionMenu<cr>", { noremap = true })
 
 -- Flote --
-vim.keymap.set("n", "<leader>kk", function()
+vim.keymap.set("n", "<leader>wf", function()
     vim.cmd([[Flote]])
     vim.diagnostic.disable(0)
-end, { noremap = true })
-vim.keymap.set("n", "<leader>km", "<cmd>Flote manage<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>kg", function()
+end, { noremap = true, desc = "Flote" })
+vim.keymap.set("n", "<leader>wm", "<cmd>Flote manage<cr>", { noremap = true, desc = "Flote manage" })
+vim.keymap.set("n", "<leader>wg", function()
     vim.cmd([[Flote global]])
     vim.diagnostic.disable(0)
-end, { noremap = true })
+end, { noremap = true, desc = "Flote global" })
 
 -- Neogen --
 vim.keymap.set("n", "<leader>e", function()
-    require("neogen").generate()
+    require("neogen").generate({})
 end, { noremap = true })
 
 -- Muren --
@@ -342,3 +347,18 @@ end, { noremap = true })
 vim.keymap.set("n", "<leader>ru", function()
     require("muren.api").open_unique_ui()
 end, { noremap = true })
+
+-- Telekasten --
+vim.keymap.set("n", "<leader>kk", function()
+    require("telekasten").panel()
+end, { noremap = true })
+vim.keymap.set("n", "<leader>kn", function()
+    require("telekasten").new_note()
+end, { noremap = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>", { noremap = true })
+    end,
+    pattern = { "telekasten" },
+})
