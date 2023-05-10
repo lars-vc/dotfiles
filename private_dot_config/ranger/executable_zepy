@@ -5,7 +5,7 @@ help () {
     echo "Usage: $0 [x/z] [OPTIONS]... [FILES]..."
     echo "  Zipper:"
     echo "    $0 z [ZIPTYPE] [FILES]..."
-    echo "    example: $u z 7z file1 file2 file3"
+    echo "    example: $0 z 7z file1 file2 file3"
     echo "    Supported ziptypes: bz2, gz, tar.bz2, tar.gz, tar, tbz2, tgz, zip, Z, 7z, rar, jar"
     echo "  Extracty:"
     echo "    $0 x [FILES]..."
