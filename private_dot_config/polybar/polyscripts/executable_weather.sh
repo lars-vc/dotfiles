@@ -140,18 +140,20 @@ function getData {
     if [ $CODE -eq 0 ]; then
         RESPONSECODE=`echo $RESPONSE | jq .cod`
     fi
-    if [ $CODE -ne 0 ] || [ $RESPONSECODE -ne 200 ]; then
+    if [ $CODE -ne 0 ] || [ "$RESPONSECODE" != "200" ]; then
         if [ $CODE -ne 0 ]; then
             ERR_MSG="curl Error $CODE"
             # echo "curl Error $CODE" >> "$HOME/.weather.log"
+            echo "%{F#f43753}%{F-} Curl error"
         else
             ERR_MSG="Conn. Err. $RESPONSECODE"
             # echo "API Error $RESPONSECODE" >> "$HOME/.weather.log"
+            echo "%{F#f43753}%{F-} API issue"
         fi
         ERROR=1
-    # else
-    #     echo "$RESPONSE" > "$HOME/.weather-last"
-    #     echo `date +%s` >> "$HOME/.weather-last"
+        # else
+        #     echo "$RESPONSE" > "$HOME/.weather-last"
+        #     echo `date +%s` >> "$HOME/.weather-last"
     fi
 }
 function setIcons {
@@ -258,7 +260,7 @@ function setIcons {
     fi
     if [ $KNOTS = "yes" ]; then
         case $UNITS in
-            "imperial") 
+            "imperial")
                 # The division by one is necessary because scale works only for divisions. bc is stupid.
                 WINDFORCE=`echo "scale=$DECIMALS;$WINDFORCE * 0.8689762419 / 1" | bc`
                 ;;
@@ -297,9 +299,9 @@ function setIcons {
     else
         TEMP_ICON="洞"
     fi
-    
+
     TEMP=`echo "$TEMP" | cut -d "." -f 1`
-    
+
     if [ "$TEMP" -le $VERY_COLD_TEMP ]; then
         # VERY COLD
         TEMP="%{F$COLOR_VERY_COLD}$COLOR_TEXT_BEGIN$TEMP%{F-}$TEMP_ICON$COLOR_TEXT_END"
