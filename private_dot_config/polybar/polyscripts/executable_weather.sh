@@ -12,11 +12,13 @@ fi
 # API settings ________________________________________________________________
 
 APIKEY=`cat $HOME/.owm-key`
-# CITY_NAME='Dendermonde'
-# COUNTRY_CODE='BE'
 IPCURL=$(curl -s https://ipinfo.io/)
-CITY_NAME=$(echo $IPCURL | jq -r ".city")
-COUNTRY_CODE=$(echo $IPCURL | jq -r ".country")
+# CITY_NAME=$(echo $IPCURL | jq -r ".city")
+# COUNTRY_CODE=$(echo $IPCURL | jq -r ".country")
+COORDS=$(echo $IPCURL | jq -r ".loc") # These coords will be kinda inaccurate due to ip subnetmasking
+LON=$(echo $COORDS | cut -d "," -f 1)
+LAT=$(echo $COORDS | cut -d "," -f 2)
+
 # Desired output language
 LANG="en"
 # UNITS can be "metric", "imperial" or "kelvin". Set KNOTS to "yes" if you
@@ -32,7 +34,6 @@ UNITS="metric"
 
 # Color Settings ______________________________________________________________
 
-# COLOR_CLOUD="#606060"
 COLOR_CLOUD="#5690ba"
 COLOR_THUNDER="#d3b987"
 COLOR_LIGHT_RAIN="#73cef4"
@@ -49,7 +50,6 @@ COLOR_COLD="#b3c1ef"
 COLOR_NORMAL_TEMP=""
 COLOR_HOT="#f46637"
 COLOR_VERY_HOT="#f43753"
-# COLOR_NORMAL_TEMP="#FFFFFF"
 
 # Leave "" if you want the default polybar color
 COLOR_TEXT=""
@@ -122,7 +122,7 @@ if [ $UNITS = "kelvin" ]; then
 else
     UNIT_URL="&units=$UNITS"
 fi
-URL="api.openweathermap.org/data/2.5/weather?appid=$APIKEY$UNIT_URL&lang=$LANG&q=$CITY_NAME,$COUNTRY_CODE"
+URL="api.openweathermap.org/data/2.5/weather?appid=$APIKEY$UNIT_URL&lang=$LANG&lon=$LON&lat=$LAT"
 
 function getData {
     ERROR=0
