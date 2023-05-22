@@ -16,8 +16,8 @@ IPCURL=$(curl -s https://ipinfo.io/)
 # CITY_NAME=$(echo $IPCURL | jq -r ".city")
 # COUNTRY_CODE=$(echo $IPCURL | jq -r ".country")
 COORDS=$(echo $IPCURL | jq -r ".loc") # These coords will be kinda inaccurate due to ip subnetmasking
-LON=$(echo $COORDS | cut -d "," -f 1)
-LAT=$(echo $COORDS | cut -d "," -f 2)
+LAT=$(echo $COORDS | cut -d "," -f 1)
+LON=$(echo $COORDS | cut -d "," -f 2)
 
 # Desired output language
 LANG="en"
