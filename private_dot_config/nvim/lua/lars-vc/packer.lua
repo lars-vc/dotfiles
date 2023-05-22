@@ -599,6 +599,39 @@ return packer.startup(function(use)
 		cmd = { "CalendarVR", "Calendar" },
 	})
 
+	--==Dressing.nvim==--
+	use({
+		"stevearc/dressing.nvim",
+		config = function()
+			require("dressing").setup({
+				select = {
+					-- Priority list of preferred vim.select implementations
+					backend = { "builtin", "telescope", "fzf_lua", "fzf", "nui" },
+				},
+			})
+		end,
+	})
+
+	--==UltraZenMode==--
+	use({
+		"folke/zen-mode.nvim",
+		opt = true,
+		cmd = "ZenMode",
+		config = function()
+			require("zen-mode").setup({
+				window = {
+					backdrop = 1,
+				},
+				plugins = {
+					twilight = { enabled = false },
+					tmux = { enabled = true },
+					alacritty = { enabled = true, font = "14" },
+				},
+			})
+		end,
+	})
+	use({ "folke/twilight.nvim", opt = true, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } })
+
 	--==Colorscheme==--
 	use({
 		"catppuccin/nvim",

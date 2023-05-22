@@ -374,3 +374,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     pattern = { "telekasten" },
 })
+
+-- UltraZenMode --
+vim.api.nvim_create_user_command("UltraZen", "ZenMode | Twilight", { desc = "ZenMode + Twilight" })
