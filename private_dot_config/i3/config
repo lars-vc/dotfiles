@@ -176,6 +176,8 @@ bindsym $mod+Shift+minus move scratchpad
 # Show terminal scratchpad window
 bindsym $mod+minus [instance="scratchpad"] scratchpad show, $scratchpad_settings
 bindsym $mod+Control+o [class="Deezer"] scratchpad show, $scratchpad_settings
+bindsym $mod+Control+b [class="Blueberry.py"] scratchpad show, $scratchpad_settings
+bindsym $mod+Control+w [instance="wifitui"] scratchpad show, move position center, border pixel 0
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -232,7 +234,8 @@ bindsym $mod+Control+k exec --no-startup-id ~/.config/i3/i3scripts/keybinds.sh
 assign [class="discord"] $ws5
 for_window [instance="scratchpad"] move to scratchpad
 for_window [class="Deezer"] move to scratchpad
-for_window [class="Blueberry.py"] floating enable, border pixel 0
+for_window [instance="wifitui"] floating enable, move to scratchpad
+for_window [class="Blueberry.py"] floating enable, move to scratchpad
 
 #############################################################
 #                           EXECS                           #
@@ -284,6 +287,7 @@ exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws10'
 exec --no-startup-id deezer-desktop
 exec --no-startup-id $terminal --class=scratchpad
+exec --no-startup-id $terminal --class=wifitui -e nmtui connect
 
 #############################################################
 #                          OTHERS                           #
