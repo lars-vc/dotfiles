@@ -235,7 +235,7 @@ assign [class="discord"] $ws5
 for_window [instance="scratchpad"] move to scratchpad
 for_window [class="Deezer"] move to scratchpad
 for_window [instance="wifitui"] floating enable, move to scratchpad
-for_window [class="Blueberry.py"] floating enable, move to scratchpad
+for_window [title="Bluetooth" class="Blueberry.py"] floating enable, move to scratchpad
 
 #############################################################
 #                           EXECS                           #
@@ -288,6 +288,7 @@ exec --no-startup-id i3-msg 'workspace $ws10'
 exec --no-startup-id deezer-desktop
 exec --no-startup-id $terminal --class=scratchpad
 exec --no-startup-id $terminal --class=wifitui -e nmtui connect
+exec --no-startup-id blueberry
 
 #############################################################
 #                          OTHERS                           #
