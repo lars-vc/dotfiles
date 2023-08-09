@@ -19,7 +19,7 @@ whichkey.setup({
 	},
 	window = {
 		--border = "double"
-		winblend = 25,
+		winblend = 11,
 	},
 })
 whichkey.register({
