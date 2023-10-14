@@ -33,6 +33,9 @@ end, { noremap = true })
 vim.keymap.set("n", "<leader>fg", function()
     require("telescope.builtin").live_grep()
 end, { noremap = true })
+vim.keymap.set("n", "<leader>fG", function()
+    require("telescope.builtin").grep_string()
+end, { noremap = true })
 vim.keymap.set("n", "<leader>fc", function()
     require("telescope.builtin").resume()
 end, { noremap = true })
@@ -215,24 +218,6 @@ vim.keymap.set("n", "<leader>gid", function()
 end, { noremap = true })
 
 -- DAP --
-vim.keymap.set("n", "<leader>dq", function()
-    require("dap").run({
-        name = "launch",
-        type = "lldb",
-        request = "launch",
-        program = vim.fn.expand("/mnt/data/Ugent/dma/dma-3-lars-vc/bin/bin/DMAencoder"),
-        stopOnEntry = false,
-        args = {
-            vim.fn.expand("/mnt/data/Ugent/dma/dma-3-lars-vc/data/flower_352x288_50.yuv"),
-            "352",
-            "288",
-            "200",
-            "60",
-            "/mnt/data/Ugent/dma/dma-3-lars-vc/bin/t.bin",
-        },
-    })
-end, { noremap = true })
-
 vim.keymap.set("n", "<leader>dd", function()
     require("dap").continue()
 end, { noremap = true })

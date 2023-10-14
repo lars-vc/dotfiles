@@ -102,6 +102,9 @@ bindsym $mod+m exec $terminal -e ~/.config/i3/i3scripts/sysmon.sh
 # open network manager
 bindsym $mod+w exec $terminal -e nmtui
 
+# mouse movement
+bindsym $mod+a exec --no-startup-id warpd --hint
+
 # Menu for login out, shutdown, etc
 mode "$mode_system" {
     bindsym l       exec --no-startup-id $Locker, mode "default"
@@ -284,7 +287,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker
 # startup applications
 exec --no-startup-id i3-msg 'workspace $ws1; exec $terminal -e tmux new -A'
 exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
-exec --no-startup-id i3-msg 'workspace $ws10'
+# exec --no-startup-id i3-msg 'workspace $ws10'
 exec --no-startup-id deezer-desktop
 exec --no-startup-id $terminal --class=scratchpad
 exec --no-startup-id $terminal --class=wifitui -e nmtui connect

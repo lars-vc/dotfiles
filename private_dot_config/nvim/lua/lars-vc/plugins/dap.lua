@@ -46,53 +46,70 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 --==Language configs==--
+-- Parse CLI arguments function
+local function args()
+    local args_string = vim.fn.input("Arguments: ")
+    return vim.split(args_string, " +")
+end
+
 -- Python -- (install debugpy)
+local function pypath()
+    -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+    -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+    -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+    local cwd = vim.fn.getcwd()
+    if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+        return cwd .. "/venv/bin/python"
+    elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+        return cwd .. "/.venv/bin/python"
+    else
+        return "/usr/bin/python"
+    end
+end
+
 dap.adapters.python = {
-    type = 'executable';
-    command = '/usr/bin/python';
-    args = { '-m', 'debugpy.adapter' };
+    type = "executable",
+    command = "/usr/bin/python",
+    args = { "-m", "debugpy.adapter" },
 }
 dap.configurations.python = {
     {
         -- The first three options are required by nvim-dap
-        type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
-        request = 'launch';
-        name = "Launch file";
+        type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+        request = "launch",
+        name = "Debug current file",
 
         -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 
-        program = "${file}"; -- This configuration will launch the current file if used.
-        pythonPath = function()
-            -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-            -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-            -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-            local cwd = vim.fn.getcwd()
-            if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-                return cwd .. '/venv/bin/python'
-            elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-                return cwd .. '/.venv/bin/python'
-            else
-                return '/usr/bin/python'
-            end
-        end;
+        program = "${file}", -- This configuration will launch the current file if used.
+        pythonPath = pypath,
+        args = {},
+    },
+    {
+        type = "python",
+        request = "launch",
+        name = "Debug current file with arguments",
+        program = "${file}", -- This configuration will launch the current file if used.
+        pythonPath = pypath,
+        args = args,
     },
 }
 
 -- C++ -- (install llvm)
 dap.adapters.lldb = {
-    type = 'executable',
-    command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
-    name = 'lldb'
+    type = "executable",
+    command = "/usr/bin/lldb-vscode", -- adjust as needed, must be absolute path
+    name = "lldb",
 }
 dap.configurations.cpp = {
     {
-        name = 'Launch',
-        type = 'lldb',
-        request = 'launch',
+        name = "Debug",
+        type = "lldb",
+        request = "launch",
         program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
         end,
-        cwd = '${workspaceFolder}',
+        cwd = "${workspaceFolder}",
         stopOnEntry = false,
         args = {},
 
@@ -108,6 +125,17 @@ dap.configurations.cpp = {
         -- But you should be aware of the implications:
         -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
         -- runInTerminal = false,
+    },
+    {
+        name = "Debug with arguments",
+        type = "lldb",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        args = args,
     },
 }
 
@@ -126,26 +154,37 @@ dap.configurations.rust = dap.configurations.cpp
 -- NODE_OPTIONS=--no-experimental-fetch npm run buil
 
 dap.adapters.node2 = {
-    type = 'executable',
-    command = 'node',
-    args = { os.getenv('HOME') .. '/.dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js' },
+    type = "executable",
+    command = "node",
+    args = { os.getenv("HOME") .. "/.dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js" },
 }
 dap.configurations.javascript = {
     {
-        name = 'Launch',
-        type = 'node2',
-        request = 'launch',
-        program = '${file}',
+        name = "Debug",
+        type = "node2",
+        request = "launch",
+        program = "${file}",
         cwd = vim.fn.getcwd(),
         sourceMaps = true,
-        protocol = 'inspector',
-        console = 'integratedTerminal',
+        protocol = "inspector",
+        console = "integratedTerminal",
+    },
+    {
+        name = "Debug with arguments",
+        type = "node2",
+        request = "launch",
+        program = "${file}",
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = "inspector",
+        console = "integratedTerminal",
+        args = args,
     },
     {
         -- For this to work you need to make sure the node process is started with the `--inspect` flag.
-        name = 'Attach to process',
-        type = 'node2',
-        request = 'attach',
-        processId = require 'dap.utils'.pick_process,
+        name = "Attach to process",
+        type = "node2",
+        request = "attach",
+        processId = require("dap.utils").pick_process,
     },
 }

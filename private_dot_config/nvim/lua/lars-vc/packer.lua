@@ -319,7 +319,11 @@ return packer.startup(function(use)
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("lars-vc.plugins.indentguides")
+			-- require("indent_blankline").setup {
+			--     show_current_context = true,
+			--     show_trailing_blankline_indent = false,
+			-- }
+			require("ibl").setup({ scope = { show_start = false } })
 		end,
 	})
 
@@ -415,7 +419,7 @@ return packer.startup(function(use)
 		opt = true,
 		module = "pretty_hover",
 		config = function()
-			require("pretty_hover").setup()
+			require("pretty_hover").setup({})
 			-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 			--     border = "rounded",
 			-- })
@@ -561,12 +565,12 @@ return packer.startup(function(use)
 
 	--==Muren.nvim==--
 	-- use({
-	--     "AckslD/muren.nvim",
-	--     config = function()
-	--         require("muren").setup({ create_commands = false })
-	--     end,
-	--     opt = true,
-	--     module = "muren",
+	-- 	"AckslD/muren.nvim",
+	-- 	config = function()
+	-- 		require("muren").setup({ create_commands = false })
+	-- 	end,
+	-- 	opt = true,
+	-- 	module = "muren",
 	-- })
 
 	--==ranger==-- (currently I prefer rnvimr)
@@ -597,6 +601,14 @@ return packer.startup(function(use)
 		"renerocksai/calendar-vim",
 		opt = true,
 		cmd = { "CalendarVR", "Calendar" },
+	})
+
+	use({
+		"nvim-neorg/neorg",
+		run = ":Neorg sync-parsers", -- This is the important bit!
+		config = function()
+			require("lars-vc.plugins.neorg")
+		end,
 	})
 
 	--==Dressing.nvim==--

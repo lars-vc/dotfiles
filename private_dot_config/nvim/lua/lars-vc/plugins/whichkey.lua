@@ -31,6 +31,7 @@ whichkey.register({
 			b = "find an open buffer",
 			c = "continue prev search",
 			g = "search in all files",
+			G = "search word in all files",
 			-- n = "neoclip",
 			i = "find in config",
 			p = "view the planets",

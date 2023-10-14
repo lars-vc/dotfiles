@@ -57,12 +57,12 @@ require("dapui").setup({
         icons = {
             pause = "",
             play = "",
-            step_into = "",
-            step_over = "",
-            step_out = "",
-            step_back = "",
+            step_into = "󰆹",
+            step_over = "󰆷",
+            step_out = "󰆸",
+            step_back = "󰓕",
             run_last = "↻",
-            terminate = "□",
+            terminate = "",
         },
     },
     floating = {
@@ -77,5 +77,5 @@ require("dapui").setup({
     render = {
         max_type_length = nil, -- Can be integer or nil.
         max_value_lines = 100, -- Can be integer or nil.
-    }
+    },
 })
