@@ -49,6 +49,7 @@ whichkey.register({
 				b = "builtin pickers",
 			},
 		},
+		j = { name = "+neorg" },
 		l = {
 			name = "+lsp",
 			j = "goto next diagnostic",
@@ -129,6 +130,11 @@ whichkey.register({
 				o = "open preview",
 				c = "close preview",
 				p = "toggle preview",
+			},
+			d = {
+				name = "+mdheaders",
+				d = "see headers",
+				c = "see header with closest",
 			},
 			a = {
 				name = "+tablemode",

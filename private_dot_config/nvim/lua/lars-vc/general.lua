@@ -36,3 +36,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 opt.signcolumn = "yes" -- extra column showing sign for e.g. LSP related stuff
 opt.breakindent = true -- wordwrap respects indent
+opt.foldcolumn = "0" -- '0' is not bad
+opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldlevelstart = 99 -- no folds closed at start
+opt.foldenable = true

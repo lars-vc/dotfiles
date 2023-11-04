@@ -346,19 +346,24 @@ vim.keymap.set("n", "<leader>ru", function()
 end, { noremap = true })
 
 -- Telekasten --
-vim.keymap.set("n", "<leader>kk", function()
-    require("telekasten").panel()
-end, { noremap = true })
-vim.keymap.set("n", "<leader>kn", function()
-    require("telekasten").new_note()
-end, { noremap = true })
-
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>", { noremap = true })
-    end,
-    pattern = { "telekasten" },
-})
+-- vim.keymap.set("n", "<leader>kk", function()
+--     require("telekasten").panel()
+-- end, { noremap = true })
+-- vim.keymap.set("n", "<leader>kn", function()
+--     require("telekasten").new_note()
+-- end, { noremap = true })
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--     callback = function()
+--         vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>", { noremap = true })
+--     end,
+--     pattern = { "telekasten" },
+-- })
 
 -- UltraZenMode --
 vim.api.nvim_create_user_command("UltraZen", "ZenMode | Twilight", { desc = "ZenMode + Twilight" })
+
+-- Neorg --
+
+vim.keymap.set("n", "<leader>jj", "<cmd>Neorg index<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>jr", "<cmd>Neorg return<CR>", { noremap = true })
