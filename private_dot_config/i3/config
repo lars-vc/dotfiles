@@ -1,4 +1,7 @@
 # i3 config file (v4)
+# NVIDIA DRIVER FIX
+exec xrandr --setprovideroutputsource modesetting NVIDIA-0
+exec xrandr --auto
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #
@@ -247,13 +250,13 @@ for_window [title="Bluetooth" class="Blueberry.py"] floating enable, move to scr
 # exec systemctl --user stop pipewire.socket
 # setup second monitor
 #exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal
-exec autorandr --change
+#exec autorandr --change
 # start notification daemon
 exec dunst &
 # refresh time based wallpaper 
 exec dwall -s firewatch
 # auto suspend after 15min of inactivity
-exec xautolock -time 30 -locker "systemctl suspend" &
+# exec xautolock -time 30 -locker "systemctl suspend" &
 # bluethooth icon and settings
 exec --no-startup-id /usr/lib/blueberry/blueberry-tray.py
 exec --no-startup-id /usr/lib/blueberry/blueberry-obex-agent.py
@@ -282,7 +285,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker
 
 # startup applications
 exec --no-startup-id i3-msg 'workspace $ws1; exec $terminal -e tmux new -A'
