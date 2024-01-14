@@ -9,8 +9,20 @@ vim.keymap.set("n", "<leader>lf", function()
 	-- check if a formatting source of null-ls is registered
 	if check and nullls.is_registered({ method = nullls.methods.FORMATTING }) then
 		vim.lsp.buf.format()
+		vim.print("Formatted buffer")
 	else
-		vim.cmd([[normal gg=G<C-o>]])
+		-- save current view
+		-- turn off redraw because it will cause jitter
+		-- then format
+		-- reset view
+		-- then turn redraw back on
+		local key = vim.api.nvim_replace_termcodes(
+			":let win=winsaveview()<cr>:set lazyredraw<cr>gg=G:call winrestview(win)<cr>:set nolazyredraw<cr>:echo 'Formatted buffer'<cr>",
+			true,
+			false,
+			true
+		)
+		vim.api.nvim_feedkeys(key, "n", false)
 	end
 end, { noremap = true })
 -- moving in insert mode and cmdmode

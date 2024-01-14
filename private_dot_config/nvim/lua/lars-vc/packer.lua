@@ -118,9 +118,8 @@ return packer.startup(function(use)
         "j-hui/fidget.nvim",
         config = function()
             require("fidget").setup({
-                text = { spinner = "dots" },
-                sources = {
-                    ltex = { ignore = true }, -- ltex spammed updates on each character typed
+                progress = {
+                    ignore = { "ltex" },
                 },
             })
         end,
@@ -300,8 +299,14 @@ return packer.startup(function(use)
         requires = "nvim-lua/plenary.nvim",
         opt = true,
         config = function()
-            require("lars-vc.plugins.harpoon")
+            require("harpoon").setup({
+                settings = {
+                    save_on_toggle = true,
+                    sync_on_ui_close = true,
+                },
+            })
         end,
+        branch = "harpoon2",
         module = { "harpoon" },
     })
 
@@ -603,6 +608,7 @@ return packer.startup(function(use)
         "nvim-neorg/neorg",
         run = ":Neorg sync-parsers", -- This is the important bit!
         opt = true,
+        ft = "norg",
         module = "neorg",
         cmd = "Neorg",
         config = function()
@@ -613,6 +619,7 @@ return packer.startup(function(use)
     use({
         "nvim-neorg/neorg-telescope",
         opt = true,
+        ft = "norg",
         module = "neorg",
         cmd = "Neorg",
     })

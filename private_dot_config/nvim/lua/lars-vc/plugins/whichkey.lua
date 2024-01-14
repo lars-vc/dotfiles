@@ -49,7 +49,11 @@ whichkey.register({
 				b = "builtin pickers",
 			},
 		},
-		j = { name = "+neorg" },
+		j = {
+			name = "+neorg",
+			f = { name = "+find", l = "find linkable", f = "find file" },
+			i = { name = "+insert", l = "Insert Linkable", f = "Insert File Linkable" },
+		},
 		l = {
 			name = "+lsp",
 			j = "goto next diagnostic",
