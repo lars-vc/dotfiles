@@ -180,7 +180,7 @@ bindsym $mod+Control+d focus child
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 # Show terminal scratchpad window
-bindsym $mod+minus [instance="scratchpad"] scratchpad show, $scratchpad_settings
+bindsym $mod+minus scratchpad show
 bindsym $mod+Control+o [class="Deezer"] scratchpad show, $scratchpad_settings
 bindsym $mod+Control+b [class="Blueberry.py"] scratchpad show, $scratchpad_settings
 bindsym $mod+Control+w [instance="wifitui"] scratchpad show, move position center, border pixel 0

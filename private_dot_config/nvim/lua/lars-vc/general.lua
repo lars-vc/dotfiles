@@ -31,7 +31,7 @@ opt.conceallevel = 3 -- conceallevel for markdown
 -- disable autoinserting of comment when pressing o on a commented line (needs to be autocmd for some reason)
 --vim.cmd [[autocmd FileType * setlocal formatoptions-=o]]
 vim.api.nvim_create_autocmd("FileType", {
-    command = "setlocal formatoptions-=o ",
+    command = "setlocal formatoptions-=cro ",
     pattern = { "*" },
 })
 opt.signcolumn = "yes" -- extra column showing sign for e.g. LSP related stuff

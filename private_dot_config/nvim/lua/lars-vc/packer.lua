@@ -294,8 +294,9 @@ return packer.startup(function(use)
     })
 
     --==Harpoon==--
+    -- TODO: Currently using my own fork which supports viewports, merge this with main repo
     use({
-        "ThePrimeagen/harpoon",
+        "lars-vc/harpoon2",
         requires = "nvim-lua/plenary.nvim",
         opt = true,
         config = function()
@@ -658,29 +659,32 @@ return packer.startup(function(use)
     use({ "folke/twilight.nvim", opt = true, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } })
 
     --==overseer==--
-    use({
-        "stevearc/overseer.nvim",
-        opt = true,
-        cmd = {
-            "OverseerOpen",
-            "OverseerClose",
-            "OverseerToggle",
-            "OverseerSaveBundle",
-            "OverseerLoadBundle",
-            "OverseerDeleteBundle",
-            "OverseerRunCmd",
-            "OverseerRun",
-            "OverseerInfo",
-            "OverseerBuild",
-            "OverseerQuickAction",
-            "OverseerTaskAction",
-            "OverseerClearCache",
-        },
-        module = "overseer",
-        config = function()
-            require("overseer").setup()
-        end,
-    })
+    -- use({
+    --     "stevearc/overseer.nvim",
+    --     opt = true,
+    --     cmd = {
+    --         "OverseerOpen",
+    --         "OverseerClose",
+    --         "OverseerToggle",
+    --         "OverseerSaveBundle",
+    --         "OverseerLoadBundle",
+    --         "OverseerDeleteBundle",
+    --         "OverseerRunCmd",
+    --         "OverseerRun",
+    --         "OverseerInfo",
+    --         "OverseerBuild",
+    --         "OverseerQuickAction",
+    --         "OverseerTaskAction",
+    --         "OverseerClearCache",
+    --     },
+    --     module = "overseer",
+    --     config = function()
+    --         require("overseer").setup()
+    --     end,
+    -- })
+
+    --==Abolish==--
+    use({ "tpope/vim-abolish", opt = true, cmd = { "S" } })
 
     --==Colorscheme==--
     use({
