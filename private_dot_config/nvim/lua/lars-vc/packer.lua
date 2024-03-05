@@ -519,6 +519,7 @@ return packer.startup(function(use)
     use({
         "kevinhwang91/nvim-ufo",
         requires = "kevinhwang91/promise-async",
+        module = "ufo",
         keys = { "z" },
         config = function()
             local handler = function(virtText, lnum, endLnum, width, truncate)
