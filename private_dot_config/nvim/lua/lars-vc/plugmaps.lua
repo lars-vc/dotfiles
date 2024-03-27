@@ -21,10 +21,10 @@ vim.keymap.set("n", "<leader>lr", "<cmd>TroubleRefresh<cr>", { silent = true, no
 vim.keymap.set("n", "<leader>lx", "<cmd>TroubleClose<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>lc", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>lq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "gd", "<cmd>TroubleToggle lsp_definitions<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "gt", "<cmd>TroubleToggle lsp_type_definitions<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "gi", "<cmd>TroubleToggle lsp_implementations<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gr", "<cmd>TroubleOpen lsp_references<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gd", "<cmd>TroubleOpen lsp_definitions<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gt", "<cmd>TroubleOpen lsp_type_definitions<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gi", "<cmd>TroubleOpen lsp_implementations<cr>", { silent = true, noremap = true })
 
 -- Telescope --
 vim.keymap.set("n", "<leader>ff", function()
@@ -305,24 +305,23 @@ vim.keymap.set("n", "gh", function()
 			return
 		end
 	end
-	require("pretty_hover").hover()
-	-- vim.lsp.buf.hover()
+	vim.lsp.buf.hover()
 end, { desc = "hover info" })
 
 -- CodeActionMenu --
 -- list all code actions for line
 vim.keymap.set({ "n", "v" }, "gA", "<cmd>CodeActionMenu<cr>", { noremap = true })
 
--- Flote --
-vim.keymap.set("n", "<leader>wf", function()
-	vim.cmd([[Flote]])
-	vim.diagnostic.disable(0)
-end, { noremap = true, desc = "Flote" })
-vim.keymap.set("n", "<leader>wm", "<cmd>Flote manage<cr>", { noremap = true, desc = "Flote manage" })
-vim.keymap.set("n", "<leader>wg", function()
-	vim.cmd([[Flote global]])
-	vim.diagnostic.disable(0)
-end, { noremap = true, desc = "Flote global" })
+-- -- Flote --
+-- vim.keymap.set("n", "<leader>wf", function()
+-- 	vim.cmd([[Flote]])
+-- 	vim.diagnostic.disable(0)
+-- end, { noremap = true, desc = "Flote" })
+-- vim.keymap.set("n", "<leader>wm", "<cmd>Flote manage<cr>", { noremap = true, desc = "Flote manage" })
+-- vim.keymap.set("n", "<leader>wg", function()
+-- 	vim.cmd([[Flote global]])
+-- 	vim.diagnostic.disable(0)
+-- end, { noremap = true, desc = "Flote global" })
 
 -- Neogen --
 vim.keymap.set("n", "<leader>e", function()
@@ -330,21 +329,35 @@ vim.keymap.set("n", "<leader>e", function()
 end, { noremap = true })
 
 -- Muren --
+-- vim.keymap.set("n", "<leader>rr", function()
+-- 	require("muren.api").toggle_ui()
+-- end, { noremap = true })
+-- vim.keymap.set("n", "<leader>ro", function()
+-- 	require("muren.api").open_ui()
+-- end, { noremap = true })
+-- vim.keymap.set("n", "<leader>rc", function()
+-- 	require("muren.api").close_ui()
+-- end, { noremap = true })
+-- vim.keymap.set("n", "<leader>rf", function()
+-- 	require("muren.api").open_fresh_ui()
+-- end, { noremap = true })
+-- vim.keymap.set("n", "<leader>ru", function()
+-- 	require("muren.api").open_unique_ui()
+-- end, { noremap = true })
+
+-- Spectre --
 vim.keymap.set("n", "<leader>rr", function()
-	require("muren.api").toggle_ui()
-end, { noremap = true })
-vim.keymap.set("n", "<leader>ro", function()
-	require("muren.api").open_ui()
-end, { noremap = true })
-vim.keymap.set("n", "<leader>rc", function()
-	require("muren.api").close_ui()
-end, { noremap = true })
-vim.keymap.set("n", "<leader>rf", function()
-	require("muren.api").open_fresh_ui()
-end, { noremap = true })
-vim.keymap.set("n", "<leader>ru", function()
-	require("muren.api").open_unique_ui()
-end, { noremap = true })
+	require("spectre").toggle()
+end)
+vim.keymap.set("n", "<leader>rw", function()
+	require("spectre").open_visual({ select_word = true })
+end)
+vim.keymap.set("v", "<leader>rw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+	desc = "Search current word",
+})
+vim.keymap.set("n", "<leader>rp", function()
+	require("spectre").open_file_search({ select_word = true })
+end)
 
 -- Telekasten --
 -- vim.keymap.set("n", "<leader>kk", function()

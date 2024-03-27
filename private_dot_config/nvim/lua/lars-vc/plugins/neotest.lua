@@ -2,10 +2,10 @@
 local neotest = require("neotest")
 neotest.setup({
 	adapters = { -- add test adapters here
-		require("neotest-rust"),
+		require("neotest-rust"), -- requires cargo nextest
 		require("neotest-python"),
 		require("neotest-go"),
-		require("neotest-jest"),
+		require("neotest-jest"), -- requires jest
 	},
 	benchmark = {
 		enabled = true,

@@ -159,12 +159,10 @@ whichkey.register({
 			x = "swap splits",
 		},
 		r = {
-			name = "+muren",
-			r = "toggle muren",
-			o = "open muren",
-			c = "close muren",
-			f = "open fresh muren",
-			u = "open unique muren",
+			name = "+spectre",
+			r = "toggle spectre",
+			w = "search current word",
+			p = "search on current file",
 		},
 		o = {
 			name = "+other",
@@ -174,10 +172,10 @@ whichkey.register({
 			m = "move",
 			r = "remove",
 		},
-		w = {
-			name = "+wiki/flote",
-			w = "open index.wiki",
-		},
+		-- w = {
+		-- 	name = "+wiki/flote",
+		-- 	w = "open index.wiki",
+		-- },
 		n = {
 			name = "+nabla",
 			n = "hover formula",

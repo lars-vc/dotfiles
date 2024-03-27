@@ -5,8 +5,8 @@
 -- ╱         ╱     ____╱   ___╱  ╱   ╲        ╱╱   ╱╱   ╱  ╱  ╱
 -- ╲__╱╲____╱╲________╱╲________╱     ╲______╱╱___╱ ╲__╱__╱__╱
 
--- Installed LSPservers: pyright, rust_analyzer, tsserver, sumneko_lua, texlab, ltex-ls, clangd
+-- Installed LSPservers: pyright, rust_analyzer, tsserver, sumneko_lua, texlab, ltex-ls, clangd, julials
 -- Installed DAPservers: debugpy, codelldb, node2
 -- Installed Linters:    eslint, flake8
--- Installed Formatters: black, prettier, stylua, latexindent, beautysh, clang-format
+-- Installed Formatters: black, prettier, stylua, latexindent, beautysh, clang-format, rustfmt
 require("lars-vc")
